@@ -1,0 +1,13 @@
+diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
+index d777048c37a37..3a32967880df1 100644
+--- a/build/config/compiler/BUILD.gn
++++ b/build/config/compiler/BUILD.gn
+@@ -752,7 +752,7 @@ config("compiler") {
+         "-mllvm:-disable-auto-upgrade-debug-info",
+       ]
+     } else {
+-      ldflags += [ "-flto=thin" ]
++      ldflags += [ "-flto=thin", "-save-stats=obj" ]
+ 
+       # Enabling ThinLTO on Chrome OS too, in an effort to reduce the memory
+       # usage in crbug.com/1038040. Note this will increase build time in
