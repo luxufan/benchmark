@@ -156,7 +156,7 @@ CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS:FILEPATH=/home/tester/benchmark/toolchain/llv
 CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/usr/bin/llvm-ranlib-18
 
 //Flags used by the CXX compiler during all build types.
-CMAKE_CXX_FLAGS:STRING=-Wl,/home/tester/benchmark/toolchain/llvm-project/build-release/bin/private_typeinfo.o -fuse-ld=lld -Wl,--undefined-version -save-stats=obj
+CMAKE_CXX_FLAGS:STRING=-Wl,/home/tester/benchmark/toolchain/llvm-project/build-release/bin/private_typeinfo.o -fdyncast-pgo -fuse-ld=lld -Wl,--undefined-version -save-stats=obj
 
 //Flags used by the CXX compiler during DEBUG builds.
 CMAKE_CXX_FLAGS_DEBUG:STRING=-g
