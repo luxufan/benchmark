@@ -4,6 +4,18 @@ cd $BASEDIR
 PWDDIR=$(pwd)
 echo "$PWD"
 
+# Build llvm project
+cd toolchain/llvm-project
+git checkout remotes/origin/dyncast
+rm -rf build-release
+mkdir build-release
+cd build-release
+
+cmake ../llvm -DCMAKE_BUILD_TYPE=Release -DLLVM_TARGETS_TO_BUILD=X86 -DLLVM_ENABLE_PROJECTS="clang;lld" -DLLVM_ENABLE_RUNTIMES="compiler-rt;libcxx;libcxxabi;libunwind" -DLLVM_FORCE_ENABLE_STATS=ON -G Ninja
+
+ninja
+
+
 rm -rf $PWDDIR/out/solidity
 mkdir $PWDDIR/out/solidity
 
