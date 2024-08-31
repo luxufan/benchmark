@@ -8,7 +8,10 @@ mkdir test-result
 
 rm -rf test-result/thinlto
 mkdir test-result/thinlto
-$PWDDIR/test-suites/envoy-perf/siege/siege.py $PWDDIR/out/envoy/thinlto/envoy-static $PWDDIR/out/envoy/thinlto-dyncastopt/envoy-static $PWDDIR/test-result
+$PWDDIR/test-suites/envoy-perf/siege/siege.py $PWDDIR/out/envoy/thinlto-dyncastopt/envoy-static $PWDDIR/out/envoy/thinlto-dyncastopt/envoy-static $PWDDIR/test-result
+rm -rf test-result/fulllto
+mkdir test-result/fulllto
+$PWDDIR/test-suites/envoy-perf/siege/siege.py $PWDDIR/out/envoy/fulllto/envoy-static $PWDDIR/out/envoy/fulllto-dyncastopt/envoy-static $PWDDIR/test-result
 
 # Test 
 
