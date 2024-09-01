@@ -14,7 +14,7 @@ echo "$PWD"
 #
 #ninja clang lld
 
-#$PWDDIR/toolchain/llvm-project/build-release/bin/clang++ -c $PWDDIR/toolchain/llvm-project/libcxxabi/src/private_typeinfo.cpp -isystem $PWDDIR/toolchain/llvm-project/libcxxabi/include -fPIC -o $PWDDIR/toolchain/llvm-project/build-release/bin/private_typeinfo.o
+#$PWDDIR/toolchain/llvm-project/build-release/bin/clang++ -c $PWDDIR/toolchain/llvm-project/libcxxabi/src/private_typeinfo.cpp -isystem $PWDDIR/toolchain/llvm-project/libcxxabi/include -fPIC -o $PWDDIR/toolchain/llvm-project/build-release/bin/private_typeinfo.o -fdyncast-pgo
 
 #rm -rf $PWDDIR/out-pgo/blender
 #mkdir $PWDDIR/out-pgo/blender

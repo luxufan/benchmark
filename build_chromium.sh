@@ -19,27 +19,27 @@ export PATH="${HOME}/benchmark/test-suites/chromium/depot_tools:$PATH"
 rm -rf $PWDDIR/out/chromium
 mkdir $PWDDIR/out/chromium
 
-rm -rf $PWDDIR/out/chromium/fulllto
-mkdir $PWDDIR/out/chromium/fulllto
-cd $PWDDIR/test-suites/chromium/chromium/src
-rm -rf out/default
-gn gen out/default
-git reset --hard HEAD
-git apply $PWDDIR/cmake/chromium/fulllto.patch
-cp $PWDDIR/cmake/chromium/args.gn out/default/args.gn
-autoninja -C out/default chrome
-mv out/default/chrome $PWDDIR/out/chromium/fulllto
-mv out/default/chrome_exe_main_aura.stats $PWDDIR/out/chromium/fulllto/chrome.stats
+#rm -rf $PWDDIR/out/chromium/fulllto
+#mkdir $PWDDIR/out/chromium/fulllto
+#cd $PWDDIR/test-suites/chromium/chromium/src
+#rm -rf out/fulllto
+#gn gen out/fulllto
+#git reset --hard HEAD
+#git apply $PWDDIR/cmake/chromium/fulllto.patch
+#cp $PWDDIR/cmake/chromium/args.gn out/fulllto/args.gn
+#autoninja -C out/fulllto chrome
+#mv out/default/chrome $PWDDIR/out/chromium/fulllto
+#mv out/default/chrome_exe_main_aura.stats $PWDDIR/out/chromium/fulllto/chrome.stats
 
 rm -rf $PWDDIR/out/chromium/fulllto-dyncastopt
 mkdir $PWDDIR/out/chromium/fulllto-dyncastopt
 cd $PWDDIR/test-suites/chromium/chromium/src
-rm -rf out/default
-gn gen out/default
+rm -rf out/fulllto-dyncastopt
+gn gen out/fulllto-dyncastopt
 git reset --hard HEAD
 git apply $PWDDIR/cmake/chromium/fulllto-dyncastopt.patch
-cp $PWDDIR/cmake/chromium/args.gn out/default/args.gn
-autoninja -C out/default chrome
+cp $PWDDIR/cmake/chromium/args.gn out/fulllto-dyncastopt/args.gn
+autoninja -C out/fulllto-dyncastopt chrome
 mv out/default/chrome $PWDDIR/out/chromium/fulllto-dyncastopt
 mv out/default/chrome_exe_main_aura.stats $PWDDIR/out/chromium/fulllto-dyncastopt/chrome.stats
 
@@ -59,23 +59,23 @@ ninja
 rm -rf $PWDDIR/out/chromium/thinlto
 mkdir $PWDDIR/out/chromium/thinlto
 cd $PWDDIR/test-suites/chromium/chromium/src
-rm -rf out/default
-gn gen out/default
+rm -rf out/thinlto
+gn gen out/thinlto
 git reset --hard HEAD
 git apply $PWDDIR/cmake/chromium/thinlto.patch
-cp $PWDDIR/cmake/chromium/args.gn out/default/args.gn
-autoninja -C out/default chrome
+cp $PWDDIR/cmake/chromium/args.gn out/thinlto/args.gn
+autoninja -C out/thinlto chrome
 mv out/default/chrome $PWDDIR/out/chromium/thinlto
 mv out/default/chrome_exe_main_aura.stats $PWDDIR/out/chromium/thinlto/chrome.stats
 
 rm -rf $PWDDIR/out/chromium/thinlto-dyncastopt
 mkdir $PWDDIR/out/chromium/thinlto-dyncastopt
 cd $PWDDIR/test-suites/chromium/chromium/src
-rm -rf out/default
-gn gen out/default
+rm -rf out/thinlto-dyncastopt
+gn gen out/thinlto-dyncastopt
 git reset --hard HEAD
 git apply $PWDDIR/cmake/chromium/thinlto-dyncastopt.patch
-cp $PWDDIR/cmake/chromium/args.gn out/default/args.gn
-autoninja -C out/default chrome
+cp $PWDDIR/cmake/chromium/args.gn out/thinlto-dyncastopt/args.gn
+autoninja -C out/thinlto-dyncastopt chrome
 mv out/default/chrome $PWDDIR/out/chromium/thinlto-dyncastopt
 mv out/default/chrome_exe_main_aura.stats $PWDDIR/out/chromium/thinlto-dyncastopt/chrome.stats
