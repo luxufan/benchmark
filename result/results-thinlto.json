@@ -1,0 +1,3322 @@
+[
+  {
+    "test": "attic",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.3875246047973633
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "barbershop_interior",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 1.2066352367401123
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "bistro",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 1.6484425067901611
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "bmw27",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.08526229858398438
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "classroom",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.10050034523010254
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "fishy_cat",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.35054707527160645
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "junkshop",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.24427533149719238
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "koro",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.3505685329437256
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "monster",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.3468945026397705
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "pabellon",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.2693216800689697
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "sponza",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.1829700469970703
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "spring",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 1.1876542568206787
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "victor",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 1.8432800769805908
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "wdas_cloud",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.13692212104797363
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "shaderball",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.2294471263885498
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "rain_restaurant",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.46546339988708496
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "T88219",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.9747176170349121
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "T98989",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.0036978721618652344
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "shader_balls",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.04801535606384277
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "blender290-fox",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 3.010085344314575
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "delete_geometry_curves_hair_90k",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.02095198631286621
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "delete_geometry_points_0.4",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.03635740280151367
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "delete_geometry_faces_0.8",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.038782596588134766
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "dual_mesh_suzanne_subdiv",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.04447674751281738
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "Erindale_Flower_Shop",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.6160554885864258
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "Erindale_Mouse_House",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.32745981216430664
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "extrude_faces_individual_670k_0.8",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.025788068771362305
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "etrude_edges_simple_grid_1m",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.127091646194458
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_sin_cos",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.06055712699890137
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_divide",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.040483951568603516
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_multiply",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.028507471084594727
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_add",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.030486106872558594
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_noise_3d",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.09101200103759766
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_noise_white_3d",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.012328624725341797
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_noise_voronoi_3d",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.0161898136138916
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_heater_sdf",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.14145135879516602
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "many_math_nodes",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.01979827880859375
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "large_nested_field_test",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.04662322998046875
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "mesh_island",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.03374218940734863
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "vertex_normals_simple",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.07425689697265625
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_grid_400x400_1.0",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.025255680084228516
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_suzanne_base_1.0",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.0042378902435302734
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_uv_sphere_370x370_0.5",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.02518463134765625
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_suzanne_4_subdiv_0.5",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.024279117584228516
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_grid_400x400_0.5",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.026347875595092773
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "(Anim) 10 Picknick by Susanne Weise",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 1.8969957828521729
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "clay_strips",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.004602193832397461
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "draw",
+    "category": "blend_load",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.004058361053466797
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "attic",
+    "category": "cycles",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.140851,
+      "peak_memory": 5776251401.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "barbershop_interior",
+    "category": "cycles",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.210988,
+      "peak_memory": 2132083858.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "bistro",
+    "category": "cycles",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.233496,
+      "peak_memory": 4758577922.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "bmw27",
+    "category": "cycles",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.01516,
+      "peak_memory": 160810658.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "classroom",
+    "category": "cycles",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.139098,
+      "peak_memory": 339915308.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "fishy_cat",
+    "category": "cycles",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.02456,
+      "peak_memory": 428249546.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "junkshop",
+    "category": "cycles",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.101455,
+      "peak_memory": 5085591808.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "koro",
+    "category": "cycles",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.062655,
+      "peak_memory": 315202656.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "monster",
+    "category": "cycles",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.067182,
+      "peak_memory": 736837386.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "pabellon",
+    "category": "cycles",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.048631,
+      "peak_memory": 117502919.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "sponza",
+    "category": "cycles",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.023694,
+      "peak_memory": 392271461.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "spring",
+    "category": "cycles",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.09356,
+      "peak_memory": 2348669684.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "victor",
+    "category": "cycles",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.121482,
+      "peak_memory": 5747215638.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "wdas_cloud",
+    "category": "cycles",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.055165,
+      "peak_memory": 423462652.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "rain_restaurant",
+    "category": "eevee",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "failed",
+    "error_msg": "Error executing command",
+    "output": null,
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "T88219",
+    "category": "eevee",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "failed",
+    "error_msg": "Error executing command",
+    "output": null,
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "T98989",
+    "category": "eevee",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "failed",
+    "error_msg": "Error executing command",
+    "output": null,
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "shader_balls",
+    "category": "eevee",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "failed",
+    "error_msg": "Error executing command",
+    "output": null,
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "blender290-fox",
+    "category": "eevee",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "failed",
+    "error_msg": "Error executing command",
+    "output": null,
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "delete_geometry_curves_hair_90k",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.00724017858505249
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "delete_geometry_points_0.4",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.026971535682678224
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "delete_geometry_faces_0.8",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.03224905252456665
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "dual_mesh_suzanne_subdiv",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.023038365840911866
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "Erindale_Flower_Shop",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.5785440074072944
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "Erindale_Mouse_House",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.18221954788480485
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "extrude_faces_individual_670k_0.8",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.012351140975952149
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "etrude_edges_simple_grid_1m",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.12741634845733643
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_sin_cos",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.05517519175351321
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_divide",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.035081100463867185
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_multiply",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.023669285774230955
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_add",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.024062516689300536
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_noise_3d",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.08676944929977944
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_noise_white_3d",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.006025242805480957
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_noise_voronoi_3d",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.011128127574920654
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_heater_sdf",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.13221709979207893
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "many_math_nodes",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.013636658191680908
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "large_nested_field_test",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.039684691429138184
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "mesh_island",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.02893599510192871
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "vertex_normals_simple",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.07395417900646434
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_grid_400x400_1.0",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.021029343605041505
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_suzanne_base_1.0",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.00031258344650268553
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_uv_sphere_370x370_0.5",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.012603657245635986
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_suzanne_4_subdiv_0.5",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.011202094554901123
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_grid_400x400_0.5",
+    "category": "geometry_nodes",
+    "revision": "thinlto",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux/bin/blender",
+    "date": 1724942244.3597763,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.01592705488204956
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "attic",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.3856630325317383
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "barbershop_interior",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 1.1853647232055664
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "bistro",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 1.7043654918670654
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "bmw27",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.08465385437011719
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "classroom",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.09876751899719238
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "fishy_cat",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.3520948886871338
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "junkshop",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.23775744438171387
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "koro",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.34697532653808594
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "monster",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.3531310558319092
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "pabellon",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.25055789947509766
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "sponza",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.18022608757019043
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "spring",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 1.1820099353790283
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "victor",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 1.834838628768921
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "wdas_cloud",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.1363682746887207
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "shaderball",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.23285627365112305
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "rain_restaurant",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.4646108150482178
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "T88219",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.9682667255401611
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "T98989",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.004612922668457031
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "shader_balls",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.045696258544921875
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "blender290-fox",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 3.0487914085388184
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "delete_geometry_curves_hair_90k",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.025017261505126953
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "delete_geometry_points_0.4",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.030393123626708984
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "delete_geometry_faces_0.8",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.0435633659362793
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "dual_mesh_suzanne_subdiv",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.04020237922668457
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "Erindale_Flower_Shop",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.596726655960083
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "Erindale_Mouse_House",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.32796764373779297
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "extrude_faces_individual_670k_0.8",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.026863574981689453
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "etrude_edges_simple_grid_1m",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.12560677528381348
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_sin_cos",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.06037449836730957
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_divide",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.03956103324890137
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_multiply",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.030539989471435547
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_add",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.02955317497253418
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_noise_3d",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.09124422073364258
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_noise_white_3d",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.013810873031616211
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_noise_voronoi_3d",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.022530078887939453
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_heater_sdf",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.14016485214233398
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "many_math_nodes",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.0194857120513916
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "large_nested_field_test",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.04718613624572754
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "mesh_island",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.03230476379394531
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "vertex_normals_simple",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.07317686080932617
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_grid_400x400_1.0",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.024059057235717773
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_suzanne_base_1.0",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.005652904510498047
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_uv_sphere_370x370_0.5",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.023310422897338867
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_suzanne_4_subdiv_0.5",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.02391362190246582
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_grid_400x400_0.5",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.02746725082397461
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "(Anim) 10 Picknick by Susanne Weise",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 1.855562686920166
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "clay_strips",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.004985332489013672
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "draw",
+    "category": "blend_load",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.004807472229003906
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "attic",
+    "category": "cycles",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.140166,
+      "peak_memory": 5776251401.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "barbershop_interior",
+    "category": "cycles",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.210508,
+      "peak_memory": 2132083858.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "bistro",
+    "category": "cycles",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.231622,
+      "peak_memory": 4758576002.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "bmw27",
+    "category": "cycles",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.015092,
+      "peak_memory": 160810658.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "classroom",
+    "category": "cycles",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.139044,
+      "peak_memory": 339915308.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "fishy_cat",
+    "category": "cycles",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.024525,
+      "peak_memory": 428249546.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "junkshop",
+    "category": "cycles",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.100695,
+      "peak_memory": 5085592480.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "koro",
+    "category": "cycles",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.062067,
+      "peak_memory": 315202656.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "monster",
+    "category": "cycles",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.06635,
+      "peak_memory": 736837482.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "pabellon",
+    "category": "cycles",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.048379,
+      "peak_memory": 117502823.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "sponza",
+    "category": "cycles",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.023601,
+      "peak_memory": 392269349.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "spring",
+    "category": "cycles",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.091966,
+      "peak_memory": 2348669204.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "victor",
+    "category": "cycles",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.120002,
+      "peak_memory": 5747215638.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "wdas_cloud",
+    "category": "cycles",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.056337,
+      "peak_memory": 423462652.0
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "rain_restaurant",
+    "category": "eevee",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "failed",
+    "error_msg": "Error executing command",
+    "output": null,
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "T88219",
+    "category": "eevee",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "failed",
+    "error_msg": "Error executing command",
+    "output": null,
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "T98989",
+    "category": "eevee",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "failed",
+    "error_msg": "Error executing command",
+    "output": null,
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "shader_balls",
+    "category": "eevee",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "failed",
+    "error_msg": "Error executing command",
+    "output": null,
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "blender290-fox",
+    "category": "eevee",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "failed",
+    "error_msg": "Error executing command",
+    "output": null,
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "delete_geometry_curves_hair_90k",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.0072145843505859375
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "delete_geometry_points_0.4",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.027599945068359374
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "delete_geometry_faces_0.8",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.031385645866394044
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "dual_mesh_suzanne_subdiv",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.025321118831634522
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "Erindale_Flower_Shop",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.5718380080329047
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "Erindale_Mouse_House",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.18784080611334908
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "extrude_faces_individual_670k_0.8",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.012847750186920167
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "etrude_edges_simple_grid_1m",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.12318930393312036
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_sin_cos",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.055380506829901054
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_divide",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.03518662452697754
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_multiply",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.02497617483139038
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_add",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.02382368803024292
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_noise_3d",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.08698871217924974
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_noise_white_3d",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.006083183288574219
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_noise_voronoi_3d",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.011935787200927734
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "field_heater_sdf",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.13473187622271085
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "many_math_nodes",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.013549835681915283
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "large_nested_field_test",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.03946521282196045
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "mesh_island",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.02795400857925415
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "vertex_normals_simple",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.075924429026517
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_grid_400x400_1.0",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.018883707523345946
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_suzanne_base_1.0",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.000341031551361084
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_uv_sphere_370x370_0.5",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.01400200366973877
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_suzanne_4_subdiv_0.5",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.011626009941101073
+    },
+    "benchmark_type": "comparison"
+  },
+  {
+    "test": "split_edges_grid_400x400_0.5",
+    "category": "geometry_nodes",
+    "revision": "thinlto-dyncastopt",
+    "git_hash": "396f546c9d82",
+    "environment": {},
+    "executable": "/home/tester/benchmark/test-suites/build_linux1/bin/blender",
+    "date": 1724942257.2178526,
+    "device_type": "CPU",
+    "device_id": "CPU",
+    "device_name": "AMD EPYC 9554P 64-Core Processor",
+    "status": "done",
+    "error_msg": "",
+    "output": {
+      "time": 0.016135990619659424
+    },
+    "benchmark_type": "comparison"
+  }
+]
