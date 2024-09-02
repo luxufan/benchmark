@@ -10,7 +10,7 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
+                "exec_time": 70132.53,
                 "size": 122507896,
                 "SLP.NumVectorInstructions": 3930,
                 "aa.NumMayAlias": 4173644,
@@ -399,7 +399,7 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
+                "exec_time": 19.638,
                 "size": 197364584,
                 "SLP.NumVectorInstructions": 41177,
                 "aa.NumMayAlias": 10086084,
@@ -792,7 +792,7 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
+                "exec_time": 514.767,
                 "size": 49632648,
                 "SLP.NumVectorInstructions": 1032,
                 "aa.NumMayAlias": 4864441,
@@ -1172,7 +1172,7 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
+                "exec_time": 70454.3,
                 "size": 141310920,
                 "aa.NumMayAlias": 3373,
                 "aa.NumMustAlias": 29,
@@ -1361,7 +1361,7 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
+                "exec_time": 18.3678,
                 "size": 957152,
                 "SLP.NumVectorInstructions": 29,
                 "aa.NumMayAlias": 32680,
@@ -1675,7 +1675,7 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
+                "exec_time": 7.1207,
                 "size": 739928,
                 "SLP.NumVectorInstructions": 230,
                 "aa.NumMayAlias": 94317,
@@ -2001,7 +2001,7 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
+                "exec_time": 634.18,
                 "size": 16106112,
                 "SLP.NumVectorInstructions": 340,
                 "aa.NumMayAlias": 712017,
