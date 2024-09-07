@@ -55,7 +55,7 @@ export PATH="${HOME}/benchmark/test-suites/chromium/depot_tools:$PATH"
 #cmake ../llvm -DCMAKE_BUILD_TYPE=Release -DLLVM_TARGETS_TO_BUILD=X86 -DLLVM_ENABLE_PROJECTS="clang;lld" -DLLVM_ENABLE_RUNTIMES="compiler-rt;libcxx;libcxxabi;libunwind" -DLLVM_FORCE_ENABLE_STATS=ON -G Ninja
 #
 #ninja
-#
+
 #rm -rf $PWDDIR/out/chromium/thinlto
 #mkdir $PWDDIR/out/chromium/thinlto
 #cd $PWDDIR/test-suites/chromium/chromium/src
@@ -79,10 +79,10 @@ export PATH="${HOME}/benchmark/test-suites/chromium/depot_tools:$PATH"
 #autoninja -C out/thinlto-dyncastopt chrome
 #mv out/default/chrome $PWDDIR/out/chromium/thinlto-dyncastopt
 #mv out/default/chrome_exe_main_aura.stats $PWDDIR/out/chromium/thinlto-dyncastopt/chrome.stats
-#
+
 
 cd $PWDDIR/toolchain/llvm-project
-git checkout thinlto-temp
+git checkout b963931eb8bda810e2a8ad08832402993b931d69
 rm -rf build-release
 mkdir build-release
 cd build-release
@@ -103,4 +103,16 @@ cp $PWDDIR/cmake/chromium/args-sanitize.gn out/sanitize/args.gn
 autoninja -C out/sanitize chrome
 #mv out/default/chrome $PWDDIR/out/chromium/thinlto
 #mv out/default/chrome_exe_main_aura.stats $PWDDIR/out/chromium/thinlto/chrome.stats
-
+#
+#rm -rf $PWDDIR/out/chromium/origin
+#mkdir $PWDDIR/out/chromium/origin
+#cd $PWDDIR/test-suites/chromium/chromium/src
+#rm -rf out/origin
+#gn gen out/sanitize
+##git reset --hard HEAD
+##git apply $PWDDIR/cmake/chromium/thinlto.patch
+#cp $PWDDIR/cmake/chromium/args-sanitize.gn out/sanitize/args.gn
+#autoninja -C out/sanitize chrome
+##mv out/default/chrome $PWDDIR/out/chromium/thinlto
+##mv out/default/chrome_exe_main_aura.stats $PWDDIR/out/chromium/thinlto/chrome.stats
+#
