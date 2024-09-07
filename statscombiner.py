@@ -3,6 +3,7 @@
 import json
 import sys
 import os.path
+import argparse
 
 def create_init_benchmark_json():
     stats = {}
@@ -29,10 +30,24 @@ def combine_stats(stats, bench_result):
     all_tests.append(new_stats_dict)
 
 if __name__ == "__main__":
-    result_dict = create_init_benchmark_json()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--base')
+    parser.add_argument('filenames', nargs='+')
+    args = parser.parse_args()
 
-    for i in range(1, len(sys.argv)):
-        combine_stats(sys.argv[i], result_dict)
+    print(args.filenames)
+
+
+    result_dict = {}
+    if args.base:
+        f = open(args.base)
+        result_dict = json.load(f)
+        print(result_dict)
+    else:
+        result_dict = create_init_benchmark_json()
+
+    for f in args.filenames:
+        combine_stats(f, result_dict)
 
     with open('result.json', 'w') as f:
         json.dump(result_dict, f, indent=4)
