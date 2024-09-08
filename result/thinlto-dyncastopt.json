@@ -8,7 +8,7 @@
     "tests": [
         {
             "code": "PASS",
-            "elapsed": 0.0,
+            "elapsed": 52.362,
             "metrics": {
                 "exec_time": 70433.8,
                 "size": 133767392,
