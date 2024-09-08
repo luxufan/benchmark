@@ -42,7 +42,6 @@ if __name__ == "__main__":
     if args.base:
         f = open(args.base)
         result_dict = json.load(f)
-        print(result_dict)
     else:
         result_dict = create_init_benchmark_json()
 
