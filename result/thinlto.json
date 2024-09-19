@@ -470,9 +470,9 @@
                 "x86-optimize-LEAs.NumRedundantLEAs": 785,
                 "x86-optimize-LEAs.NumSubstLEAs": 49
             },
-            "name": "envoy-static",
+            "name": "envoy",
             "output": "",
-            "shortname": "envoy-static"
+            "shortname": "envoy"
         },
         {
             "code": "PASS",
@@ -1975,9 +1975,9 @@
                 "x86-isel.NumTailCalls": 364,
                 "x86-optimize-LEAs.NumRedundantLEAs": 2
             },
-            "name": "471.omnetpp",
+            "name": "omnetpp",
             "output": "",
-            "shortname": "471.omnetpp"
+            "shortname": "omnetpp"
         },
         {
             "code": "PASS",
@@ -2353,9 +2353,9 @@
                 "x86-isel.NumTailCalls": 279,
                 "x86-optimize-LEAs.NumRedundantLEAs": 10
             },
-            "name": "447.dealII",
+            "name": "dealII",
             "output": "",
-            "shortname": "447.dealII"
+            "shortname": "dealII"
         },
         {
             "code": "PASS",
