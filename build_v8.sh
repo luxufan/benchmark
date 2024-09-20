@@ -28,7 +28,7 @@ cd $PWDDIR/test-suites/v8/v8/build
 git reset --hard HEAD
 cd $PWDDIR/test-suites/v8/v8
 git apply $PWDDIR/cmake/chromium/fulllto.patch
-cp $PWDDIR/cmake/chromium/args.gn out/default/args.gn
+cp $PWDDIR/cmake/chromium/lto-O2.gn out/default/args.gn
 autoninja -C out/default d8
 mv out/default/d8 $PWDDIR/out/v8/fulllto
 mv out/default/snapshot_blob.bin $PWDDIR/out/v8/fulllto
@@ -43,7 +43,7 @@ cd $PWDDIR/test-suites/v8/v8/build
 git reset --hard HEAD
 cd $PWDDIR/test-suites/v8/v8
 git apply $PWDDIR/cmake/chromium/fulllto-dyncastopt.patch
-cp $PWDDIR/cmake/chromium/args.gn out/default/args.gn
+cp $PWDDIR/cmake/chromium/lto-O2.gn out/default/args.gn
 autoninja -C out/default d8
 mv out/default/d8 $PWDDIR/out/v8/fulllto-dyncastopt
 mv out/default/snapshot_blob.bin $PWDDIR/out/v8/fulllto-dyncastopt
@@ -68,7 +68,7 @@ cd $PWDDIR/test-suites/v8/v8/build
 git reset --hard HEAD
 cd $PWDDIR/test-suites/v8/v8
 git apply $PWDDIR/cmake/chromium/thinlto.patch
-cp $PWDDIR/cmake/chromium/args.gn out/default/args.gn
+cp $PWDDIR/cmake/chromium/lto-O2.gn out/default/args.gn
 autoninja -C out/default d8
 mv out/default/d8 $PWDDIR/out/v8/thinlto
 mv out/default/snapshot_blob.bin $PWDDIR/out/v8/thinlto
@@ -83,7 +83,7 @@ cd $PWDDIR/test-suites/v8/v8/build
 git reset --hard HEAD
 cd $PWDDIR/test-suites/v8/v8
 git apply $PWDDIR/cmake/chromium/thinlto-dyncastopt.patch
-cp $PWDDIR/cmake/chromium/args.gn out/default/args.gn
+cp $PWDDIR/cmake/chromium/lto-O2.gn out/default/args.gn
 autoninja -C out/default d8
 mv out/default/d8 $PWDDIR/out/v8/thinlto-dyncastopt
 mv out/default/snapshot_blob.bin $PWDDIR/out/v8/thinlto-dyncastopt

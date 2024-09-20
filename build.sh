@@ -6,7 +6,7 @@ echo "$PWD"
 
 # Build llvm project
 #cd toolchain/llvm-project
-#git checkout remotes/origin/dyncast
+#git checkout 62f6b9a93e2773c4e369ec1673155fad4adab02e
 #rm -rf build-release
 #mkdir build-release
 #cd build-release
@@ -44,39 +44,39 @@ clang++ @bazel-out/k8-fastbuild/bin/source/exe/envoy-static-2.params
 mv bazel-out/k8-fastbuild/bin/source/exe/envoy-static $PWDDIR/out/envoy/thinlto-dyncastopt/
 mv bazel-out/k8-fastbuild/bin/source/exe/version_linkstamp.stats $PWDDIR/out/envoy/thinlto-dyncastopt/envoy-static.stats
 
-rm -rf $PWDDIR/out/envoy/thinlto
-mkdir $PWDDIR/out/envoy/thinlto
-
-cd $PWDDIR/test-suites/envoy
-bazel build --config=libc++ --copt="-Wno-error=thread-safety-reference-return" --linkopt="-fuse-ld=lld" --linkopt="-save-stats=obj" --linkopt="-flto=thin" --linkopt="-Wl,--lto-whole-program-visibility" --linkopt="-Wl,--plugin-opt=-enable-dyncastopt=false" --copt="-Wno-error=unused-command-line-argument" --copt="-fwhole-program-vtables" --copt="-fuse-ld=lld" --copt="-flto=thin" --copt="-O2" envoy
-
-clang++ @bazel-out/k8-fastbuild/bin/source/exe/envoy-static-2.params
-
-mv bazel-out/k8-fastbuild/bin/source/exe/envoy-static $PWDDIR/out/envoy/thinlto/
-mv bazel-out/k8-fastbuild/bin/source/exe/version_linkstamp.stats $PWDDIR/out/envoy/thinlto/envoy-static.stats
-
-##### Full lto
-rm -rf $PWDDIR/out/envoy/fulllto
-mkdir $PWDDIR/out/envoy/fulllto
-
-cd $PWDDIR/test-suites/envoy
-bazel build --config=libc++ --copt="-Wno-error=thread-safety-reference-return" --linkopt="-fuse-ld=lld" --linkopt="-save-stats=obj" --linkopt="-flto" --linkopt="-Wl,--lto-whole-program-visibility" --linkopt="-Wl,--plugin-opt=-enable-dyncastopt=false" --copt="-Wno-error=unused-command-line-argument" --copt="-fwhole-program-vtables" --copt="-fuse-ld=lld" --copt="-flto" --copt="-O2" envoy
-
-clang++ @bazel-out/k8-fastbuild/bin/source/exe/envoy-static-2.params
-mv bazel-out/k8-fastbuild/bin/source/exe/envoy-static $PWDDIR/out/envoy/fulllto/
-mv bazel-out/k8-fastbuild/bin/source/exe/version_linkstamp.stats $PWDDIR/out/envoy/fulllto/envoy-static.stats
-
-##### Full lto with dyncastopt
-rm -rf $PWDDIR/out/envoy/fulllto-dyncastopt
-mkdir $PWDDIR/out/envoy/fulllto-dyncastopt
-
-cd $PWDDIR/test-suites/envoy
-bazel build --config=libc++ --copt="-Wno-error=thread-safety-reference-return" --linkopt="-fuse-ld=lld" --linkopt="-save-stats=obj" --linkopt="-flto" --linkopt="-Wl,--lto-whole-program-visibility" --copt="-Wno-error=unused-command-line-argument" --copt="-fwhole-program-vtables" --copt="-fuse-ld=lld" --copt="-flto" --copt="-O2" envoy
-
-clang++ @bazel-out/k8-fastbuild/bin/source/exe/envoy-static-2.params
-mv bazel-out/k8-fastbuild/bin/source/exe/envoy-static $PWDDIR/out/envoy/fulllto-dyncastopt/
-mv bazel-out/k8-fastbuild/bin/source/exe/version_linkstamp.stats $PWDDIR/out/envoy/fulllto-dyncastopt/envoy-static.stats
-
+#rm -rf $PWDDIR/out/envoy/thinlto
+#mkdir $PWDDIR/out/envoy/thinlto
+#
+#cd $PWDDIR/test-suites/envoy
+#bazel build --config=libc++ --copt="-Wno-error=thread-safety-reference-return" --linkopt="-fuse-ld=lld" --linkopt="-save-stats=obj" --linkopt="-flto=thin" --linkopt="-Wl,--lto-whole-program-visibility" --linkopt="-Wl,--plugin-opt=-enable-dyncastopt=false" --copt="-Wno-error=unused-command-line-argument" --copt="-fwhole-program-vtables" --copt="-fuse-ld=lld" --copt="-flto=thin" --copt="-O2" envoy
+#
+#clang++ @bazel-out/k8-fastbuild/bin/source/exe/envoy-static-2.params
+#
+#mv bazel-out/k8-fastbuild/bin/source/exe/envoy-static $PWDDIR/out/envoy/thinlto/
+#mv bazel-out/k8-fastbuild/bin/source/exe/version_linkstamp.stats $PWDDIR/out/envoy/thinlto/envoy-static.stats
+#
+###### Full lto
+#rm -rf $PWDDIR/out/envoy/fulllto
+#mkdir $PWDDIR/out/envoy/fulllto
+#
+#cd $PWDDIR/test-suites/envoy
+#bazel build --config=libc++ --copt="-Wno-error=thread-safety-reference-return" --linkopt="-fuse-ld=lld" --linkopt="-save-stats=obj" --linkopt="-flto" --linkopt="-Wl,--lto-whole-program-visibility" --linkopt="-Wl,--plugin-opt=-enable-dyncastopt=false" --copt="-Wno-error=unused-command-line-argument" --copt="-fwhole-program-vtables" --copt="-fuse-ld=lld" --copt="-flto" --copt="-O2" envoy
+#
+#clang++ @bazel-out/k8-fastbuild/bin/source/exe/envoy-static-2.params
+#mv bazel-out/k8-fastbuild/bin/source/exe/envoy-static $PWDDIR/out/envoy/fulllto/
+#mv bazel-out/k8-fastbuild/bin/source/exe/version_linkstamp.stats $PWDDIR/out/envoy/fulllto/envoy-static.stats
+#
+###### Full lto with dyncastopt
+#rm -rf $PWDDIR/out/envoy/fulllto-dyncastopt
+#mkdir $PWDDIR/out/envoy/fulllto-dyncastopt
+#
+#cd $PWDDIR/test-suites/envoy
+#bazel build --config=libc++ --copt="-Wno-error=thread-safety-reference-return" --linkopt="-fuse-ld=lld" --linkopt="-save-stats=obj" --linkopt="-flto" --linkopt="-Wl,--lto-whole-program-visibility" --copt="-Wno-error=unused-command-line-argument" --copt="-fwhole-program-vtables" --copt="-fuse-ld=lld" --copt="-flto" --copt="-O2" envoy
+#
+#clang++ @bazel-out/k8-fastbuild/bin/source/exe/envoy-static-2.params
+#mv bazel-out/k8-fastbuild/bin/source/exe/envoy-static $PWDDIR/out/envoy/fulllto-dyncastopt/
+#mv bazel-out/k8-fastbuild/bin/source/exe/version_linkstamp.stats $PWDDIR/out/envoy/fulllto-dyncastopt/envoy-static.stats
+#
 ##### Build blender
 #rm -rf $PWDDIR/out/blender
 #mkdir $PWDDIR/out/blender
