@@ -3222,7 +3222,7 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
+                "exec_time": 70910.2,
                 "size": 152246296,
                 "SLP.NumVectorInstructions": 10203,
                 "aa.NumMayAlias": 6550479,
@@ -3683,7 +3683,7 @@
             },
             "name": "d8",
             "output": "",
-	    "shortname": "d8"
+	        "shortname": "d8"
         }
     ]
 }
