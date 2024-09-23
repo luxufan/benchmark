@@ -4,15 +4,17 @@ import json
 import argparse
 
 ignore_list = ['AttributeDescendantSelector', 'ClassDescendantSelector', 'ClassInvalidation', 'FocusUpdate', 
-               'ModifySelectorText', 'PseudoClassSelectors', 'SelectorCountScaling', 'HasDescendantInAncestorPositionInvalidation',
+               'ModifySelectorText', 'PseudoClassSelectors', 'SelectorCountScaling', 'HasDescendantInvalidation', 'HasDescendantInAncestorPositionInvalidation',
                'HasDescendantInvalidationAllSubjects', 'HasDescendantInvalidationMultipleSubjects', 'HasDescendantInvalidationWith1NonMatchingHasRule',
-               'HasDescendantInvalidationWithMultipleNonMatchingHasRules', 'HasDescendantInvalidationWithoutNonMatchingHasRule']
-
-sanitize_label = 'f7dcc881-4cbe-4117-b5b2-92f2281de43a'
-thinlto_dyncastopt_label = '81618fec-9c2e-4156-90e2-ce9c10294559'
-thinlto_label = 'fbefeb5f-3a94-412f-939a-f1818c497190'
-fulllto_dyncastopt_label = '8ea7ead0-4846-4008-ac40-091f26b9c0c1'
-fulllto_label = '8e5b0ead-4d81-4680-ba28-db407412efec'
+               'HasDescendantInvalidationWithMultipleNonMatchingHasRules', 'HasDescendantInvalidationWithoutNonMatchingHasRule',
+               'CSSPropertySetterGetter', 'CSSPropertySetterGetterMethods', 'CSSPropertyUpdateValue', 'HasInvalidationFiltering',
+               'HasSiblingDescendantInvalidation', 'HasSiblingDescendant', 'HasSiblingDescendantInvalidationAllSubjects']
+print(len(ignore_list))
+sanitize_label = '8363c760-dc08-4752-8045-b3b37079d0e1'
+thinlto_dyncastopt_label = '8e254d38-15c2-4c8a-9cf5-44ae459a9820'
+thinlto_label = '661ac573-c1c8-4ffd-953c-06aaf4fc768c'
+fulllto_dyncastopt_label = 'ab8601e5-60ba-457b-96d4-aa59c2440b58'
+fulllto_label = '9feea995-c27a-4672-9c53-f43eebd861ec'
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -31,7 +33,6 @@ if __name__ == "__main__":
     for test_case in test_data:
         if test_case['name'] not in ignore_list:
             samples = test_case['sampleValues']
-            print(test_case)
             label = test_case['diagnostics']['labels']
             avg = sum(samples) / len(samples)
             if label == thinlto_label:
@@ -42,8 +43,11 @@ if __name__ == "__main__":
                 fulllto_total += avg
             elif label == fulllto_dyncastopt_label:
                 fulllto_dyncastopt_total += avg
+            elif label == sanitize_label:
+                sanitize_total += avg
 
     print("thinlto: ", thinlto_total)
     print("thinlto_dyncastopt: ", thinlto_dyncastopt_total)
     print("fulllto: ", fulllto_total)
     print("fulllto_dyncastopt: ", fulllto_dyncastopt_total)
+    print("sanitize: ", sanitize_total)
