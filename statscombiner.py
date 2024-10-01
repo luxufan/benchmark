@@ -21,7 +21,7 @@ def combine_stats(stats, bench_result):
 
     metrics = new_stats_dict["metrics"]
     metrics["exec_time"] = 0.0
-    metrics["size"] = os.path.getsize(binary_path)
+    #metrics["size"] = os.path.getsize(binary_path)
     with open(stats) as json_data:
         d = json.load(json_data)
         for metric in d:
