@@ -421,7 +421,8 @@
                 "x86-optimize-LEAs.NumSubstLEAs": 170
             },
             "name": "envoy-static",
-            "output": ""
+            "output": "",
+            "shortname": "envoy-static"
         },
         {
             "code": "PASS",
@@ -840,7 +841,8 @@
                 "x86-vzeroupper.NumVZU": 203
             },
             "name": "blender",
-            "output": ""
+            "output": "",
+            "shortname": "blender"
         },
         {
             "code": "PASS",
@@ -1242,7 +1244,8 @@
                 "x86-optimize-LEAs.NumSubstLEAs": 909
             },
             "name": "opt",
-            "output": ""
+            "output": "",
+            "shortname": "opt"
         },
         {
             "code": "PASS",
@@ -1650,7 +1653,8 @@
                 "x86-vzeroupper.NumVZU": 6
             },
             "name": "v8",
-            "output": ""
+            "output": "",
+            "shortname": "v8"
         },
         {
             "code": "PASS",
@@ -1981,7 +1985,8 @@
                 "x86-optimize-LEAs.NumRedundantLEAs": 2
             },
             "name": "471.omnetpp",
-            "output": ""
+            "output": "",
+            "shortname": "471.omnetpp"
         },
         {
             "code": "PASS",
@@ -2323,7 +2328,8 @@
                 "x86-optimize-LEAs.NumRedundantLEAs": 10
             },
             "name": "447.dealII",
-            "output": ""
+            "output": "",
+            "shortname": "447.dealII"
         },
         {
             "code": "PASS",
@@ -2702,7 +2708,8 @@
                 "x86-optimize-LEAs.NumRedundantLEAs": 539
             },
             "name": "solc",
-            "output": ""
+            "output": "",
+            "shortname": "solc"
         },
         {
             "code": "PASS",
@@ -2933,7 +2940,8 @@
                 "x86-vzeroupper.NumVZU": 1183
             },
             "name": "chrome",
-            "output": ""
+            "output": "",
+            "shortname": "chrome"
         },
         {
             "code": "PASS",
@@ -3320,7 +3328,8 @@
                 "x86-optimize-LEAs.NumRedundantLEAs": 399
             },
             "name": "z3",
-            "output": ""
+            "output": "",
+            "shortname": "z3"
         },
         {
             "code": "PASS",
@@ -3714,7 +3723,7 @@
             },
             "name": "povray",
             "output": "",
-	    "shortname": "povray"
+            "shortname": "povray"
         }
     ]
 }

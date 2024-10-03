@@ -480,7 +480,8 @@
                 "x86-optimize-LEAs.NumSubstLEAs": 49
             },
             "name": "envoy-static",
-            "output": ""
+            "output": "",
+            "shortname": "envoy-static"
         },
         {
             "code": "PASS",
@@ -956,7 +957,8 @@
                 "x86-vzeroupper.NumVZU": 182
             },
             "name": "blender",
-            "output": ""
+            "output": "",
+            "shortname": "blender"
         },
         {
             "code": "PASS",
@@ -1422,7 +1424,8 @@
                 "x86-optimize-LEAs.NumSubstLEAs": 903
             },
             "name": "opt",
-            "output": ""
+            "output": "",
+            "shortname": "opt"
         },
         {
             "code": "PASS",
@@ -1797,7 +1800,8 @@
                 "x86-optimize-LEAs.NumRedundantLEAs": 2
             },
             "name": "471.omnetpp",
-            "output": ""
+            "output": "",
+            "shortname": "471.omnetpp"
         },
         {
             "code": "PASS",
@@ -2183,7 +2187,8 @@
                 "x86-optimize-LEAs.NumRedundantLEAs": 10
             },
             "name": "447.dealII",
-            "output": ""
+            "output": "",
+            "shortname": "447.dealII"
         },
         {
             "code": "PASS",
@@ -2607,7 +2612,8 @@
                 "x86-optimize-LEAs.NumRedundantLEAs": 506
             },
             "name": "solc",
-            "output": ""
+            "output": "",
+            "shortname": "solc"
         },
         {
             "code": "PASS",
@@ -3045,7 +3051,8 @@
                 "x86-optimize-LEAs.NumRedundantLEAs": 367
             },
             "name": "z3",
-            "output": ""
+            "output": "",
+            "shortname": "z3"
         },
         {
             "code": "PASS",
@@ -3486,7 +3493,8 @@
                 "x86-vzeroupper.NumVZU": 2431
             },
             "name": "povray",
-            "output": ""
+            "output": "",
+            "shortname": "povray"
         }
     ]
 }
