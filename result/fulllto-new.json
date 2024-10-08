@@ -11,6 +11,7 @@
             "elapsed": 0.0,
             "metrics": {
                 "exec_time": 0.0,
+                "size": 122579440,
                 "SLP.NumVectorInstructions": 3930,
                 "aa.NumMayAlias": 4177223,
                 "aa.NumMustAlias": 1186102,
@@ -411,6 +412,7 @@
             "elapsed": 0.0,
             "metrics": {
                 "exec_time": 0.0,
+                "size": 197364584,
                 "SLP.NumVectorInstructions": 41177,
                 "aa.NumMayAlias": 10086084,
                 "aa.NumMustAlias": 1135236,
@@ -815,6 +817,7 @@
             "elapsed": 0.0,
             "metrics": {
                 "exec_time": 0.0,
+                "size": 49630440,
                 "SLP.NumVectorInstructions": 1032,
                 "aa.NumMayAlias": 4864441,
                 "aa.NumMustAlias": 958924,
@@ -1205,6 +1208,7 @@
             "elapsed": 0.0,
             "metrics": {
                 "exec_time": 0.0,
+                "size": 957152,
                 "SLP.NumVectorInstructions": 29,
                 "aa.NumMayAlias": 32680,
                 "aa.NumMustAlias": 10941,
@@ -1530,6 +1534,7 @@
             "elapsed": 0.0,
             "metrics": {
                 "exec_time": 0.0,
+                "size": 739912,
                 "SLP.NumVectorInstructions": 230,
                 "aa.NumMayAlias": 94317,
                 "aa.NumMustAlias": 19317,
@@ -1867,6 +1872,7 @@
             "elapsed": 0.0,
             "metrics": {
                 "exec_time": 0.0,
+                "size": 16106112,
                 "SLP.NumVectorInstructions": 340,
                 "aa.NumMayAlias": 712017,
                 "aa.NumMustAlias": 282845,
@@ -2238,6 +2244,7 @@
             "elapsed": 0.0,
             "metrics": {
                 "exec_time": 0.0,
+                "size": 26373128,
                 "SLP.NumVectorInstructions": 412,
                 "aa.NumMayAlias": 2697356,
                 "aa.NumMustAlias": 507903,
@@ -2617,6 +2624,7 @@
             "elapsed": 0.0,
             "metrics": {
                 "exec_time": 0.0,
+                "size": 4194624,
                 "SLP.NumVectorInstructions": 1976,
                 "aa.NumMayAlias": 262420,
                 "aa.NumMustAlias": 54214,
@@ -3003,6 +3011,7 @@
             "elapsed": 0.0,
             "metrics": {
                 "exec_time": 0.0,
+                "size": 1976811312,
                 "SLP.NumVectorInstructions": 54936,
                 "aa.NumMayAlias": 29924985,
                 "aa.NumMustAlias": 5911051,
@@ -3484,6 +3493,7 @@
             "elapsed": 0.0,
             "metrics": {
                 "exec_time": 0.0,
+                "size": 164651352,
                 "SLP.NumVectorInstructions": 8388,
                 "aa.NumMayAlias": 6517262,
                 "aa.NumMustAlias": 971820,
