@@ -2448,7 +2448,7 @@
                 "instsimplify.NumSimplified": 44100,
                 "internalize.NumFunctions": 12232,
                 "internalize.NumGlobals": 1404,
-                "ipt.NumInstScanned": 8344282,
+                "ipt.NumInstScanned": 8341180,
                 "ir.NumInstrRenumberings": 624581,
                 "isel.NumDAGBlocks": 1180409,
                 "isel.NumDAGIselRetries": 30785655,
