@@ -49,7 +49,7 @@ echo "$PWD"
 #mkdir ~/bazel-bin
 #wget -O ~/bazel-bin/bazel https://github.com/bazelbuild/bazelisk/releases/latest/download/bazelisk-linux-$([ $(uname -m) = "aarch64" ] && echo "arm64" || echo "amd64")
 #chmod +x ~/bazel-bin/bazel
-#export PATH="~/bazel-bin:$PATH"
+export PATH="~/bazel-bin:$PATH"
 #
 #rm -rf $PWDDIR/out-pgo
 #mkdir $PWDDIR/out-pgo
@@ -65,12 +65,12 @@ echo "$PWD"
 #mkdir $PWDDIR/out-pgo/envoy
 #cd $PWDDIR/test-suites/envoy
 #
-#bazel build --config=libc++ --copt="-Wno-error=thread-safety-reference-return" --linkopt="-fuse-ld=lld" --copt="-Wno-error=unused-command-line-argument" --copt="-fuse-ld=lld" envoy
+bazel build --config=libc++ --copt="-Wno-error=thread-safety-reference-return" --linkopt="-fuse-ld=lld" --copt="-Wno-error=unused-command-line-argument" --copt="-fuse-ld=lld" envoy
 #
-#mv bazel-out/k8-fastbuild/bin/source/exe/envoy-static $PWDDIR/out-pgo/envoy/
+mv bazel-out/k8-fastbuild/bin/source/exe/envoy-static $PWDDIR/out-pgo/envoy/
 #
-rm -rf $PWDDIR/out-pgo/spec2006
-mkdir $PWDDIR/out-pgo/spec2006
-cd $PWDDIR/out-pgo/spec2006
-cmake $PWDDIR/test-suites/llvm-test-suite -DCMAKE_CXX_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang++ -DCMAKE_C_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang -DTEST_SUITE_SPEC2006_ROOT=/home/tester/spec2006 -DCMAKE_CXX_FLAGS="-stdlib=libc++ -fuse-ld=lld -Wl,-rpath=$PWDDIR/toolchain/llvm-project/build-release/lib/x86_64-unknown-linux-gnu" -G Ninja -DTEST_SUITE_BENCHMARKING_ONLY=ON -DTEST_SUITE_SUBDIRS=External
-ninja
+#rm -rf $PWDDIR/out-pgo/spec2006
+#mkdir $PWDDIR/out-pgo/spec2006
+#cd $PWDDIR/out-pgo/spec2006
+#cmake $PWDDIR/test-suites/llvm-test-suite -DCMAKE_CXX_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang++ -DCMAKE_C_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang -DTEST_SUITE_SPEC2006_ROOT=/home/tester/spec2006 -DCMAKE_CXX_FLAGS="-stdlib=libc++ -fuse-ld=lld -Wl,-rpath=$PWDDIR/toolchain/llvm-project/build-release/lib/x86_64-unknown-linux-gnu" -G Ninja -DTEST_SUITE_BENCHMARKING_ONLY=ON -DTEST_SUITE_SUBDIRS=External
+#ninja

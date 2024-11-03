@@ -52,32 +52,32 @@ cd $PWDDIR/test-suites/blender
 rm -rf $PWDDIR/test-suites/build_linux
 CC=$PWDDIR/toolchain/llvm-project/build-release/bin/clang CXX=$PWDDIR/toolchain/llvm-project/build-release/bin/clang++ make
 
-rm -rf $PWDDIR/out/blender/thinlto
-mkdir $PWDDIR/out/blender/thinlto
-cp $PWDDIR/cmake/blender/thinlto/CMakeCache.txt $PWDDIR/test-suites/build_linux/CMakeCache.txt
-make
-mv $PWDDIR/test-suites/build_linux/bin/blender $PWDDIR/out/blender/thinlto
-mv $PWDDIR/test-suites/build_linux/bin/creator.cc.stats $PWDDIR/out/blender/thinlto/blender.stats
-
-rm -rf $PWDDIR/out/blender/thinlto-dyncastopt
-mkdir $PWDDIR/out/blender/thinlto-dyncastopt
-cp $PWDDIR/cmake/blender/thinlto-dyncastopt/CMakeCache.txt $PWDDIR/test-suites/build_linux/CMakeCache.txt
-cd $PWDDIR/test-suites/blender
-make
-mv $PWDDIR/test-suites/build_linux/bin/blender $PWDDIR/out/blender/thinlto-dyncastopt
-mv $PWDDIR/test-suites/build_linux/bin/creator.cc.stats $PWDDIR/out/blender/thinlto-dyncastopt/blender.stats
-
+#rm -rf $PWDDIR/out/blender/thinlto
+#mkdir $PWDDIR/out/blender/thinlto
+#cp $PWDDIR/cmake/blender/thinlto/CMakeCache.txt $PWDDIR/test-suites/build_linux/CMakeCache.txt
+#make
+#mv $PWDDIR/test-suites/build_linux/bin/blender $PWDDIR/out/blender/thinlto
+#mv $PWDDIR/test-suites/build_linux/bin/creator.cc.stats $PWDDIR/out/blender/thinlto/blender.stats
+#
+#rm -rf $PWDDIR/out/blender/thinlto-dyncastopt
+#mkdir $PWDDIR/out/blender/thinlto-dyncastopt
+#cp $PWDDIR/cmake/blender/thinlto-dyncastopt/CMakeCache.txt $PWDDIR/test-suites/build_linux/CMakeCache.txt
+#cd $PWDDIR/test-suites/blender
+#make
+#mv $PWDDIR/test-suites/build_linux/bin/blender $PWDDIR/out/blender/thinlto-dyncastopt
+#mv $PWDDIR/test-suites/build_linux/bin/creator.cc.stats $PWDDIR/out/blender/thinlto-dyncastopt/blender.stats
+#
 #rm -rf $PWDDIR/out/blender/fulllto
 #mkdir $PWDDIR/out/blender/fulllto
 #cp $PWDDIR/cmake/blender/fulllto/CMakeCache.txt $PWDDIR/test-suites/build_linux/CMakeCache.txt
 #make
 #mv $PWDDIR/test-suites/build_linux/bin/blender $PWDDIR/out/blender/fulllto
 #mv $PWDDIR/test-suites/build_linux/bin/creator.cc.stats $PWDDIR/out/blender/fulllto/blender.stats
-#
-#rm -rf $PWDDIR/out/blender/fulllto-dyncastopt
-#mkdir $PWDDIR/out/blender/fulllto-dyncastopt
-#cp $PWDDIR/cmake/blender/fulllto-dyncastopt/CMakeCache.txt $PWDDIR/test-suites/build_linux/CMakeCache.txt
-#cd $PWDDIR/test-suites/blender
-#make
-#mv $PWDDIR/test-suites/build_linux/bin/blender $PWDDIR/out/blender/fulllto-dyncastopt
-#mv $PWDDIR/test-suites/build_linux/bin/creator.cc.stats $PWDDIR/out/blender/fulllto-dyncastopt/blender.stats
+
+rm -rf $PWDDIR/out/blender/fulllto-dyncastopt
+mkdir $PWDDIR/out/blender/fulllto-dyncastopt
+cp $PWDDIR/cmake/blender/fulllto-dyncastopt/CMakeCache.txt $PWDDIR/test-suites/build_linux/CMakeCache.txt
+cd $PWDDIR/test-suites/blender
+make
+mv $PWDDIR/test-suites/build_linux/bin/blender $PWDDIR/out/blender/fulllto-dyncastopt
+mv $PWDDIR/test-suites/build_linux/bin/creator.cc.stats $PWDDIR/out/blender/fulllto-dyncastopt/blender.stats

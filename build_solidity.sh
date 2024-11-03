@@ -16,29 +16,29 @@ echo "$PWD"
 #ninja
 
 
-rm -rf $PWDDIR/out/solidity
-mkdir $PWDDIR/out/solidity
-
-rm -rf $PWDDIR/out/solidity/thinlto-dyncastopt
-mkdir $PWDDIR/out/solidity/thinlto-dyncastopt
-rm -rf $PWDDIR/out/solidity/temp
-mkdir $PWDDIR/out/solidity/temp
-cd $PWDDIR/out/solidity/temp
-cmake $PWDDIR/test-suites/solidity -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang++ -DCMAKE_C_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang -DCMAKE_CXX_FLAGS="-fvisibility=hidden -flto=thin -save-stats=obj -fwhole-program-vtables -fuse-ld=lld -Wl,--lto-whole-program-visibility" -DUSE_Z3=OFF
-ninja solc
-mv $PWDDIR/out/solidity/temp/solc/solc $PWDDIR/out/solidity/thinlto-dyncastopt
-mv $PWDDIR/out/solidity/temp/solc/main.cpp.stats $PWDDIR/out/solidity/thinlto-dyncastopt/solc.stats
-
-rm -rf $PWDDIR/out/solidity/thinlto
-mkdir $PWDDIR/out/solidity/thinlto
-rm -rf $PWDDIR/out/solidity/temp
-mkdir $PWDDIR/out/solidity/temp
-cd $PWDDIR/out/solidity/temp
-cmake $PWDDIR/test-suites/solidity -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang++ -DCMAKE_C_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang -DCMAKE_CXX_FLAGS="-fvisibility=hidden -flto=thin -save-stats=obj -fwhole-program-vtables -fuse-ld=lld -Wl,--lto-whole-program-visibility -Wl,--plugin-opt=-enable-dyncastopt=false" -DUSE_Z3=OFF
-ninja solc
-mv $PWDDIR/out/solidity/temp/solc/solc $PWDDIR/out/solidity/thinlto
-mv $PWDDIR/out/solidity/temp/solc/main.cpp.stats $PWDDIR/out/solidity/thinlto/solc.stats
-
+#rm -rf $PWDDIR/out/solidity
+#mkdir $PWDDIR/out/solidity
+#
+#rm -rf $PWDDIR/out/solidity/thinlto-dyncastopt
+#mkdir $PWDDIR/out/solidity/thinlto-dyncastopt
+#rm -rf $PWDDIR/out/solidity/temp
+#mkdir $PWDDIR/out/solidity/temp
+#cd $PWDDIR/out/solidity/temp
+#cmake $PWDDIR/test-suites/solidity -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang++ -DCMAKE_C_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang -DCMAKE_CXX_FLAGS="-fvisibility=hidden -flto=thin -save-stats=obj -fwhole-program-vtables -fuse-ld=lld -Wl,--lto-whole-program-visibility -Wl,-save-temps" -DUSE_Z3=OFF
+#ninja solc
+#mv $PWDDIR/out/solidity/temp/solc/solc $PWDDIR/out/solidity/thinlto-dyncastopt
+#mv $PWDDIR/out/solidity/temp/solc/main.cpp.stats $PWDDIR/out/solidity/thinlto-dyncastopt/solc.stats
+##
+#rm -rf $PWDDIR/out/solidity/thinlto
+#mkdir $PWDDIR/out/solidity/thinlto
+#rm -rf $PWDDIR/out/solidity/temp
+#mkdir $PWDDIR/out/solidity/temp
+#cd $PWDDIR/out/solidity/temp
+#cmake $PWDDIR/test-suites/solidity -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang++ -DCMAKE_C_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang -DCMAKE_CXX_FLAGS="-fvisibility=hidden -flto=thin -save-stats=obj -fwhole-program-vtables -fuse-ld=lld -Wl,--lto-whole-program-visibility -Wl,--plugin-opt=-enable-dyncastopt=false" -DUSE_Z3=OFF
+#ninja solc
+#mv $PWDDIR/out/solidity/temp/solc/solc $PWDDIR/out/solidity/thinlto
+#mv $PWDDIR/out/solidity/temp/solc/main.cpp.stats $PWDDIR/out/solidity/thinlto/solc.stats
+#
 rm -rf $PWDDIR/out/solidity/fulllto-dyncastopt
 mkdir $PWDDIR/out/solidity/fulllto-dyncastopt
 rm -rf $PWDDIR/out/solidity/temp
@@ -49,13 +49,18 @@ ninja solc
 mv $PWDDIR/out/solidity/temp/solc/solc $PWDDIR/out/solidity/fulllto-dyncastopt
 mv $PWDDIR/out/solidity/temp/solc/main.cpp.stats $PWDDIR/out/solidity/fulllto-dyncastopt/solc.stats
 
-rm -rf $PWDDIR/out/solidity/fulllto
-mkdir $PWDDIR/out/solidity/fulllto
-rm -rf $PWDDIR/out/solidity/temp
-mkdir $PWDDIR/out/solidity/temp
-cd $PWDDIR/out/solidity/temp
-cmake $PWDDIR/test-suites/solidity -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang++ -DCMAKE_C_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang -DCMAKE_CXX_FLAGS="-flto -save-stats=obj -fwhole-program-vtables -fuse-ld=lld -Wl,--lto-whole-program-visibility -Wl,--plugin-opt=-enable-dyncastopt=false" -DUSE_Z3=OFF
-ninja solc
-mv $PWDDIR/out/solidity/temp/solc/solc $PWDDIR/out/solidity/fulllto
-mv $PWDDIR/out/solidity/temp/solc/main.cpp.stats $PWDDIR/out/solidity/fulllto/solc.stats
+#rm -rf $PWDDIR/out/solidity/fulllto
+#mkdir $PWDDIR/out/solidity/fulllto
+#rm -rf $PWDDIR/out/solidity/temp
+#mkdir $PWDDIR/out/solidity/temp
+#cd $PWDDIR/out/solidity/temp
+#cmake $PWDDIR/test-suites/solidity -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang++ -DCMAKE_C_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang -DCMAKE_CXX_FLAGS="-flto -save-stats=obj -fwhole-program-vtables -fuse-ld=lld -Wl,--lto-whole-program-visibility -Wl,--plugin-opt=-enable-dyncastopt=false" -DUSE_Z3=OFF
+#ninja solc
+#mv $PWDDIR/out/solidity/temp/solc/solc $PWDDIR/out/solidity/fulllto
+#mv $PWDDIR/out/solidity/temp/solc/main.cpp.stats $PWDDIR/out/solidity/fulllto/solc.stats
 ##
+#rm -rf $PWDDIR/test-suites/solidity/build
+#mkdir $PWDDIR/test-suites/solidity/build
+#cd $PWDDIR/test-suites/solidity/build
+#cmake $PWDDIR/test-suites/solidity -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang++ -DCMAKE_C_COMPILER=$PWDDIR/toolchain/llvm-project/build-release/bin/clang -DCMAKE_CXX_FLAGS="-fvisibility=hidden -flto=thin -save-stats=obj -fwhole-program-vtables -fuse-ld=lld -Wl,--lto-whole-program-visibility -Wl,--plugin-opt=-enable-dyncastopt=false ~/benchmark/toolchain/llvm-project/build-release/lib/clang/18/lib/x86_64-unknown-linux-gnu/libclang_rt.profile.a" -DUSE_Z3=OFF
+#ninja solc
