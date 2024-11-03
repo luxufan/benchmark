@@ -3530,7 +3530,7 @@
                 "instcombine.NumWorklistIterations": 24645,
                 "instsimplify.NumExpand": 35,
                 "instsimplify.NumReassoc": 261,
-                "ipt.NumInstScanned": 439682,
+                "ipt.NumInstScanned": 439604,
                 "ir.NumInstrRenumberings": 45912,
                 "isel.NumDAGBlocks": 96677,
                 "isel.NumDAGIselRetries": 5044962,
