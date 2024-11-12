@@ -19,6 +19,11 @@ thinlto_dyncastopt_labels = set()
 sanitize_labels = set()
 thinlto_labels = set()
 
+lto_origin_labels = set()
+lto_dyncastopt_labels = set()
+lto_sanitize_labels = set()
+lto_labels = set()
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -33,33 +38,56 @@ if __name__ == "__main__":
     for entry in data:
         if 'type' in entry and entry['type'] == 'GenericSet':
             values = entry['values']
-            if values[0] == 'origin':
+            if values[0] == 'thin-origin':
                 origin_labels.add(entry['guid'])
-            elif values[0] == 'thinlto':
+            elif values[0] == 'thin':
                 thinlto_labels.add(entry['guid'])
-            elif values[0] == 'thinlto-dyncastopt':
+            elif values[0] == 'thin-dyncastopt':
                 thinlto_dyncastopt_labels.add(entry['guid'])
-            elif values[0] == 'sanitize':
+            elif values[0] == 'thin-sanitize':
                 sanitize_labels.add(entry['guid'])
+            elif values[0] == 'lto-origin':
+                lto_origin_labels.add(entry['guid'])
+            elif values[0] == 'lto':
+                lto_labels.add(entry['guid'])
+            elif values[0] == 'lto-dyncastopt':
+                lto_dyncastopt_labels.add(entry['guid'])
+            elif values[0] == 'lto-sanitize':
+                lto_sanitize_labels.add(entry['guid'])
+
 
     print(thinlto_labels)
     print(thinlto_dyncastopt_labels)
     print(origin_labels)
     print(sanitize_labels)
+    print(lto_labels)
+    print(lto_dyncastopt_labels)
+    print(lto_origin_labels)
+    print(lto_sanitize_labels)
 
 
 
     thinlto_ms = 0
+    lto_ms = 0
     thinlto_unitless = 0
+    lto_unitless = 0
     origin_ms = 0
+    lto_origin_ms = 0
     origin_unitless = 0
+    lto_origin_unitless = 0
     thinlto_dyncastopt_ms = 0
+    lto_dyncastopt_ms = 0
     thinlto_dyncastopt_unitless = 0
+    lto_dyncastopt_unitless = 0
     sanitize_ms = 0
+    lto_sanitize_ms = 0
     sanitize_unitless = 0
+    lto_sanitize_unitless = 0
 
     for entry in data:
         if 'sampleValues' not in entry or 'name' not in entry or 'diagnostics' not in entry:
+            continue
+        if entry['name'] == 'CSSQuotesCreate':
             continue
         samples_mean = sum(entry['sampleValues']) / len(entry['sampleValues'])
         unit = entry['unit']
@@ -84,14 +112,44 @@ if __name__ == "__main__":
                 origin_unitless += samples_mean
             else:
                 origin_ms += samples_mean
-    origin_ms = origin_ms / 4
-    origin_unitless = origin_unitless / 4
-    thinlto_ms = thinlto_ms / 4
-    thinlto_unitless = thinlto_unitless / 4
-    thinlto_dyncastopt_ms = thinlto_dyncastopt_ms / 4
-    thinlto_dyncastopt_unitless = thinlto_dyncastopt_unitless / 4
-    sanitize_ms = sanitize_ms / 4
-    sanitize_unitless = sanitize_unitless / 4
+        if label in lto_labels:
+            if unit == 'unitless_biggerIsBetter':
+                lto_unitless += samples_mean
+            else:
+                lto_ms += samples_mean
+        elif label in lto_sanitize_labels:
+            if unit == 'unitless_biggerIsBetter':
+                lto_sanitize_unitless += samples_mean
+            else:
+                lto_sanitize_ms += samples_mean
+        elif label in lto_dyncastopt_labels:
+            if unit == 'unitless_biggerIsBetter':
+                lto_dyncastopt_unitless += samples_mean
+            else:
+                lto_dyncastopt_ms += samples_mean
+        elif label in lto_origin_labels:
+            if unit == 'unitless_biggerIsBetter':
+                lto_origin_unitless += samples_mean
+            else:
+                lto_origin_ms += samples_mean
+    count = 4
+    origin_ms = origin_ms / count
+    origin_unitless = origin_unitless / count
+    thinlto_ms = thinlto_ms / count
+    thinlto_unitless = thinlto_unitless / count
+    thinlto_dyncastopt_ms = thinlto_dyncastopt_ms / count
+    thinlto_dyncastopt_unitless = thinlto_dyncastopt_unitless / count
+    sanitize_ms = sanitize_ms / count
+    sanitize_unitless = sanitize_unitless / count
+
+    lto_origin_ms = lto_origin_ms / count
+    lto_origin_unitless = lto_origin_unitless / count
+    lto_ms = lto_ms / count
+    lto_unitless = lto_unitless / count
+    lto_dyncastopt_ms = lto_dyncastopt_ms / count
+    lto_dyncastopt_unitless = lto_dyncastopt_unitless / count
+    lto_sanitize_ms = lto_sanitize_ms / count
+    lto_sanitize_unitless = lto_sanitize_unitless / count
 
     print('origin_ms:', origin_ms)
     print('origin_unitless:', origin_unitless)
@@ -102,9 +160,20 @@ if __name__ == "__main__":
     print('sanitize_ms:', sanitize_ms)
     print('sanitize_unitless:', sanitize_unitless)
 
+    print('lto_origin_ms:', lto_origin_ms)
+    print('lto_origin_unitless:', lto_origin_unitless)
+    print('lto_ms:', lto_ms)
+    print('lto_unitless:', lto_unitless)
+    print('lto_dyncastopt_ms:', lto_dyncastopt_ms)
+    print('lto_dyncastopt_unitless:', lto_dyncastopt_unitless)
+    print('lto_sanitize_ms:', lto_sanitize_ms)
+    print('lto_sanitize_unitless:', lto_sanitize_unitless)
+
     width = 0.3
     runtime_tests = [origin_ms, thinlto_dyncastopt_ms, sanitize_ms, thinlto_ms]
+    lto_runtime_tests = [lto_origin_ms, lto_dyncastopt_ms, sanitize_ms, thinlto_ms]
     throughput_tests = [origin_unitless, thinlto_dyncastopt_unitless, sanitize_unitless, thinlto_unitless]
+    lto_throughput_tests = [lto_origin_unitless, lto_dyncastopt_unitless, lto_sanitize_unitless, lto_unitless]
     binary_size = [1865495424, 1871746200, 1875745584, 1869047064]
     fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(12, 4.5))
     fig.subplots_adjust(hspace=0.3, wspace=0.4, bottom=0.2)
@@ -113,7 +182,7 @@ if __name__ == "__main__":
     x = np.arange(4)
 
     ax1.set_title("Running time")
-    ax1.set_ylim(2800, 3600)
+    ax1.set_ylim(2000, 3600)
     ax1.bar(['origin', 'dyncast_opt', 'sanitize', 'dyncast'], runtime_tests, width, edgecolor='black', linewidth=1, color='tab:orange')
     ax1.set_xticks(x, ['static_cast', 'dyncast_opt', 'sanitize', 'dyncast'], fontsize=fontsize)
     ax1.set_yticklabels(['{0}'.format(round(x)) for x in ax1.get_yticks()], fontsize=fontsize)
