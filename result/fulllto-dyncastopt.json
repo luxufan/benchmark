@@ -3904,7 +3904,8 @@
                 "x86-vzeroupper.NumVZU": 2467
             },
             "name": "povray",
-            "output": ""
+            "output": "",
+            "shortname": "povray"
         }
     ]
 }
