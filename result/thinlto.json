@@ -3968,7 +3968,7 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
+                "exec_time": 3265.7596,
                 "size": 4327256,
                 "SLP.NumVectorInstructions": 12912,
                 "aa.NumMayAlias": 277389,
@@ -4406,7 +4406,8 @@
                 "x86-vzeroupper.NumVZU": 2431
             },
             "name": "povray",
-            "output": ""
+            "output": "",
+            "shortname": "povray"
         }
     ]
 }

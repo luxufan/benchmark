@@ -84,6 +84,7 @@ if __name__ == "__main__":
     sanitize_unitless = 0
     lto_sanitize_unitless = 0
 
+    labels = ['static cast', 'dyn cast', 'dyn cast + opt', 'sanitizer']
     for entry in data:
         if 'sampleValues' not in entry or 'name' not in entry or 'diagnostics' not in entry:
             continue
@@ -132,7 +133,7 @@ if __name__ == "__main__":
                 lto_origin_unitless += samples_mean
             else:
                 lto_origin_ms += samples_mean
-    count = 4
+    count = 2
     origin_ms = origin_ms / count
     origin_unitless = origin_unitless / count
     thinlto_ms = thinlto_ms / count
@@ -170,84 +171,78 @@ if __name__ == "__main__":
     print('lto_sanitize_unitless:', lto_sanitize_unitless)
 
     width = 0.3
-    runtime_tests = [origin_ms, thinlto_dyncastopt_ms, sanitize_ms, thinlto_ms]
-    lto_runtime_tests = [lto_origin_ms, lto_dyncastopt_ms, sanitize_ms, thinlto_ms]
-    throughput_tests = [origin_unitless, thinlto_dyncastopt_unitless, sanitize_unitless, thinlto_unitless]
-    lto_throughput_tests = [lto_origin_unitless, lto_dyncastopt_unitless, lto_sanitize_unitless, lto_unitless]
-    binary_size = [1865495424, 1871746200, 1875745584, 1869047064]
-    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(12, 4.5))
-    fig.subplots_adjust(hspace=0.3, wspace=0.4, bottom=0.2)
-    fontsize = 15
-    plt.rcParams.update({'font.size': 15})
+    runtime_tests = [origin_ms, thinlto_ms, thinlto_dyncastopt_ms, sanitize_ms]
+    lto_runtime_tests = [lto_origin_ms, lto_ms, lto_dyncastopt_ms, lto_sanitize_ms]
+    throughput_tests = [origin_unitless, thinlto_unitless, thinlto_dyncastopt_unitless, sanitize_unitless]
+    lto_throughput_tests = [lto_origin_unitless, lto_unitless, lto_dyncastopt_unitless, lto_sanitize_unitless]
+    binary_size = [1865538504, 1869084448, 1871785016, 1875788704 ]
+    lto_binary_size = [1985283816, 1976811312, 1979893688, 1984748792]
+    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(17, 5))
+    fig.subplots_adjust(hspace=0.3, wspace=0.8, bottom=0.26, top=0.82)
+    fontsize = 17
     x = np.arange(4)
 
+    thin_bar_color = "tab:orange"
+    thin_edge_color = 'black'
+    lto_bar_color = 'xkcd:azure'
+    lto_edge_color = 'black'
+
+    plt.rcParams.update({'font.size': 17})
+    ### ThinLTO running time
     ax1.set_title("Running time")
-    ax1.set_ylim(2000, 3600)
-    ax1.bar(['origin', 'dyncast_opt', 'sanitize', 'dyncast'], runtime_tests, width, edgecolor='black', linewidth=1, color='tab:orange')
-    ax1.set_xticks(x, ['static_cast', 'dyncast_opt', 'sanitize', 'dyncast'], fontsize=fontsize)
+    ax1.set_ylim(2000, 2800)
+    ax1.bar(x, lto_runtime_tests, width, edgecolor=lto_edge_color, linewidth=1, color=lto_bar_color)
+    ax1.bar(x + width, runtime_tests, width, edgecolor=thin_edge_color, linewidth=1, color=thin_bar_color)
+
+    ax1.set_xticks(x + width/2, labels, fontsize=17)
     ax1.set_yticklabels(['{0}'.format(round(x)) for x in ax1.get_yticks()], fontsize=fontsize)
-    ax1.set_ylabel('Macroseconds', fontsize=fontsize)
+    ax1.set_ylabel('Miliseconds', fontsize=fontsize)
     ax1.tick_params(axis='x', labelrotation=25)
-    plt.setp(ax1.xaxis.get_majorticklabels(), rotation=25, ha='right', rotation_mode='anchor', fontsize=17)
+    plt.setp(ax1.xaxis.get_majorticklabels(), rotation=20, ha='right', rotation_mode='anchor', fontsize=17)
     # dx = -25/72.; dy = 0/72.
     # offset = matplotlib.transforms.ScaledTranslation(dx, dy, fig.dpi_scale_trans)
     # for label in ax1.xaxis.get_majorticklabels():
     #     label.set_transform(label.get_transform() + offset)
 
+    ### FullLTO running time
+    # ax4.set_title("Running time")
+    # ax4.set_ylim(2000, 3600)
+    # ax4.bar(['origin', 'dyncast_opt', 'sanitize', 'dyncast'], lto_runtime_tests, width, edgecolor='black', linewidth=1, color='tab:orange')
+    # ax4.set_xticks(x, ['static_cast', 'dyncast_opt', 'sanitize', 'dyncast'], fontsize=fontsize)
+    # ax4.set_yticklabels(['{0}'.format(round(x)) for x in ax1.get_yticks()], fontsize=fontsize)
+    # ax4.set_ylabel('Macroseconds', fontsize=fontsize)
+    # ax4.tick_params(axis='x', labelrotation=25)
+    # plt.setp(ax1.xaxis.get_majorticklabels(), rotation=25, ha='right', rotation_mode='anchor', fontsize=17)
 
-    plt.rcParams.update({'font.size': 15})
     throughput_tests = [i/1000 for i in throughput_tests]
-    ax2.set_title('Throughtput')
-    ax2.set_ylim(350, 420)
+    lto_throughput_tests = [i/1000 for i in lto_throughput_tests]
+    ax2.set_title('Throughput')
+    ax2.set_ylim(360, 460)
     print(throughput_tests)
-    labels = ['static_cast', 'dyncast_opt', 'sanitize', 'dyncast']
-    ax2.bar(labels, throughput_tests, width, edgecolor='darkblue', linewidth=1, color='deepskyblue')
-    ax2.set_xticks(x, labels, fontsize=fontsize)
+    print(lto_throughput_tests)
+    print(throughput_tests)
+    bars = []
+    bar = ax2.bar(x, lto_throughput_tests, width, edgecolor=lto_edge_color, linewidth=1, color=lto_bar_color)
+    bars.append(bar)
+    bar = ax2.bar(x + width, throughput_tests, width, edgecolor=thin_edge_color, linewidth=1, color=thin_bar_color)
+    ax2.set_xticks(x + width/2, labels, fontsize=fontsize)
+    bars.append(bar)
     ax2.set_yticklabels(['{0}'.format(round(x)) for x in ax2.get_yticks()], fontsize=fontsize)
     ax2.set_ylabel('Thousand runs', fontsize=fontsize)
-    ax2.tick_params(axis='x', labelrotation=25)
-    plt.setp(ax2.xaxis.get_majorticklabels(), rotation=25, ha='right', rotation_mode='anchor', fontsize=17)
+    ax2.tick_params(axis='x', labelrotation=20)
+    ax2.legend(bars, ['LTO', 'ThinLTO'], loc='upper center', ncols=2, fontsize='17', bbox_to_anchor=(0.5, 1.32))
+    plt.setp(ax2.xaxis.get_majorticklabels(), rotation=20, ha='right', rotation_mode='anchor', fontsize=17)
 
     ax3.set_title('Binary size')
     binary_size = [i/(1024 * 1024) for i in binary_size]
-    ax3.set_ylim(1750, 1800)
-    labels = ['static_cast', 'dyncast_opt', 'sanitize', 'dyncast']
-    ax3.bar(labels, binary_size, width, edgecolor='black', linewidth=1, color='dimgrey')
-    ax3.set_xticks(x, labels, fontsize=fontsize)
+    lto_binary_size = [i/(1024 * 1024) for i in lto_binary_size]
+    ax3.set_ylim(1750, 1900)
+    ax3.bar(x, lto_binary_size, width, edgecolor=lto_edge_color, linewidth=1, color=lto_bar_color)
+    ax3.bar(x + width, binary_size, width, edgecolor=thin_edge_color, linewidth=1, color=thin_bar_color)
+    ax3.set_xticks(x + width/2, labels, fontsize=fontsize)
     ax3.set_yticklabels(['{0}'.format(round(x)) for x in ax3.get_yticks()], fontsize=fontsize)
     ax3.set_ylabel('MegaByte', fontsize=fontsize)
-    ax3.tick_params(axis='x', labelrotation=25)
-    plt.setp(ax3.xaxis.get_majorticklabels(), rotation=25, ha='right', rotation_mode='anchor', fontsize=17)
+    ax3.tick_params(axis='x', labelrotation=20)
+    plt.setp(ax3.xaxis.get_majorticklabels(), rotation=20, ha='right', rotation_mode='anchor', fontsize=17)
 
-    plt.savefig("chrome")
-
-    # sanitize_total = 0.0
-    # thinlto_total = 0.0
-    # thinlto_dyncastopt_total = 0.0
-    # fulllto_total = 0.0
-    # fulllto_dyncastopt_total = 0.0
-    # i = 0
-    # for test_case in test_data:
-    #     # if i == 0:
-    #     print(test_case)
-    #     i += 1
-    #     # if test_case['name'] not in ignore_list:
-    #     #     samples = test_case['sampleValues']
-    #     #     label = test_case['diagnostics']['labels']
-    #     #     avg = sum(samples) / len(samples)
-    #     #     if label == thinlto_label:
-    #     #         thinlto_total += avg
-    #     #     elif label == thinlto_dyncastopt_label:
-    #     #         thinlto_dyncastopt_total += avg
-    #     #     elif label == fulllto_label:
-    #     #         fulllto_total += avg
-    #     #     elif label == fulllto_dyncastopt_label:
-    #     #         fulllto_dyncastopt_total += avg
-    #     #     elif label == sanitize_label:
-    #     #         sanitize_total += avg
-
-    # print("thinlto: ", thinlto_total)
-    # print("thinlto_dyncastopt: ", thinlto_dyncastopt_total)
-    # print("fulllto: ", fulllto_total)
-    # print("fulllto_dyncastopt: ", fulllto_dyncastopt_total)
-    # print("sanitize: ", sanitize_total)
+    plt.savefig("chrome.pdf")
