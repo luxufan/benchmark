@@ -85,9 +85,11 @@ if __name__ == "__main__":
     lto_sanitize_unitless = 0
 
     labels = ['static cast', 'dyn cast', 'dyn cast + opt', 'sanitizer']
+    names = set()
     for entry in data:
         if 'sampleValues' not in entry or 'name' not in entry or 'diagnostics' not in entry:
             continue
+        names.add(entry['name'])
         if entry['name'] == 'CSSQuotesCreate':
             continue
         samples_mean = sum(entry['sampleValues']) / len(entry['sampleValues'])
@@ -133,6 +135,7 @@ if __name__ == "__main__":
                 lto_origin_unitless += samples_mean
             else:
                 lto_origin_ms += samples_mean
+    print(len(names))
     count = 6
     origin_ms = origin_ms / count
     origin_unitless = origin_unitless / count
