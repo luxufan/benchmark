@@ -820,7 +820,7 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 156.795,
+                "exec_time": 172.70,
                 "size": 49891008,
                 "SLP.NumVectorInstructions": 4976,
                 "aa.NumMayAlias": 5007302,
@@ -3019,7 +3019,7 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 3800.81,
+                "exec_time": 2152,
                 "size": 1969421728,
                 "SLP.NumVectorInstructions": 57777,
                 "aa.NumMayAlias": 30215104,

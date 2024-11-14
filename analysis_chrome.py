@@ -133,7 +133,7 @@ if __name__ == "__main__":
                 lto_origin_unitless += samples_mean
             else:
                 lto_origin_ms += samples_mean
-    count = 2
+    count = 6
     origin_ms = origin_ms / count
     origin_unitless = origin_unitless / count
     thinlto_ms = thinlto_ms / count
