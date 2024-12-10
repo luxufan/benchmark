@@ -95,6 +95,26 @@ function build_povray {
     cd $PWDDIR
 }
 
+function test_povray {
+	local total_time=0
+	local total_memory=0
+	for i in {0..4}
+	do
+		printf '\n' | /usr/bin/time -v $PWDDIR/out/povray/$1/povray --benchmark 2> test.log
+		local test_time=$(grep -E "User time .*" test.log | awk '{print $4}')
+	  	local test_memory=$(grep "Maximum resident set" test.log | awk '{print $6}')
+		total_time=$(echo "$total_time + $test_time" | bc)
+		total_memory=$(echo "$total_memory + $test_memory" | bc)
+	done
+
+	avg_time=$(printf %.3f $(echo "$total_time / 5" | bc -l))
+	avg_mem=$(printf %.3f $(echo "$total_memory / 5" | bc -l))
+
+	insert_test_time "$avg_time" $PWDDIR/out/povray/$1/povray.stats
+	insert_test_memory "$avg_mem" $PWDDIR/out/povray/$1/povray.stats
+
+}
+
 ###-------------------------Solidity---------------------###
 
 function build_solidity {
@@ -133,8 +153,8 @@ function test_solidity {
 	avg_time=$(printf %.3f $(echo "$total_time / 5" | bc -l))
 	avg_mem=$(printf %.3f $(echo "$total_memory / 5" | bc -l))
 
-	insert_test_time $avg_time $PWDDIR/out/solidity/$1/solc.stats
-	insert_test_memory $avg_memory $PWDDIR/out/solidity/$1/solc.stats
+	insert_test_time "$avg_time" $PWDDIR/out/solidity/$1/solc.stats
+	insert_test_memory "$avg_mem" $PWDDIR/out/solidity/$1/solc.stats
 }
 
 
@@ -156,6 +176,26 @@ function build_z3 {
 	insert_compile_time $z3_build_time $PWDDIR/out/z3/$1/z3.stats
 	insert_memory $z3_memory $PWDDIR/out/z3/$1/z3.stats
 }
+
+function test_z3 {
+	local total_time=0
+	local total_memory=0
+	for i in {0..4}
+	do
+		/usr/bin/time -v $PWDDIR/out/z3/$1/z3 $PWDDIR/test-suites/incremental/QF_BV/20170501-Heizmann-UltimateAutomizer/gcd_1_true-unreach-call_true-no-overflow.i.smt2 > test.log 2>&1
+		local test_time=$(grep -E "User time .*" test.log | awk '{print $4}')
+	  	local memory=$(grep "Maximum resident set" test.log | awk '{print $6}')
+		total_time=$(echo "$total_time + $test_time" | bc)
+		total_memory=$(echo "$total_memory + $memory" | bc)
+	done
+	
+	local avg_time=$(printf %.3f $(echo "$total_time / 5" | bc -l))
+	local avg_mem=$(printf %.3f $(echo "$total_memory / 5" | bc -l))
+
+	insert_test_time "$avg_time" $PWDDIR/out/z3/$1/z3.stats
+	insert_test_memory "$avg_mem" $PWDDIR/out/z3/$1/z3.stats
+}
+	
 
 ###--------------------------Envoy-----------------------###
 function build_envoy {
@@ -190,6 +230,17 @@ function build_envoy {
 	insert_memory $memory $PWDDIR/out/envoy/$1/envoy-static.stats
 }
 
+function test_envoy {
+	cd $PWDDIR/test-suites/envoy-perf/siege
+	local binary=$PWDDIR/out/envoy/$1/envoy-static
+	local stat=$PWDDIR/out/envoy/$1/envoy-static.stats
+	/usr/bin/time -v $PWDDIR/test-suites/envoy-perf/siege/siege.py $binary $binary . > test.log 2>&1  
+	local test_time=$(grep "Throughput" test.log | awk '{print $2}')
+	local test_memory=$(grep "Maximum resident set" test.log | awk '{print $6}')
+	insert_test_time $test_time $stat
+	insert_test_memory $test_memory $stat
+}
+
 ###------------------------Blender-----------------------------###
 
 function build_blender {
@@ -218,6 +269,18 @@ function build_blender {
 	insert_memory $memory $PWDDIR/out/blender/$1/blender.stats
 }
 
+function test_blender {
+	local stat=$PWDDIR/out/blender/$1/blender.stats
+	local binary=$PWDDIR/out/blender/$1/blender
+	cp $binary $PWDDIR/test-suites/build_linux/bin/
+	cd $PWDDIR/test-suites/blender/tests/performance
+	/usr/bin/time -v $PWDDIR/test-suites/blender/tests/performance/benchmark.py run default 2> test.log
+	local test_time=$(grep "User time" test.log | awk '{print $4}')
+	local test_memory=$(grep "Maximum resident set" test.log | awk '{print $6}')
+	insert_test_time $test_time $stat
+	insert_test_memory $test_memory $stat
+}
+
 ###---------------------------spec2006-------------------------###
 
 function build_spec {
@@ -240,6 +303,39 @@ function build_spec {
 	insert_memory $memory $PWDDIR/out/spec2006/$1/External/SPEC/CFP2006/447.dealII/auto_derivative_function.cc.stats
 }
 
+function test_spec {
+	cd $PWDDIR/out/spec2006/$1
+	local omn_total_time=0
+	local omn_total_memory=0
+	for i in {0..4}
+	do
+		local test_time=$(/usr/bin/time -v $PWDDIR/toolchain/llvm-project/build-release/bin/llvm-lit -v -j 1 External/SPEC/CINT2006/471.omnetpp -o results.json 2> test.log | grep "exec_time" | awk '{print $2}')
+		local test_memory=$(grep "Maximum resident set" test.log | awk '{print $6}')
+		omn_total_time=$(echo "$omn_total_time + $test_time" | bc)
+		omn_total_memory=$(echo "$omn_total_memory + $test_memory" | bc)
+	done
+
+	local avg_time=$(printf %.3f $(echo "$omn_total_time / 5" | bc -l))
+	local avg_mem=$(printf %.3f $(echo "$omn_total_memory / 5" | bc -l))
+	insert_test_time $avg_time $PWDDIR/out/spec2006/$1/External/SPEC/CINT2006/471.omnetpp/eth-index_n.cc.stats
+	insert_memory $avg_mem $PWDDIR/out/spec2006/$1/External/SPEC/CINT2006/471.omnetpp/eth-index_n.cc.stats
+
+	local deal_total_time=0
+	local deal_total_memory=0
+	for i in {0..4}
+	do
+		local test_time=$(/usr/bin/time -v $PWDDIR/toolchain/llvm-project/build-release/bin/llvm-lit -v -j 1 External/SPEC/CFP2006/447.dealII -o results.json 2> test.log | grep "exec_time" | awk '{print $2}')
+		local test_memory=$(grep "Maximum resident set" test.log | awk '{print $6}')
+		deal_total_time=$(echo "$deal_total_time + $test_time" | bc)
+		deal_total_memory=$(echo "$deal_total_memory + $test_memory" | bc)
+	done
+
+	local avg_time=$(printf %.3f $(echo "$deal_total_time / 5" | bc -l))
+	local avg_mem=$(printf %.3f $(echo "$deal_total_memory / 5" | bc -l))
+	insert_test_time $avg_time $PWDDIR/out/spec2006/$1/External/SPEC/CFP2006/447.dealII/auto_derivative_function.cc.stats
+	insert_test_memory $avg_mem $PWDDIR/out/spec2006/$1/External/SPEC/CFP2006/447.dealII/auto_derivative_function.cc.stats
+}
+
 ###---------------------------llvm-----------------------------###
 function build_llvm {
 	local cflags=$(get_cflags $1)
@@ -258,7 +354,6 @@ function build_llvm {
 	local memory=$(grep "Maximum resident set" time.log | awk '{print $6}')
 	insert_compile_time $build_time $PWDDIR/out/llvm/$1/opt.stats
 	insert_memory $memory $PWDDIR/out/llvm/$1/opt.stats
-	
 }
 
 ###-----------------------------v8-------------------------###
@@ -283,6 +378,27 @@ function build_v8 {
 	insert_memory $memory $PWDDIR/out/v8/$1/d8.stats
 }
 
+function test_v8 {
+	export PATH="${HOME}/benchmark/test-suites/chromium/depot_tools:$PATH"
+	source ~/.venv/bin/activate
+	local total_time=0
+	local total_memory=0
+	for i in {0..4}
+	do
+		/usr/bin/time -v $PWDDIR/test-suites/v8/v8/test/benchmarks/csuite/csuite.py sunspider baseline $PWDDIR/out/v8/$1/d8 2> test.log
+		local test_time=$(grep -E "User time .*" test.log | awk '{print $4}')
+	  	local test_memory=$(grep "Maximum resident set" test.log | awk '{print $6}')
+		total_time=$(echo "$total_time + $test_time" | bc)
+		total_memory=$(echo "$total_memory + $test_memory" | bc)
+	done
+	
+	local avg_time=$(printf %.3f $(echo "$total_time / 5" | bc -l))
+	local avg_mem=$(printf %.3f $(echo "$total_memory / 5" | bc -l))
+
+	insert_test_time "$avg_time" $PWDDIR/out/v8/$1/d8.stats
+	insert_test_memory "$avg_mem" $PWDDIR/out/v8/$1/d8.stats
+}
+
 ###-------------------------chrome-------------------------###
 
 function build_chrome {
@@ -303,6 +419,26 @@ function build_chrome {
 	insert_memory $memory $PWDDIR/out/chromium/$1/chrome.stats
 }
 
+function test_chrome {
+	export PATH="${HOME}/benchmark/test-suites/chromium/depot_tools:$PATH"
+	local total_time=0
+	local total_memory=0
+	for i in {0..4}
+	do
+		/usr/bin/time -v xvfb-run -s "-screen 0 1024x768x24" $PWDDIR/test-suites/chromium/chromium/src/tools/perf/run_benchmark blink_perf.css --browser=exact --browser-executable=$PWDDIR/test-suites/chromium/chromium/src/out/$1/chrome --extra-browser-args="--no-sandbox --disable-dev-shm-usage --disable-gpu" --results-label="$1" 2> test.log
+		local test_time=$(grep -E "User time .*" test.log | awk '{print $4}')
+	  	local test_memory=$(grep "Maximum resident set" test.log | awk '{print $6}')
+		total_time=$(echo "$total_time + $test_time" | bc)
+		total_memory=$(echo "$total_memory + $test_memory" | bc)
+	done
+	
+	local avg_time=$(printf %.3f $(echo "$total_time / 5" | bc -l))
+	local avg_mem=$(printf %.3f $(echo "$total_memory / 5" | bc -l))
+
+	insert_test_time "$avg_time" $PWDDIR/out/chromium/$1/chrome.stats
+	insert_test_memory "$avg_mem" $PWDDIR/out/chromium/$1/chrome.stats
+}
+
 benchmark_to_build=()
 version_to_build=()
 while [ -n "$1" ]
@@ -318,7 +454,8 @@ do
 			benchmark_to_build+=('blender')
 			benchmark_to_build+=('llvm')
 			benchmark_to_build+=('v8')
-			benchmark_to_build+=('spec2006');;
+			benchmark_to_build+=('spec2006')
+			benchmark_to_build+=('chrome');;
 		*)
 			benchmark_to_build+=("${1#*=}");;
 		esac
@@ -356,32 +493,37 @@ do
 		for version in "${version_to_build[@]}"
 		do 
 			build_povray $version
+			test_povray $version
 		done;;
 		solidity)
 		for version in "${version_to_build[@]}"
 		do
-#			build_solidity $version
+			build_solidity $version
 			test_solidity $version
 		done;;
 		z3)
 		for version in "${version_to_build[@]}"
 		do
 			build_z3 $version
+			test_z3 $version
 		done;;
 		envoy)
 		for version in "${version_to_build[@]}"
 		do
 			build_envoy $version
+			test_envoy $version
 		done;;
 		blender)
 		for version in "${version_to_build[@]}"
 		do
 			build_blender $version
+			test_blender $version
 		done;;
 		spec2006)
 		for version in "${version_to_build[@]}"
 		do
 			build_spec $version
+			test_spec $version
 		done;;
 		llvm)
 		for version in "${version_to_build[@]}"
@@ -392,11 +534,13 @@ do
 		for version in "${version_to_build[@]}"
 		do
 			build_v8 $version
+			test_v8 $version
 		done;;
 		chrome)
 		for version in "${version_to_build[@]}"
 		do
 			build_chrome $version
+			test_chrome $version
 		done;;
 	esac
 done
