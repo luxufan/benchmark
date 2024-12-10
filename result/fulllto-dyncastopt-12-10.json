@@ -10,7 +10,6 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
                 "size": 115338752,
                 "test_memory": 117660,
                 "test_time": 229.4,
@@ -450,7 +449,6 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
                 "size": 194802304,
                 "test_memory": 6611236,
                 "test_time": 1240.66,
@@ -899,7 +897,6 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
                 "size": 48409832,
                 "memory": 4224516,
                 "compile_time": 5108.64,
@@ -1316,7 +1313,6 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
                 "size": 892072,
                 "memory": 171504,
                 "test_time": 19.037,
@@ -1656,7 +1652,6 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
                 "size": 692184,
                 "test_memory": 131694.4,
                 "test_time": 7.121,
@@ -2015,7 +2010,6 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
                 "size": 15198088,
                 "test_memory": 3630860.0,
                 "test_time": 246.622,
@@ -2417,7 +2411,6 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
                 "size": 24365920,
                 "test_memory": 384302.4,
                 "test_time": 35.398,
@@ -2816,7 +2809,6 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
                 "size": 3848720,
                 "test_memory": 204691.2,
                 "test_time": 3368.324,
@@ -3228,7 +3220,6 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 0.0,
                 "size": 162798624,
                 "test_memory": 56303.2,
                 "test_time": 20.248,
