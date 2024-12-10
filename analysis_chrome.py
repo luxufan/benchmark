@@ -84,13 +84,15 @@ if __name__ == "__main__":
     sanitize_unitless = 0
     lto_sanitize_unitless = 0
 
-    labels = ['static cast', 'dyn cast', 'dyn cast + opt', 'sanitizer']
+    labels = ['dyn cast', 'dyn cast + opt', 'sanitizer']
     names = set()
     for entry in data:
         if 'sampleValues' not in entry or 'name' not in entry or 'diagnostics' not in entry:
             continue
         names.add(entry['name'])
         if entry['name'] == 'CSSQuotesCreate':
+            continue
+        if entry['name'] == 'ModifySelectorText':
             continue
         samples_mean = sum(entry['sampleValues']) / len(entry['sampleValues'])
         unit = entry['unit']
@@ -174,16 +176,24 @@ if __name__ == "__main__":
     print('lto_sanitize_unitless:', lto_sanitize_unitless)
 
     width = 0.3
-    runtime_tests = [origin_ms, thinlto_ms, thinlto_dyncastopt_ms, sanitize_ms]
-    lto_runtime_tests = [lto_origin_ms, lto_ms, lto_dyncastopt_ms, lto_sanitize_ms]
-    throughput_tests = [origin_unitless, thinlto_unitless, thinlto_dyncastopt_unitless, sanitize_unitless]
-    lto_throughput_tests = [lto_origin_unitless, lto_unitless, lto_dyncastopt_unitless, lto_sanitize_unitless]
-    binary_size = [1865538504, 1869084448, 1871785016, 1875788704 ]
-    lto_binary_size = [1985283816, 1976811312, 1979893688, 1984748792]
+    runtime_tests = [thinlto_ms, thinlto_dyncastopt_ms, sanitize_ms]
+    runtime_tests = [(i - origin_ms) / origin_ms * 100 for i in runtime_tests]
+    lto_runtime_tests = [lto_ms, lto_dyncastopt_ms, lto_sanitize_ms]
+    lto_runtime_tests = [(i - lto_origin_ms) / lto_origin_ms * 100 for i in lto_runtime_tests]
+    throughput_tests = [thinlto_unitless, thinlto_dyncastopt_unitless, sanitize_unitless]
+    throughput_tests = [(i - origin_unitless) / origin_unitless * 100 for i in throughput_tests]
+    print(throughput_tests)
+    lto_throughput_tests = [lto_unitless, lto_dyncastopt_unitless, lto_sanitize_unitless]
+    lto_throughput_tests = [(i - lto_origin_unitless ) * 100 / lto_origin_unitless for i in lto_throughput_tests]
+    print("lto_throught:", lto_throughput_tests)
+    binary_size = [1869084448, 1871785016, 1875788704 ]
+    binary_size = [(i - 1865538540) / 1865538540 * 100 for i in binary_size]
+    lto_binary_size = [1976811312, 1979893688, 1984748792]
+    lto_binary_size = [(i - 1985283816) / 1985283826 * 100 for i in lto_binary_size]
     fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(17, 5))
-    fig.subplots_adjust(hspace=0.3, wspace=0.8, bottom=0.26, top=0.82)
+    fig.subplots_adjust(right=0.8, hspace=0.3, wspace=0.4, bottom=0.26, top=0.82)
     fontsize = 17
-    x = np.arange(4)
+    x = np.arange(3)
 
     thin_bar_color = "tab:orange"
     thin_edge_color = 'black'
@@ -192,16 +202,16 @@ if __name__ == "__main__":
 
     plt.rcParams.update({'font.size': 17})
     ### ThinLTO running time
-    ax1.set_title("Running time")
-    ax1.set_ylim(2000, 2800)
+    ax1.set_title("Run time overhead")
+    #ax1.set_ylim(2000, 2800)
     ax1.bar(x, lto_runtime_tests, width, edgecolor=lto_edge_color, linewidth=1, color=lto_bar_color)
     ax1.bar(x + width, runtime_tests, width, edgecolor=thin_edge_color, linewidth=1, color=thin_bar_color)
 
     ax1.set_xticks(x + width/2, labels, fontsize=17)
-    ax1.set_yticklabels(['{0}'.format(round(x)) for x in ax1.get_yticks()], fontsize=fontsize)
-    ax1.set_ylabel('Miliseconds', fontsize=fontsize)
+    ax1.set_yticklabels(['{0}%'.format(round(x)) for x in ax1.get_yticks()], fontsize=fontsize)
+    #ax1.set_ylabel('Miliseconds', fontsize=fontsize)
     ax1.tick_params(axis='x', labelrotation=25)
-    plt.setp(ax1.xaxis.get_majorticklabels(), rotation=20, ha='right', rotation_mode='anchor', fontsize=17)
+    plt.setp(ax1.xaxis.get_majorticklabels(), rotation=15, ha='right', rotation_mode='anchor', fontsize=17)
     # dx = -25/72.; dy = 0/72.
     # offset = matplotlib.transforms.ScaledTranslation(dx, dy, fig.dpi_scale_trans)
     # for label in ax1.xaxis.get_majorticklabels():
@@ -217,10 +227,8 @@ if __name__ == "__main__":
     # ax4.tick_params(axis='x', labelrotation=25)
     # plt.setp(ax1.xaxis.get_majorticklabels(), rotation=25, ha='right', rotation_mode='anchor', fontsize=17)
 
-    throughput_tests = [i/1000 for i in throughput_tests]
-    lto_throughput_tests = [i/1000 for i in lto_throughput_tests]
     ax2.set_title('Throughput')
-    ax2.set_ylim(360, 460)
+    #ax2.set_ylim(360, 460)
     print(throughput_tests)
     print(lto_throughput_tests)
     print(throughput_tests)
@@ -230,22 +238,19 @@ if __name__ == "__main__":
     bar = ax2.bar(x + width, throughput_tests, width, edgecolor=thin_edge_color, linewidth=1, color=thin_bar_color)
     ax2.set_xticks(x + width/2, labels, fontsize=fontsize)
     bars.append(bar)
-    ax2.set_yticklabels(['{0}'.format(round(x)) for x in ax2.get_yticks()], fontsize=fontsize)
-    ax2.set_ylabel('Thousand runs', fontsize=fontsize)
+    ax2.set_yticklabels(['{0}%'.format(round(x)) for x in ax2.get_yticks()], fontsize=fontsize)
     ax2.tick_params(axis='x', labelrotation=20)
-    ax2.legend(bars, ['LTO', 'ThinLTO'], loc='upper center', ncols=2, fontsize='17', bbox_to_anchor=(0.5, 1.32))
-    plt.setp(ax2.xaxis.get_majorticklabels(), rotation=20, ha='right', rotation_mode='anchor', fontsize=17)
+    plt.setp(ax2.xaxis.get_majorticklabels(), rotation=15, ha='right', rotation_mode='anchor', fontsize=17)
 
-    ax3.set_title('Binary size')
-    binary_size = [i/(1024 * 1024) for i in binary_size]
-    lto_binary_size = [i/(1024 * 1024) for i in lto_binary_size]
-    ax3.set_ylim(1750, 1900)
+    ax3.set_title('Binary size overhead')
+    #ax3.set_ylim(1750, 1900)
     ax3.bar(x, lto_binary_size, width, edgecolor=lto_edge_color, linewidth=1, color=lto_bar_color)
     ax3.bar(x + width, binary_size, width, edgecolor=thin_edge_color, linewidth=1, color=thin_bar_color)
     ax3.set_xticks(x + width/2, labels, fontsize=fontsize)
-    ax3.set_yticklabels(['{0}'.format(round(x)) for x in ax3.get_yticks()], fontsize=fontsize)
-    ax3.set_ylabel('MegaByte', fontsize=fontsize)
+    ax3.set_yticklabels(['{0}%'.format(round(x, 1)) for x in ax3.get_yticks()], fontsize=fontsize)
+    #ax3.set_ylabel('MegaByte', fontsize=fontsize)
     ax3.tick_params(axis='x', labelrotation=20)
-    plt.setp(ax3.xaxis.get_majorticklabels(), rotation=20, ha='right', rotation_mode='anchor', fontsize=17)
+    ax3.legend(bars, ['LTO', 'ThinLTO'], loc='lower right', ncols=1, fontsize='17', bbox_to_anchor=(1.7, 0.3))
+    plt.setp(ax3.xaxis.get_majorticklabels(), rotation=15, ha='right', rotation_mode='anchor', fontsize=17)
 
     plt.savefig("chrome.pdf")

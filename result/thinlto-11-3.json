@@ -973,7 +973,7 @@
             "elapsed": 0.0,
             "metrics": {
                 "exec_time": 0.0,
-                "size": 52911896,
+                "size": 53230424,
                 "SLP.NumVectorInstructions": 13346,
                 "aa.NumMayAlias": 6926710,
                 "aa.NumMustAlias": 1154260,

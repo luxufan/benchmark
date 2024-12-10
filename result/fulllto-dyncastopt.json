@@ -2243,7 +2243,7 @@
             "code": "PASS",
             "elapsed": 0.0,
             "metrics": {
-                "exec_time": 54.534,
+                "exec_time": 57.1,
                 "size": 26081808,
                 "SLP.NumVectorInstructions": 412,
                 "aa.NumMayAlias": 2699518,
