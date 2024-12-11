@@ -8,8 +8,8 @@ CLANG=$PWDDIR/toolchain/llvm-project/build-release/bin/clang
 CLANGXX=$PWDDIR/toolchain/llvm-project/build-release/bin/clang++
 SPEC2006=/home/tester/spec2006
 
-THIN_OPT_FLAGS='-flto=thin -fwhole-program-vtables -fvisibility=hidden'
-THIN_OPT_LDFLAGS='-flto=thin -fuse-ld=lld -save-stats=obj -Wl,--lto-whole-program-visibility'
+THIN_OPT_FLAGS='-O2 -flto=thin -fwhole-program-vtables -fvisibility=hidden'
+THIN_OPT_LDFLAGS='-O2 -flto=thin -fuse-ld=lld -save-stats=obj -Wl,--lto-whole-program-visibility'
 THIN_FLAGS='-O2 -flto=thin -fwhole-program-vtables -fvisibility=hidden -Wl,--plugin-opt=-enable-dyncastopt=false'
 THIN_LDFLAGS='-O2 -flto=thin -fuse-ld=lld -save-stats=obj -Wl,--lto-whole-program-visibility -Wl,--plugin-opt=-enable-dyncastopt=false'
 
@@ -220,11 +220,13 @@ function build_envoy {
 	mkdir $PWDDIR/out/envoy/$1
 	cd $PWDDIR/test-suites/envoy
 	bazel clean
+	start=`date +%s`
 	bazel build --config=libc++ $cflags $ldflags envoy
+	end=`date +%s`
+	local build_time=$((end-start))
 	/usr/bin/time -v clang++ @bazel-out/k8-fastbuild/bin/source/exe/envoy-static-2.params 2> time.log
 	mv bazel-out/k8-fastbuild/bin/source/exe/envoy-static $PWDDIR/out/envoy/$1/
 	mv bazel-out/k8-fastbuild/bin/source/exe/version_linkstamp.stats $PWDDIR/out/envoy/$1/envoy-static.stats
-	local build_time=$(grep -E "User time .*" time.log | awk '{print $4}')
 	local memory=$(grep "Maximum resident set" time.log | awk '{print $6}')
 	insert_compile_time $build_time $PWDDIR/out/envoy/$1/envoy-static.stats
 	insert_memory $memory $PWDDIR/out/envoy/$1/envoy-static.stats
@@ -318,7 +320,7 @@ function test_spec {
 	local avg_time=$(printf %.3f $(echo "$omn_total_time / 5" | bc -l))
 	local avg_mem=$(printf %.3f $(echo "$omn_total_memory / 5" | bc -l))
 	insert_test_time $avg_time $PWDDIR/out/spec2006/$1/External/SPEC/CINT2006/471.omnetpp/eth-index_n.cc.stats
-	insert_memory $avg_mem $PWDDIR/out/spec2006/$1/External/SPEC/CINT2006/471.omnetpp/eth-index_n.cc.stats
+	insert_test_memory $avg_mem $PWDDIR/out/spec2006/$1/External/SPEC/CINT2006/471.omnetpp/eth-index_n.cc.stats
 
 	local deal_total_time=0
 	local deal_total_memory=0
@@ -447,13 +449,13 @@ do
 		-b=*|--benchmark=*)
 		case "${1#*=}" in
 		all)
-			benchmark_to_build+=('z3')
 			benchmark_to_build+=('solidity')
+			benchmark_to_build+=('z3')
 			benchmark_to_build+=('povray')
-			benchmark_to_build+=('envoy')
 			benchmark_to_build+=('blender')
 			benchmark_to_build+=('llvm')
 			benchmark_to_build+=('v8')
+			benchmark_to_build+=('envoy')
 			benchmark_to_build+=('spec2006')
 			benchmark_to_build+=('chrome');;
 		*)
