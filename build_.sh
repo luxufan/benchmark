@@ -276,8 +276,8 @@ function test_blender {
 	local binary=$PWDDIR/out/blender/$1/blender
 	cp $binary $PWDDIR/test-suites/build_linux/bin/
 	cd $PWDDIR/test-suites/blender/tests/performance
-	/usr/bin/time -v $PWDDIR/test-suites/blender/tests/performance/benchmark.py run default 2> test.log
-	local test_time=$(grep "User time" test.log | awk '{print $4}')
+	/usr/bin/time -v $PWDDIR/test-suites/blender/tests/performance/benchmark.py run default 2> test.log 1> time.log
+	local test_time=$(grep -E '[0-9]s' time.log | awk '{print $3}' | sed 's/s//' | awk '{print $1}' | awk '{total += $1} END {print total}')
 	local test_memory=$(grep "Maximum resident set" test.log | awk '{print $6}')
 	insert_test_time $test_time $stat
 	insert_test_memory $test_memory $stat
@@ -495,37 +495,31 @@ do
 		for version in "${version_to_build[@]}"
 		do 
 			build_povray $version
-			test_povray $version
 		done;;
 		solidity)
 		for version in "${version_to_build[@]}"
 		do
 			build_solidity $version
-			test_solidity $version
 		done;;
 		z3)
 		for version in "${version_to_build[@]}"
 		do
 			build_z3 $version
-			test_z3 $version
 		done;;
 		envoy)
 		for version in "${version_to_build[@]}"
 		do
 			build_envoy $version
-			test_envoy $version
 		done;;
 		blender)
 		for version in "${version_to_build[@]}"
 		do
 			build_blender $version
-			test_blender $version
 		done;;
 		spec2006)
 		for version in "${version_to_build[@]}"
 		do
 			build_spec $version
-			test_spec $version
 		done;;
 		llvm)
 		for version in "${version_to_build[@]}"
@@ -536,12 +530,57 @@ do
 		for version in "${version_to_build[@]}"
 		do
 			build_v8 $version
-			test_v8 $version
 		done;;
 		chrome)
 		for version in "${version_to_build[@]}"
 		do
 			build_chrome $version
+		done;;
+	esac
+done
+
+
+for benchmark in "${benchmark_to_build[@]}"
+do
+	case $benchmark in
+		povray)
+		for version in "${version_to_build[@]}"
+		do 
+			test_povray $version
+		done;;
+		solidity)
+		for version in "${version_to_build[@]}"
+		do
+			test_solidity $version
+		done;;
+		z3)
+		for version in "${version_to_build[@]}"
+		do
+			test_z3 $version
+		done;;
+		envoy)
+		for version in "${version_to_build[@]}"
+		do
+			test_envoy $version
+		done;;
+		blender)
+		for version in "${version_to_build[@]}"
+		do
+			test_blender $version
+		done;;
+		spec2006)
+		for version in "${version_to_build[@]}"
+		do
+			test_spec $version
+		done;;
+		v8)
+		for version in "${version_to_build[@]}"
+		do
+			test_v8 $version
+		done;;
+		chrome)
+		for version in "${version_to_build[@]}"
+		do
 			test_chrome $version
 		done;;
 	esac
