@@ -4,6 +4,8 @@ cd $BASEDIR
 
 PWDDIR=$(pwd)
 
+export PATH="$PATH:/home/tester/.foundry/bin"
+
 CLANG=$PWDDIR/toolchain/llvm-project/build-release/bin/clang
 CLANGXX=$PWDDIR/toolchain/llvm-project/build-release/bin/clang++
 SPEC2006=/home/tester/spec2006
@@ -58,7 +60,7 @@ function insert_compile_time {
 }
 
 function insert_memory {
-	sed -i "1a \"memory\": $1," $2
+	sed -i "1a \"compile_memory\": $1," $2
 	sed -i 's/^\"/\t\"/' $2
 }
 
@@ -249,7 +251,7 @@ function build_blender {
 	rm -rf $PWDDIR/out/blender/$1
 	mkdir $PWDDIR/out/blender/$1
 	cd $PWDDIR/test-suites/blender
-	./build_files/utils/make_update.py --use-linux-libraries
+	#./build_files/utils/make_update.py --use-linux-libraries
 	local ccachefile=$PWDDIR/test-suites/build_linux/CMakeCache.txt
 	if [ ! -f $ccachefile ]
 	then 
@@ -410,8 +412,8 @@ function build_chrome {
 	git reset --hard HEAD
 	rm -rf out/$1
 	gn gen out/$1
-	git apply $PWDDIR/cmake/chromium/$1.patch
-	cp $PWDDIR/cmake/chromium/args.gn out/$1/args.gn
+	git apply $PWDDIR/cmake/chromium/$2.patch
+	cp $PWDDIR/cmake/chromium/$3 out/$1/args.gn
 	/usr/bin/time -v autoninja -C out/$1 chrome 2> time.log
 	cp out/$1/chrome $PWDDIR/out/chromium/$1
 	cp out/$1/chrome_exe_main_aura.stats $PWDDIR/out/chromium/$1/chrome.stats
@@ -443,6 +445,8 @@ function test_chrome {
 
 benchmark_to_build=()
 version_to_build=()
+chrome_case_study=false
+
 while [ -n "$1" ]
 do
     case $1 in
@@ -479,10 +483,13 @@ do
 			version_to_build+=("thinlto-dyncastopt");;
 		esac
 		shift;;
+		-chrome-case-study)
+		chrome_case_study=true
+		shift;;
 		-*|--*)
 		echo "Unknown options!"
 		echo "Usage:"
-		echo "    -b or --benchmark, the valid values are envoy|povray|solidity|z3|blender|spec2006"
+		echo "    -b or --benchmark, the valid values are chrome|envoy|povray|solidity|z3|blender|spec2006|llvm|v8"
 		echo "    -v or --version, the valid version are lto|lto-opt|thin|thin-opt"
 		exit 1
 	esac
@@ -494,47 +501,92 @@ do
 		povray)
 		for version in "${version_to_build[@]}"
 		do 
-			build_povray $version
+			echo "Building povray $version"
+			build_povray $version 2&>1 > /dev/null
+			retcode=$(echo $?)
+			if [ "$retcode" != 0 ] ; then
+				echo "Failed!"
+			fi
 		done;;
 		solidity)
 		for version in "${version_to_build[@]}"
 		do
-			build_solidity $version
+			echo "Building solidity $version"
+			build_solidity $version 2&>1 > /dev/null
+			retcode=$(echo $?)
+			if [ "$retcode" != 0 ] ; then
+				echo "Failed!"
+			fi
 		done;;
 		z3)
 		for version in "${version_to_build[@]}"
 		do
-			build_z3 $version
+			echo "Building z3 $version"
+			build_z3 $version 2&>1 > /dev/null
+			retcode=$(echo $?)
+			if [ "$retcode" != 0 ] ; then
+				echo "Failed!"
+			fi
 		done;;
 		envoy)
 		for version in "${version_to_build[@]}"
 		do
-			build_envoy $version
+			echo "Building envoy $version"
+			build_envoy $version 2&>1 > /dev/null
+			retcode=$(echo $?)
+			if [ "$retcode" != 0 ] ; then
+				echo "Failed!"
+			fi
 		done;;
 		blender)
 		for version in "${version_to_build[@]}"
 		do
-			build_blender $version
+			echo "Building blender $version"
+			build_blender $version 2&>1 > /dev/null
+			retcode=$(echo $?)
+			if [ "$retcode" != 0 ] ; then
+				echo "Failed!"
+			fi
 		done;;
 		spec2006)
 		for version in "${version_to_build[@]}"
 		do
-			build_spec $version
+			echo "Building spec2006 $version"
+			build_spec $version 2&>1 > /dev/null
+			retcode=$(echo $?)
+			if [ "$retcode" != 0 ] ; then
+				echo "Failed!"
+			fi
 		done;;
 		llvm)
 		for version in "${version_to_build[@]}"
 		do 
-			build_llvm $version
+			echo "Building llvm $version"
+			build_llvm $version 2&>1 > /dev/null
+			retcode=$(echo $?)
+			if [ "$retcode" != 0 ] ; then
+				echo "Failed!"
+			fi
 		done;;
 		v8)
 		for version in "${version_to_build[@]}"
 		do
-			build_v8 $version
+			echo "Building v8 $version"
+			build_v8 $version 2&>1 > /dev/null
+			retcode=$(echo $?)
+			if [ "$retcode" != 0 ] ; then
+				echo "Failed!"
+			fi
 		done;;
 		chrome)
 		for version in "${version_to_build[@]}"
 		do
-			build_chrome $version
+			echo "Building chrome $version"
+			build_chrome $version $version args.gn 2&>1 > /dev/null
+			retcode=$(echo $?)
+			if [ "$retcode" != 0 ] ; then
+				echo "Failed!"
+			fi
 		done;;
 	esac
 done
@@ -586,3 +638,13 @@ do
 	esac
 done
 
+if [ "$chrome_case_study" = true ] ; then
+	build_chrome origin-thin origin-thin args.gn
+	build_chrome origin-lto origin-lto args.gn
+	build_chrome sanitize-thin sanitize-thin args-sanitize.gn
+	build_chrome sanitize-lto sanitize-lto args-sanitize.gn
+	test_chrome sanitize-thin
+	test_chrome origin-thin
+	test_chrome sanitize-lto
+	test_chrome origin-lto
+fi
