@@ -13,7 +13,7 @@ if __name__ == "__main__":
     data = json.load(f)
     tests = data['tests']['blink_perf.css']
     time = 0
-    throughtput = 0
+    throughput = 0
     for t in tests:
         test = tests[t]
         artifacts = test['artifacts']
@@ -33,4 +33,4 @@ if __name__ == "__main__":
             else:
                 throughput += count
     print(time)
-    print(throughtput)
+    print(throughput)
