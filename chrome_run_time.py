@@ -34,7 +34,3 @@ if __name__ == "__main__":
                 throughput += count
     print(time)
     print(throughtput)
-
-
-
-            print(count)
