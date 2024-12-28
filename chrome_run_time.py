@@ -12,6 +12,8 @@ if __name__ == "__main__":
     f = open(args.file)
     data = json.load(f)
     tests = data['tests']['blink_perf.css']
+    time = 0
+    throughtput = 0
     for t in tests:
         test = tests[t]
         artifacts = test['artifacts']
@@ -21,11 +23,18 @@ if __name__ == "__main__":
         m_f = open(m_file)
         m_json = json.load(m_f)
         measurements = m_json['measurements']
-        count = 0
-        unit = ''
         for tt in measurements:
             measurement = measurements[tt]
             unit = measurement['unit']
             sample = measurement['samples']
             count = sum(sample) / len(sample)
+            if unit == 'ms':
+                time += count
+            else:
+                throughput += count
+    print(time)
+    print(throughtput)
+
+
+
             print(count)
