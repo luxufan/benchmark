@@ -8,6 +8,9 @@ export PATH="$PATH:/home/tester/.foundry/bin"
 
 CLANG=$PWDDIR/toolchain/llvm-project/build-release/bin/clang
 CLANGXX=$PWDDIR/toolchain/llvm-project/build-release/bin/clang++
+
+LLVM_CASE_STUDY_CLANG=$PWDDIR/toolchain/llvm/build-release/bin/clang
+LLVM_CASE_STUDY_CLANGXX=$PWDDIR/toolchain/llvm/build-release/bin/clang++
 SPEC2006=/home/tester/spec2006
 
 THIN_OPT_FLAGS='-O2 -flto=thin -fwhole-program-vtables -fvisibility=hidden'
@@ -343,14 +346,14 @@ function test_spec {
 ###---------------------------llvm-----------------------------###
 function build_llvm {
 	local cflags=$(get_cflags $1)
-	local ldflags=$(get_ldflags $1)
+	local ldflags="$(get_ldflags $1) $2"
 	rm -rf $PWDDIR/out/llvm/$1
 	mkdir $PWDDIR/out/llvm/$1
 	rm -rf $PWDDIR/out/llvm/temp
 	mkdir $PWDDIR/out/llvm/temp
 	cd $_
 	local flags="$cflags $ldflags"
-	cmake $PWDDIR/test-suites/llvm-project/llvm -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=$CLANGXX -DCMAKE_C_COMPILER=$CLANG -G Ninja -DLLVM_ENABLE_RTTI=ON -DLLVM_TARGETS_TO_BUILD=X86 -DCMAKE_CXX_FLAGS="$flags" -DCMAKE_C_FLAGS="$flags" 
+	cmake $PWDDIR/test-suites/llvm-project/llvm -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=$LLVM_CASE_STUDY_CLANGXX -DCMAKE_C_COMPILER=$LLVM_CASE_STUDY_CLANG -G Ninja -DLLVM_ENABLE_RTTI=ON -DLLVM_TARGETS_TO_BUILD=X86 -DCMAKE_CXX_FLAGS="$flags" -DCMAKE_C_FLAGS="$flags"
 	/usr/bin/time -v ninja opt 2> time.log
 	cp $PWDDIR/out/llvm/temp/bin/opt $PWDDIR/out/llvm/$1
 	cp $PWDDIR/out/llvm/temp/bin/NewPMDriver.cpp.stats $PWDDIR/out/llvm/$1/opt.stats
@@ -358,6 +361,24 @@ function build_llvm {
 	local memory=$(grep "Maximum resident set" time.log | awk '{print $6}')
 	insert_compile_time $build_time $PWDDIR/out/llvm/$1/opt.stats
 	insert_memory $memory $PWDDIR/out/llvm/$1/opt.stats
+}
+
+function test_llvm {
+	local total_time=0
+	local total_memory=0
+	for i in {0..1}
+	do
+		/usr/bin/time -v $PWDDIR/out/llvm/$1/opt -O2 $PWDDIR/data/z3.bc 2> test.log
+		local test_time=$(grep -E "User time .*" test.log | awk '{print $4}')
+	  	local memory=$(grep "Maximum resident set" test.log | awk '{print $6}')
+		total_time=$(echo "$total_time + $test_time" | bc)
+		total_memory=$(echo "$total_memory + $memory" | bc)
+	done
+	local avg_time=$(printf %.3f $(echo "$total_time / 2" | bc -l))
+	local avg_mem=$(printf %.3f $(echo "$total_memory / 2" | bc -l))
+
+	insert_test_time "$avg_time" $PWDDIR/out/llvm/$1/opt.stats
+	insert_test_memory "$avg_mem" $PWDDIR/out/llvm/$1/opt.stats
 }
 
 ###-----------------------------v8-------------------------###
@@ -446,6 +467,7 @@ function test_chrome {
 benchmark_to_build=()
 version_to_build=()
 chrome_case_study=false
+llvm_case_study=false
 
 while [ -n "$1" ]
 do
@@ -485,6 +507,9 @@ do
 		shift;;
 		-chrome-case-study)
 		chrome_case_study=true
+		shift;;
+		-llvm-case-study)
+		llvm_case_study=true
 		shift;;
 		-*|--*)
 		echo "Unknown options!"
@@ -647,4 +672,28 @@ if [ "$chrome_case_study" = true ] ; then
 	test_chrome origin-thin
 	test_chrome sanitize-lto
 	test_chrome origin-lto
+fi
+
+if [ "$llvm_case_study" = true ] ; then
+	#cd $PWDDIR/test-suites/llvm-project
+	#git checkout llvm-case-study-diff
+	#cd -
+	#cd $PWDDIR/toolchain/llvm
+	#git checkout llvm-case-study-opt
+	#cd build-release
+	#ninja clang lld
+	#build_llvm thinlto-dyncastopt
+	#build_llvm fulllto-dyncastopt
+
+	#cd $PWDDIR/toolchain/llvm
+	#git checkout llvm-case-study-no-opt
+	#cd build-release
+	#ninja clang lld
+	#build_llvm thinlto "-Wl,--plugin-opt=-enable-dyncastopt=true"
+	#build_llvm fulllto "-Wl,--plugin-opt=-enable-dyncastopt=true"
+
+	test_llvm thinlto
+	test_llvm thinlto-dyncastopt
+	test_llvm fulllto
+	test_llvm fulllto-dyncastopt
 fi
