@@ -24,121 +24,79 @@ lto_dyncastopt_labels = set()
 lto_sanitize_labels = set()
 lto_labels = set()
 
+def gettime(data):
+    return data['tests'][0]['metrics']['test_time']
+
+def getsize(data):
+    return data['tests'][0]['metrics']['size']
+
+def getthroughput(data):
+    return data['tests'][0]['metrics']['test_throughput']
+
+def getmemory(data):
+    return data['tests'][0]['metrics']['test_memory']
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('file')
+    parser = argparse.ArgumentParser(prog="analysis_chrome.py")
+    parser.add_argument("thinlto",
+                        help="Base thinlto file")
+    parser.add_argument("thinlto_dyncastopt",
+                        help="Compare thinlto file")
+    parser.add_argument("fulllto",
+                        help="Base fulllto file")
+    parser.add_argument("fulllto_dyncastopt",
+                        help="Compare fulllto file")
+    parser.add_argument("origin_thin",
+                        help="Base thinlto file")
+    parser.add_argument("origin_full",
+                        help="Compare thinlto file")
+    parser.add_argument("sanitize_thin",
+                        help="Base fulllto file")
+    parser.add_argument("sanitize_full",
+                        help="Compare fulllto file")
     args = parser.parse_args()
 
-    f = open(args.file)
-    data = json.load(f)
+    print(args.thinlto)
+    thinlto = json.load(open(args.thinlto))
+    thinlto_dyncastopt = json.load(open(args.thinlto_dyncastopt))
+    fulllto = json.load(open(args.fulllto))
+    fulllto_dyncastopt = json.load(open(args.fulllto_dyncastopt))
+    origin_thin = json.load(open(args.origin_thin))
+    origin_full = json.load(open(args.origin_full))
+    sanitize_thin = json.load(open(args.sanitize_thin))
+    sanitize_full = json.load(open(args.sanitize_full))
 
     # find label
     #
-    for entry in data:
-        if 'type' in entry and entry['type'] == 'GenericSet':
-            values = entry['values']
-            if values[0] == 'thin-origin':
-                origin_labels.add(entry['guid'])
-            elif values[0] == 'thin':
-                thinlto_labels.add(entry['guid'])
-            elif values[0] == 'thin-dyncastopt':
-                thinlto_dyncastopt_labels.add(entry['guid'])
-            elif values[0] == 'thin-sanitize':
-                sanitize_labels.add(entry['guid'])
-            elif values[0] == 'lto-origin':
-                lto_origin_labels.add(entry['guid'])
-            elif values[0] == 'lto':
-                lto_labels.add(entry['guid'])
-            elif values[0] == 'lto-dyncastopt':
-                lto_dyncastopt_labels.add(entry['guid'])
-            elif values[0] == 'lto-sanitize':
-                lto_sanitize_labels.add(entry['guid'])
 
-
-    print(thinlto_labels)
-    print(thinlto_dyncastopt_labels)
-    print(origin_labels)
-    print(sanitize_labels)
-    print(lto_labels)
-    print(lto_dyncastopt_labels)
-    print(lto_origin_labels)
-    print(lto_sanitize_labels)
-
-
-
-    thinlto_ms = 0
-    lto_ms = 0
-    thinlto_unitless = 0
-    lto_unitless = 0
-    origin_ms = 0
-    lto_origin_ms = 0
-    origin_unitless = 0
-    lto_origin_unitless = 0
-    thinlto_dyncastopt_ms = 0
-    lto_dyncastopt_ms = 0
-    thinlto_dyncastopt_unitless = 0
-    lto_dyncastopt_unitless = 0
-    sanitize_ms = 0
-    lto_sanitize_ms = 0
-    sanitize_unitless = 0
-    lto_sanitize_unitless = 0
+    thinlto_ms = gettime(thinlto)
+    lto_ms = gettime(fulllto)
+    thinlto_unitless = getthroughput(thinlto)
+    lto_unitless = getthroughput(fulllto)
+    thinlto_mem = getmemory(thinlto)
+    lto_mem = getmemory(fulllto)
+    origin_ms = gettime(origin_thin)
+    lto_origin_ms = gettime(origin_full)
+    origin_unitless = getthroughput(origin_thin)
+    lto_origin_unitless = getthroughput(origin_full)
+    origin_mem = getmemory(origin_thin)
+    lto_origin_mem = getmemory(origin_full)
+    thinlto_dyncastopt_ms = gettime(thinlto_dyncastopt)
+    lto_dyncastopt_ms = gettime(fulllto_dyncastopt)
+    thinlto_dyncastopt_unitless = getthroughput(thinlto_dyncastopt)
+    lto_dyncastopt_unitless = getthroughput(fulllto_dyncastopt)
+    thinlto_dyncastopt_mem = getmemory(thinlto_dyncastopt)
+    lto_dyncastopt_mem = getmemory(fulllto_dyncastopt)
+    sanitize_ms = gettime(sanitize_thin)
+    lto_sanitize_ms = gettime(sanitize_full)
+    sanitize_unitless = getthroughput(sanitize_thin)
+    lto_sanitize_unitless = getthroughput(sanitize_full)
+    sanitize_mem = getmemory(sanitize_thin)
+    lto_sanitize_mem = getmemory(sanitize_full)
 
     labels = ['dyn cast', 'dyn cast + opt', 'sanitizer']
     names = set()
-    for entry in data:
-        if 'sampleValues' not in entry or 'name' not in entry or 'diagnostics' not in entry:
-            continue
-        names.add(entry['name'])
-        if entry['name'] == 'CSSQuotesCreate':
-            continue
-        if entry['name'] == 'ModifySelectorText':
-            continue
-        samples_mean = sum(entry['sampleValues']) / len(entry['sampleValues'])
-        unit = entry['unit']
-        label = entry['diagnostics']['labels']
-        if label in thinlto_labels:
-            if unit == 'unitless_biggerIsBetter':
-                thinlto_unitless += samples_mean
-            else:
-                thinlto_ms += samples_mean
-        elif label in sanitize_labels:
-            if unit == 'unitless_biggerIsBetter':
-                sanitize_unitless += samples_mean
-            else:
-                sanitize_ms += samples_mean
-        elif label in thinlto_dyncastopt_labels:
-            if unit == 'unitless_biggerIsBetter':
-                thinlto_dyncastopt_unitless += samples_mean
-            else:
-                thinlto_dyncastopt_ms += samples_mean
-        elif label in origin_labels:
-            if unit == 'unitless_biggerIsBetter':
-                origin_unitless += samples_mean
-            else:
-                origin_ms += samples_mean
-        if label in lto_labels:
-            if unit == 'unitless_biggerIsBetter':
-                lto_unitless += samples_mean
-            else:
-                lto_ms += samples_mean
-        elif label in lto_sanitize_labels:
-            if unit == 'unitless_biggerIsBetter':
-                lto_sanitize_unitless += samples_mean
-            else:
-                lto_sanitize_ms += samples_mean
-        elif label in lto_dyncastopt_labels:
-            if unit == 'unitless_biggerIsBetter':
-                lto_dyncastopt_unitless += samples_mean
-            else:
-                lto_dyncastopt_ms += samples_mean
-        elif label in lto_origin_labels:
-            if unit == 'unitless_biggerIsBetter':
-                lto_origin_unitless += samples_mean
-            else:
-                lto_origin_ms += samples_mean
-    print(len(names))
-    count = 6
+    count = 1
     origin_ms = origin_ms / count
     origin_unitless = origin_unitless / count
     thinlto_ms = thinlto_ms / count
@@ -185,12 +143,17 @@ if __name__ == "__main__":
     print(throughput_tests)
     lto_throughput_tests = [lto_unitless, lto_dyncastopt_unitless, lto_sanitize_unitless]
     lto_throughput_tests = [(i - lto_origin_unitless ) * 100 / lto_origin_unitless for i in lto_throughput_tests]
+
+    memory_tests = [thinlto_mem, thinlto_dyncastopt_mem, sanitize_mem]
+    memory_tests = [(i - origin_mem) / origin_mem * 100 for i in memory_tests]
+    lto_memory_tests = [lto_mem, lto_dyncastopt_mem, lto_sanitize_mem]
+    lto_memory_tests = [(i - lto_origin_mem) / lto_origin_mem * 100 for i in lto_memory_tests]
     print("lto_throught:", lto_throughput_tests)
-    binary_size = [1869084448, 1871785016, 1875788704 ]
-    binary_size = [(i - 1865538540) / 1865538540 * 100 for i in binary_size]
-    lto_binary_size = [1976811312, 1979893688, 1984748792]
-    lto_binary_size = [(i - 1985283816) / 1985283826 * 100 for i in lto_binary_size]
-    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(17, 5))
+    binary_size = [getsize(thinlto), getsize(thinlto_dyncastopt), getsize(sanitize_thin)]
+    binary_size = [(i - getsize(origin_thin)) / getsize(origin_thin) * 100 for i in binary_size]
+    lto_binary_size = [getsize(fulllto), getsize(fulllto_dyncastopt), getsize(sanitize_full)]
+    lto_binary_size = [(i - getsize(origin_full)) / getsize(origin_full) * 100 for i in lto_binary_size]
+    fig, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4, figsize=(17, 5))
     fig.subplots_adjust(right=0.8, hspace=0.3, wspace=0.4, bottom=0.26, top=0.82)
     fontsize = 17
     x = np.arange(3)
@@ -242,7 +205,7 @@ if __name__ == "__main__":
     ax2.tick_params(axis='x', labelrotation=20)
     plt.setp(ax2.xaxis.get_majorticklabels(), rotation=15, ha='right', rotation_mode='anchor', fontsize=17)
 
-    ax3.set_title('Binary size overhead')
+    ax3.set_title('Binary size')
     #ax3.set_ylim(1750, 1900)
     ax3.bar(x, lto_binary_size, width, edgecolor=lto_edge_color, linewidth=1, color=lto_bar_color)
     ax3.bar(x + width, binary_size, width, edgecolor=thin_edge_color, linewidth=1, color=thin_bar_color)
@@ -250,7 +213,16 @@ if __name__ == "__main__":
     ax3.set_yticklabels(['{0}%'.format(round(x, 1)) for x in ax3.get_yticks()], fontsize=fontsize)
     #ax3.set_ylabel('MegaByte', fontsize=fontsize)
     ax3.tick_params(axis='x', labelrotation=20)
-    ax3.legend(bars, ['LTO', 'ThinLTO'], loc='lower right', ncols=1, fontsize='17', bbox_to_anchor=(1.7, 0.3))
     plt.setp(ax3.xaxis.get_majorticklabels(), rotation=15, ha='right', rotation_mode='anchor', fontsize=17)
 
+    ax4.set_title('Memory usage')
+    #ax3.set_ylim(1750, 1900)
+    ax4.bar(x, lto_memory_tests, width, edgecolor=lto_edge_color, linewidth=1, color=lto_bar_color)
+    ax4.bar(x + width, memory_tests, width, edgecolor=thin_edge_color, linewidth=1, color=thin_bar_color)
+    ax4.set_xticks(x + width/2, labels, fontsize=fontsize)
+    ax4.set_yticklabels(['{0}%'.format(round(x, 1)) for x in ax4.get_yticks()], fontsize=fontsize)
+    #ax3.set_ylabel('MegaByte', fontsize=fontsize)
+    ax4.tick_params(axis='x', labelrotation=20)
+    ax4.legend(bars, ['LTO', 'ThinLTO'], loc='lower right', ncols=1, fontsize='17', bbox_to_anchor=(2, 0.3))
+    plt.setp(ax4.xaxis.get_majorticklabels(), rotation=15, ha='right', rotation_mode='anchor', fontsize=17)
     plt.savefig("chrome.pdf")
