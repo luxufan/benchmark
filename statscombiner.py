@@ -17,7 +17,7 @@ def combine_stats(stats, bench_result):
 
     binary_name = stats[stats.rfind('/') + 1:-6]
     binary_path = os.path.dirname(stats) + "/" + binary_name
-    new_stats_dict = {"code": "PASS", "elapsed" : 0.0, "metrics" : {}, "name": binary_name, "output": ""}
+    new_stats_dict = {"code": "PASS", "elapsed" : 0.0, "metrics" : {}, "shortname": binary_name, "name": binary_name, "output": ""}
 
     metrics = new_stats_dict["metrics"]
     metrics["size"] = os.path.getsize(binary_path)
