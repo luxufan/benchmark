@@ -10,7 +10,7 @@ import sys
 
 def main():
     parser = argparse.ArgumentParser(prog="plot_runtime_performance.py")
-    parser.add_argument("-m", "--metric", action="append", dest="metrics", default=[])
+    parser.add_argument("-v", "--verbose", action="store_true", dest="verbose")
     parser.add_argument("base_thin",
                         help="Base thinlto file")
     parser.add_argument("compare_thin",
@@ -54,7 +54,8 @@ def main():
     improvement.insert(1, "ThinLTO", thin_improvement, allow_duplicates=True)
     improvement = improvement.round(2)
 
-    print(improvement)
+    if config.verbose:
+        print(improvement)
 
     colors = {'LTO': 'xkcd:azure', 'ThinLTO': 'tab:orange'}
     edgecolors = {'LTO': 'black', 'ThinLTO': 'black'}
@@ -75,9 +76,6 @@ def main():
         offset = (width) * multiplier
         labels = improvement[col].round(2).astype('str') + '%'
         rects = ax1.bar(x + offset, improvement[col], width, label=col, linewidth=1.5, color=colors[col], edgecolor=edgecolors[col])
-        #ax1.bar_label(rects, labels=labels, padding=3)
-        #ax2.bar(x + offset, improvement[col], width, label=col, **kwargs)
-        #ax1.bar_label(rects, padding = 3)
         multiplier += 1
 
     fontsize = 20
@@ -90,7 +88,6 @@ def main():
     ax1.set_yticklabels(['{0}%'.format(round(x)) for x in vals], fontsize=fontsize)
 
     ax1.legend(loc="upper right", ncols=2, fontsize="20")
-    #plot = base_improvement.plot.bar(rot=0, figsize=(46, 30))
     d = .5
     plt.show()
     plt.savefig(metrics[0].replace(".", "_") + ".pdf")
