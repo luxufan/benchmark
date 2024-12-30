@@ -18,6 +18,7 @@ def gettime(data):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(prog="analysis_chrome.py")
+    parser.add_argument("-v", "--verbose", action="store_true", dest="verbose")
     parser.add_argument("origin_thinlto",
                         help="Base thinlto file")
     parser.add_argument("origin_fulllto",
@@ -44,16 +45,13 @@ if __name__ == "__main__":
                         help="Base thinlto file")
     args = parser.parse_args()
 
-    print(gettime(args.poly_thinlto))
     thinlto_time = [gettime(i) for i in [args.poly_thinlto, args.virtual_thinlto, args.virtual_thinlto_dyncastopt, args.diff_thinlto, args.diff_thinlto_dyncastopt]]
     thinlto_time = [(i - gettime(args.origin_thinlto)) / gettime(args.origin_thinlto) * 100 for i in thinlto_time]
     lto_time = [gettime(i) for i in [args.poly_fulllto, args.virtual_fulllto, args.virtual_fulllto_dyncastopt, args.diff_fulllto, args.diff_fulllto_dyncastopt]]
     lto_time = [(i - gettime(args.origin_fulllto)) / gettime(args.origin_fulllto) * 100 for i in lto_time]
-    print(lto_time)
 
     lto_memory = [getmemory(i) for i in [args.poly_fulllto, args.virtual_fulllto, args.virtual_fulllto_dyncastopt, args.diff_fulllto, args.diff_fulllto_dyncastopt]]
     lto_memory = [(i - getmemory(args.origin_fulllto)) / getmemory(args.origin_fulllto) * 100 for i in lto_memory]
-    print(lto_memory)
 
     thinlto_memory = [getmemory(i) for i in [args.poly_thinlto, args.virtual_thinlto, args.virtual_thinlto_dyncastopt, args.diff_thinlto, args.diff_thinlto_dyncastopt]]
     thinlto_memory = [(i - getmemory(args.origin_thinlto)) / getmemory(args.origin_thinlto) * 100 for i in thinlto_memory]
@@ -62,16 +60,10 @@ if __name__ == "__main__":
     thinlto_size = [(i - getsize(args.origin_thinlto)) / getsize(args.origin_thinlto) * 100 for i in thinlto_size]
     lto_size = [getsize(i) for i in [args.poly_fulllto, args.virtual_fulllto, args.virtual_fulllto_dyncastopt, args.diff_fulllto, args.diff_fulllto_dyncastopt]]
     lto_size = [(i - getsize(args.origin_fulllto)) / getsize(args.origin_fulllto) * 100 for i in lto_size]
-    print(lto_size)
 
     labels = ['polymorphic', 'virtual', 'virtual + opt', 'diff', 'diff + opt']
 
     plt.rcParams.update({'font.size': 17})
-
-    # dx = -25/72.; dy = 0/72.
-    # offset = matplotlib.transforms.ScaledTranslation(dx, dy, fig.dpi_scale_trans)
-    # for label in ax1.xaxis.get_majorticklabels():
-    #     label.set_transform(label.get_transform() + offset)
 
     width = 0.25
     fontsize = 18
@@ -105,15 +97,6 @@ if __name__ == "__main__":
 
     ### FullLTO running time
     ax2.set_title("Peak memory overhead", fontsize=18)
-    #ax2.set_ylim(1500, 1700)
-    # ax4.bar(['origin', 'dyncast_opt', 'sanitize', 'dyncast'], lto_runtime_tests, width, edgecolor='black', linewidth=1, color='tab:orange')
-    # ax4.set_xticks(x, ['static_cast', 'dyncast_opt', 'sanitize', 'dyncast'], fontsize=fontsize)
-    # ax4.set_yticklabels(['{0}'.format(round(x)) for x in ax1.get_yticks()], fontsize=fontsize)
-    # ax4.set_ylabel('Macroseconds', fontsize=fontsize)
-    # ax4.tick_params(axis='x', labelrotation=25)
-    # plt.setp(ax1.xaxis.get_majorticklabels(), rotation=25, ha='right', rotation_mode='anchor', fontsize=17)
-
-    #ax2.set_ylim()
     bars = []
     bar = ax2.bar(x, lto_memory, width, edgecolor=lto_edge_color, linewidth=1.5, color=lto_bar_color)
     bars.append(bar)
