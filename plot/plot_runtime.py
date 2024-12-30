@@ -10,7 +10,7 @@ import sys
 
 def main():
     parser = argparse.ArgumentParser(prog="plot_runtime_performance.py")
-    parser.add_argument("-m", "--metric", action="append", dest="metrics", default=[])
+    parser.add_argument("-v", "--verbose", action="store_true", dest="verbose")
     parser.add_argument("base_thin",
                         help="Base thinlto file")
     parser.add_argument("compare_thin",
@@ -36,12 +36,6 @@ def main():
     compare_full_data.rename(index=rename_map, inplace=True)
     compare_full_data = compare_full_data.reindex(rows)
 
-    # Extract metrics
-    metrics = config.metrics
-    for metric in metrics:
-        if metric not in base_thin_data.columns:
-            sys.stderr.write("Unknown metric '%s'\n" % metric)
-
     base_thin_metrics = base_thin_data["test_time"]
     base_full_metrics = base_full_data["test_time"]
     compare_thin_metrics = compare_thin_data["test_time"]
@@ -53,9 +47,11 @@ def main():
     improvement.insert(0, "ThinLTO", thin_improvement, allow_duplicates=True)
     improvement.insert(1, "LTO", full_improvement)
     improvement = improvement.round(2)
-    #improvement = improvement.drop(["chrome"])
 
-    print(improvement)
+    improvement.iloc[3] = -improvement.iloc[3]
+
+    if config.verbose:
+        print(improvement)
 
     width = 0.30
     multiplier = 0
@@ -74,19 +70,16 @@ def main():
     colors = {'LTO': 'xkcd:azure', 'ThinLTO': 'tab:orange'}
     edgecolors = {'LTO': 'black', 'ThinLTO': 'black'}
     x = np.arange(len(improvement.index))
-    #kwargs = dict(linewidth=0.02, visible=True)
     for col in improvement.columns:
         offset = width * multiplier
         rects = ax1.bar(x + offset, improvement[col], width, clip_on=False, color=colors[col], label=col, edgecolor='black', linewidth=2, align='edge')
         ax2.bar(x + offset, improvement[col], width, label=col, color=colors[col], edgecolor='black', linewidth=2, align='edge')
-        #ax1.bar_label(rects, padding = 3)
         multiplier += 1
 
     fontsize = 20
     ax1.set_ylim(10, 90)
     ax2.set_ylim(-1, 4)
     ax2.set_ylabel('Performance Improvement', labelpad=10, fontsize=fontsize, y=1.0)
-    #ax2.set_xlabel("benchmarks", fontsize=fontsize)
     ax2.set_xticks(x + width, improvement.index, fontsize=fontsize)
     ax1.set_title('Run-time Performance', fontsize=fontsize)
 
@@ -99,7 +92,6 @@ def main():
     ax2.tick_params(axis='x', labelrotation=18)
 
     ax1.legend(loc="upper right", ncols=2, fontsize=17)
-    #plot = base_improvement.plot.bar(rot=0, figsize=(46, 30))
     d = .5
     leg = plt.legend()
     kwargs = dict(marker=[(-1, -d), (1, d)], markersize=18.5,
