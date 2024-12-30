@@ -31,13 +31,13 @@ fi
 
 function get_cflags {
     case $1 in 
-	thinlto-dyncastopt) 
+	thinlto-dyncastopt|virtual-thinlto-dyncastopt|poly-thinlto|origin-thinlto)
 		echo $THIN_OPT_FLAGS;;
-	thinlto)
+	thinlto|virtual-thinlto)
 		echo $THIN_FLAGS;;
-	fulllto-dyncastopt)
+	fulllto-dyncastopt|virtual-fulllto-dyncastopt|poly-fulllto|origin-fulllto)
 		echo $LTO_OPT_FLAGS;;
-	fulllto)
+	fulllto|virtual-fulllto)
 		echo $LTO_FLAGS;;
 	esac
 	
@@ -45,13 +45,13 @@ function get_cflags {
 
 function get_ldflags {
     case $1 in 
-	thinlto-dyncastopt) 
+	thinlto-dyncastopt|virtual-thinlto-dyncastopt|poly-thinlto|origin-thinlto)
 		echo $THIN_OPT_LDFLAGS;;
-	thinlto)
+	thinlto|virtual-thinlto)
 		echo $THIN_LDFLAGS;;
-	fulllto-dyncastopt)
+	fulllto-dyncastopt|virtual-fulllto-dyncastopt|poly-fulllto|origin-fulllto)
 		echo $LTO_OPT_LDFLAGS;;
-	fulllto)
+	fulllto|virtual-fulllto)
 		echo $LTO_LDFLAGS;;
 	esac
 	
@@ -69,6 +69,11 @@ function insert_memory {
 
 function insert_test_time {
 	sed -i "1a \"test_time\": $1," $2
+	sed -i 's/^\"/\t\"/' $2
+}
+
+function insert_test_throughput {
+	sed -i "1a \"test_throughput\": $1," $2
 	sed -i 's/^\"/\t\"/' $2
 }
 
@@ -366,7 +371,7 @@ function build_llvm {
 function test_llvm {
 	local total_time=0
 	local total_memory=0
-	for i in {0..1}
+	for i in {0..0}
 	do
 		/usr/bin/time -v $PWDDIR/out/llvm/$1/opt -O2 $PWDDIR/data/z3.bc 2> test.log
 		local test_time=$(grep -E "User time .*" test.log | awk '{print $4}')
@@ -374,8 +379,8 @@ function test_llvm {
 		total_time=$(echo "$total_time + $test_time" | bc)
 		total_memory=$(echo "$total_memory + $memory" | bc)
 	done
-	local avg_time=$(printf %.3f $(echo "$total_time / 2" | bc -l))
-	local avg_mem=$(printf %.3f $(echo "$total_memory / 2" | bc -l))
+	local avg_time=$(printf %.3f $(echo "$total_time / 1" | bc -l))
+	local avg_mem=$(printf %.3f $(echo "$total_memory / 1" | bc -l))
 
 	insert_test_time "$avg_time" $PWDDIR/out/llvm/$1/opt.stats
 	insert_test_memory "$avg_mem" $PWDDIR/out/llvm/$1/opt.stats
@@ -448,19 +453,25 @@ function test_chrome {
 	export PATH="${HOME}/benchmark/test-suites/chromium/depot_tools:$PATH"
 	local total_time=0
 	local total_memory=0
-	for i in {0..4}
+	local total_throughput=0
+	for i in {0..0}
 	do
-		/usr/bin/time -v xvfb-run -s "-screen 0 1024x768x24" $PWDDIR/test-suites/chromium/chromium/src/tools/perf/run_benchmark blink_perf.css --browser=exact --browser-executable=$PWDDIR/test-suites/chromium/chromium/src/out/$1/chrome --extra-browser-args="--no-sandbox --disable-dev-shm-usage --disable-gpu" --results-label="$1" 2> test.log
-		local test_time=$(grep -E "User time .*" test.log | awk '{print $4}')
+		/usr/bin/time -v xvfb-run -s "-screen 0 1024x768x24" $PWDDIR/test-suites/chromium/chromium/src/tools/perf/run_benchmark blink_perf.css --browser=exact --browser-executable=$PWDDIR/test-suites/chromium/chromium/src/out/$1/chrome --extra-browser-args="--no-sandbox --disable-dev-shm-usage --disable-gpu" --results-label="$1" --output-format=json-test-results 2> test.log
+		$PWDDIR/chrome_run_time.py $PWDDIR/test-suites/chromium/chromium/src/tools/perf/test-results.json > result.txt
+		local test_time=$(head -n 1 result.txt | awk '{print $1}')
+		local test_throughput=$(tail -n 1 result.txt | awk '{print $1}')
 	  	local test_memory=$(grep "Maximum resident set" test.log | awk '{print $6}')
 		total_time=$(echo "$total_time + $test_time" | bc)
+		total_throughput=$(echo "$total_throughput + $test_throughput" | bc)
 		total_memory=$(echo "$total_memory + $test_memory" | bc)
 	done
 	
-	local avg_time=$(printf %.3f $(echo "$total_time / 5" | bc -l))
-	local avg_mem=$(printf %.3f $(echo "$total_memory / 5" | bc -l))
+	local avg_time=$(printf %.3f $(echo "$total_time / 1" | bc -l))
+	local avg_throughput=$(printf %.3f $(echo "$total_throughput / 1" | bc -l))
+	local avg_mem=$(printf %.3f $(echo "$total_memory / 1" | bc -l))
 
 	insert_test_time "$avg_time" $PWDDIR/out/chromium/$1/chrome.stats
+	insert_test_throughput "$avg_throughput" $PWDDIR/out/chromium/$1/chrome.stats
 	insert_test_memory "$avg_mem" $PWDDIR/out/chromium/$1/chrome.stats
 }
 
@@ -607,7 +618,7 @@ do
 		for version in "${version_to_build[@]}"
 		do
 			echo "Building chrome $version"
-			build_chrome $version $version args.gn 2&>1 > /dev/null
+			#build_chrome $version $version args.gn 2&>1 > /dev/null
 			retcode=$(echo $?)
 			if [ "$retcode" != 0 ] ; then
 				echo "Failed!"
@@ -663,6 +674,16 @@ do
 	esac
 done
 
+function chrome_case_study_move_stats {
+	./statscombiner.py $PWDDIR/out/chromium/$1/chrome.stats
+	mv result.json $PWDDIR/result/chrome_case_study/$1.json
+}
+
+function llvm_move_stats {
+	./statscombiner.py $PWDDIR/out/llvm/$1/opt.stats
+	mv result.json $PWDDIR/result/llvm_case_study/$1.json
+}
+
 if [ "$chrome_case_study" = true ] ; then
 	build_chrome origin-thin origin-thin args.gn
 	build_chrome origin-lto origin-lto args.gn
@@ -672,28 +693,82 @@ if [ "$chrome_case_study" = true ] ; then
 	test_chrome origin-thin
 	test_chrome sanitize-lto
 	test_chrome origin-lto
+
+	mkdir $PWDDIR/result/chrome_case_study
+	chrome_case_study_move_stats sanitize-thin
+	chrome_case_study_move_stats origin-thin
+	chrome_case_study_move_stats sanitize-lto
+	chrome_case_study_move_stats origin-lto
+	chrome_case_study_move_stats thinlto
+	chrome_case_study_move_stats thinlto-dyncastopt
+	chrome_case_study_move_stats fulllto
+	chrome_case_study_move_stats fulllto-dyncastopt
 fi
 
 if [ "$llvm_case_study" = true ] ; then
-	#cd $PWDDIR/test-suites/llvm-project
-	#git checkout llvm-case-study-diff
-	#cd -
-	#cd $PWDDIR/toolchain/llvm
-	#git checkout llvm-case-study-opt
-	#cd build-release
-	#ninja clang lld
-	#build_llvm thinlto-dyncastopt
-	#build_llvm fulllto-dyncastopt
+	cd $PWDDIR/toolchain/llvm-project
+	git checkout dyncastopt
+	cd build-release
+	ninja clang lld
 
-	#cd $PWDDIR/toolchain/llvm
-	#git checkout llvm-case-study-no-opt
-	#cd build-release
-	#ninja clang lld
-	#build_llvm thinlto "-Wl,--plugin-opt=-enable-dyncastopt=true"
-	#build_llvm fulllto "-Wl,--plugin-opt=-enable-dyncastopt=true"
+	cd $PWDDIR/test-suites/llvm-project
+	git checkout poly
+	build_llvm poly-thinlto
+	build_llvm poly-fulllto
+
+	cd $PWDDIR/test-suites/llvm-project
+	git checkout origin
+	build_llvm origin-thinlto
+	build_llvm origin-fulllto
+
+	cd $PWDDIR/test-suites/llvm-project
+	git checkout virtual
+	build_llvm virtual-thinlto
+	build_llvm virtual-thinlto-dyncastopt
+	build_llvm virtual-fulllto
+	build_llvm virtual-fulllto-dyncastopt
+
+	cd $PWDDIR/test-suites/llvm-project
+	git checkout llvm-case-study-diff
+	cd -
+	cd $PWDDIR/toolchain/llvm
+	git checkout llvm-case-study-opt
+	cd build-release
+	ninja clang lld
+	build_llvm thinlto-dyncastopt
+	build_llvm fulllto-dyncastopt
+
+	cd $PWDDIR/toolchain/llvm
+	git checkout llvm-case-study-no-opt
+	cd build-release
+	ninja clang lld
+	build_llvm thinlto "-Wl,--plugin-opt=-enable-dyncastopt=true"
+	build_llvm fulllto "-Wl,--plugin-opt=-enable-dyncastopt=true"
 
 	test_llvm thinlto
 	test_llvm thinlto-dyncastopt
 	test_llvm fulllto
 	test_llvm fulllto-dyncastopt
+	test_llvm virtual-thinlto
+	test_llvm virtual-thinlto-dyncastopt
+	test_llvm virtual-fulllto
+	test_llvm virtual-fulllto-dyncastopt
+	test_llvm poly-thinlto
+	test_llvm poly-fulllto
+	test_llvm origin-thinlto
+	test_llvm origin-fulllto
+
+	mkdir $PWDDIR/result/llvm_case_study
+	llvm_move_stats thinlto
+	llvm_move_stats thinlto-dyncastopt
+	llvm_move_stats fulllto
+	llvm_move_stats fulllto-dyncastopt
+	llvm_move_stats virtual-thinlto
+	llvm_move_stats virtual-thinlto-dyncastopt
+	llvm_move_stats virtual-fulllto
+	llvm_move_stats virtual-fulllto-dyncastopt
+	llvm_move_stats poly-thinlto
+	llvm_move_stats poly-fulllto
+	llvm_move_stats origin-thinlto
+	llvm_move_stats origin-fulllto
 fi
