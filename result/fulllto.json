@@ -11,10 +11,10 @@
             "elapsed": 0.0,
             "metrics": {
                 "size": 122703600,
-                "test_memory": 100520,
+                "test_memory": 117568,
                 "test_time": 225.9,
-                "compile_memory": 8860548,
-                "compile_time": 1184,
+                "compile_memory": 8865412,
+                "compile_time": 1180,
                 "SLP.NumVectorInstructions": 3913,
                 "aa.NumMayAlias": 4160984,
                 "aa.NumMustAlias": 1179901,
@@ -421,7 +421,7 @@
             "metrics": {
                 "size": 196641536,
                 "test_memory": 6588544,
-                "test_time": 22.7966,
+                "test_time": 22.566,
                 "compile_memory": 22122708,
                 "compile_time": 7422.67,
                 "SLP.NumVectorInstructions": 41389,
