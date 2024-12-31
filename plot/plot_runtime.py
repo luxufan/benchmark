@@ -44,8 +44,8 @@ def main():
     full_improvement = ((base_full_metrics - compare_full_metrics) / base_full_metrics) * 100
 
     improvement = pd.DataFrame()
-    improvement.insert(0, "ThinLTO", thin_improvement, allow_duplicates=True)
-    improvement.insert(1, "LTO", full_improvement)
+    improvement.insert(0, "LTO", full_improvement)
+    improvement.insert(1, "ThinLTO", thin_improvement, allow_duplicates=True)
     improvement = improvement.round(2)
 
     improvement.iloc[3] = -improvement.iloc[3]
@@ -55,31 +55,37 @@ def main():
 
     width = 0.30
     multiplier = 0
-    plt.rcParams.update({'font.size': 15})
+    plt.rcParams.update({'font.size': 14})
 
-    fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(12, 6), height_ratios=[1,1])
-    fig.subplots_adjust(hspace=0.085)
+    fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(12, 6), height_ratios=[1, 3])
+    fig.subplots_adjust(hspace=0.10)
     fig.subplots_adjust(bottom=0.15)
+
+    ax1.spines['top'].set_visible(False)
+    ax1.spines['right'].set_visible(False)
+    ax2.spines['top'].set_visible(False)
+    ax2.spines['right'].set_visible(False)
 
     ax1.spines['bottom'].set_visible(False)
     ax2.spines['top'].set_visible(False)
-    ax1.xaxis.tick_top()
+    ax1.xaxis.tick_bottom()
+    ax1.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False)
     ax1.tick_params(labeltop=False)
-    ax2.xaxis.tick_bottom()
+    #ax2.xaxis.tick_bottom()
 
-    colors = {'LTO': 'xkcd:azure', 'ThinLTO': 'tab:orange'}
+    colors = {'LTO': 'xkcd:azure', 'ThinLTO': 'darksalmon'}
     edgecolors = {'LTO': 'black', 'ThinLTO': 'black'}
     x = np.arange(len(improvement.index))
     for col in improvement.columns:
         offset = width * multiplier
-        rects = ax1.bar(x + offset, improvement[col], width, clip_on=False, color=colors[col], label=col, edgecolor='black', linewidth=2, align='edge')
-        ax2.bar(x + offset, improvement[col], width, label=col, color=colors[col], edgecolor='black', linewidth=2, align='edge')
+        rects = ax1.bar(x + offset, improvement[col], width, clip_on=False, color=colors[col], label=col, edgecolor='black', linewidth=1, align='edge')
+        ax2.bar(x + offset, improvement[col], width, label=col, color=colors[col], edgecolor='black', linewidth=1, align='edge')
         multiplier += 1
 
     fontsize = 20
-    ax1.set_ylim(10, 90)
-    ax2.set_ylim(-1, 4)
-    ax2.set_ylabel('Performance Improvement', labelpad=10, fontsize=fontsize, y=1.0)
+    ax1.set_ylim(60, 90)
+    ax2.set_ylim(-1, 20)
+    ax2.set_ylabel('', labelpad=10, fontsize=fontsize, y=0.7)
     ax2.set_xticks(x + width, improvement.index, fontsize=fontsize)
     ax1.set_title('Run-time Performance', fontsize=fontsize)
 
@@ -96,19 +102,14 @@ def main():
     leg = plt.legend()
     kwargs = dict(marker=[(-1, -d), (1, d)], markersize=18.5,
               linestyle="none", color='k', mec='k', mew=2, clip_on=False)
-    ax1.plot([0, 1], [0, 0], transform=ax1.transAxes, **kwargs)
     ax1.plot([0, 0.468], [0, 0], transform=ax1.transAxes, **kwargs)
-    ax1.plot([0, 0.184], [0, 0], transform=ax1.transAxes, **kwargs)
     ax1.plot([0, 0.44], [0, 0], transform=ax1.transAxes, **kwargs)
-    ax1.plot([0, 0.155], [0, 0], transform=ax1.transAxes, **kwargs)
-    ax2.plot([0, 1], [1, 1], transform=ax2.transAxes, **kwargs)
-    ax2.plot([0.468, 1], [1, 1], transform=ax2.transAxes, **kwargs)
-    ax2.plot([0.184, 1], [1, 1], transform=ax2.transAxes, **kwargs)
-    ax2.plot([0.44, 1], [1, 1], transform=ax2.transAxes, **kwargs)
-    ax2.plot([0.155, 1], [1, 1], transform=ax2.transAxes, **kwargs)
+    ax2.plot([0], [1], transform=ax2.transAxes, **kwargs)
+    ax2.plot([0.468], [1], transform=ax2.transAxes, **kwargs)
+    ax2.plot([0.44], [1], transform=ax2.transAxes, **kwargs)
     ax2.get_legend().remove()
     plt.show()
-    plt.savefig("runtime.pdf")
+    plt.savefig("runtime.tocrop.pdf")
 
 if __name__ == "__main__":
     main()

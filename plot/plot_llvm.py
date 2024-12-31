@@ -72,7 +72,7 @@ if __name__ == "__main__":
 
     fig.subplots_adjust(hspace=0.3, wspace=0.4, bottom=0.26, top=0.82)
 
-    thin_bar_color = "tab:orange"
+    thin_bar_color = "darksalmon"
     thin_edge_color = 'black'
     lto_bar_color = 'xkcd:azure'
     lto_edge_color = 'black'

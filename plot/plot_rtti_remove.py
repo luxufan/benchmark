@@ -185,7 +185,7 @@ def main():
     #ax.tick_params(axis='x', labelrotation=18)
     plt.setp(ax1.xaxis.get_majorticklabels(), rotation=30, ha='right', rotation_mode='anchor')
     plt.setp(ax2.xaxis.get_majorticklabels(), rotation=30, ha='right', rotation_mode='anchor')
-    plt.savefig('opt_rtti_vtable.pdf')
+    plt.savefig('rtti_remove.pdf')
 
     #
     df = pd.DataFrame()

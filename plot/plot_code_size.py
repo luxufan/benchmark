@@ -57,8 +57,8 @@ def main():
     if config.verbose:
         print(improvement)
 
-    colors = {'LTO': 'xkcd:azure', 'ThinLTO': 'tab:orange'}
-    edgecolors = {'LTO': 'black', 'ThinLTO': 'black'}
+    colors = {'LTO': 'xkcd:azure', 'ThinLTO': 'darksalmon'}
+    edgecolors = {'LTO': 'darkblue', 'ThinLTO': 'black'}
     width = 0.3
     multiplier = 0
     plt.rcParams.update({'font.size': 18})
@@ -69,6 +69,8 @@ def main():
         spine.set_color('xkcd:almost black')
         spine.set_linewidth(1.5)
 
+    ax1.spines['top'].set_visible(False)
+    ax1.spines['right'].set_visible(False)
     ax1.set_title("Code Size")
     x = np.arange(len(improvement.index))
     kwargs = dict(linewidth=1.8, edgecolor='black', visible=True)
@@ -80,7 +82,7 @@ def main():
 
     fontsize = 20
     ax1.set_ylim(0, 6)
-    ax1.set_ylabel('Size Reduction', fontsize=fontsize)
+    ax1.set_ylabel('', fontsize=fontsize)
     ax1.set_xticks(x + width/2, improvement.index, fontsize=fontsize)
     ax1.tick_params(axis='x', labelrotation=20)
     # add percentage symbol to y ticks
@@ -90,7 +92,7 @@ def main():
     ax1.legend(loc="upper right", ncols=2, fontsize="20")
     d = .5
     plt.show()
-    plt.savefig(metrics[0].replace(".", "_") + ".pdf")
+    plt.savefig("codesize.tocrop.pdf")
 
 if __name__ == "__main__":
     main()
