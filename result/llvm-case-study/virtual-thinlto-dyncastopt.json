@@ -12,7 +12,7 @@
             "metrics": {
                 "size": 52882432,
                 "test_memory": 1711888.0,
-                "test_time": 204.07,
+                "test_time": 205.060,
                 "compile_memory": 4249192,
                 "compile_time": 5308.42,
                 "SLP.NumVectorInstructions": 13281,
