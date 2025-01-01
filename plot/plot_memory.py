@@ -55,7 +55,7 @@ def main():
     improvement.insert(1, "ThinLTO", thin_improvement, allow_duplicates=True)
     improvement = improvement.round(2)
 
-    colors = {'LTO': 'xkcd:azure', 'ThinLTO': 'tab:orange'}
+    colors = {'LTO': 'xkcd:azure', 'ThinLTO': 'darksalmon'}
     edgecolors = {'LTO': 'darkblue', 'ThinLTO': 'black'}
     width = 0.3
     multiplier = 0

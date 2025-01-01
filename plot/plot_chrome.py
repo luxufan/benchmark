@@ -225,4 +225,4 @@ if __name__ == "__main__":
     ax4.tick_params(axis='x', labelrotation=20)
     ax4.legend(bars, ['LTO', 'ThinLTO'], loc='lower right', ncols=1, fontsize='17', bbox_to_anchor=(2, 0.3))
     plt.setp(ax4.xaxis.get_majorticklabels(), rotation=15, ha='right', rotation_mode='anchor', fontsize=17)
-    plt.savefig("chrome.pdf")
+    plt.savefig("chrome.tocrop.pdf")

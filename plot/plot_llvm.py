@@ -47,6 +47,7 @@ if __name__ == "__main__":
 
     thinlto_time = [gettime(i) for i in [args.poly_thinlto, args.virtual_thinlto, args.virtual_thinlto_dyncastopt, args.diff_thinlto, args.diff_thinlto_dyncastopt]]
     thinlto_time = [(i - gettime(args.origin_thinlto)) / gettime(args.origin_thinlto) * 100 for i in thinlto_time]
+    print(thinlto_time)
     lto_time = [gettime(i) for i in [args.poly_fulllto, args.virtual_fulllto, args.virtual_fulllto_dyncastopt, args.diff_fulllto, args.diff_fulllto_dyncastopt]]
     lto_time = [(i - gettime(args.origin_fulllto)) / gettime(args.origin_fulllto) * 100 for i in lto_time]
 
@@ -79,9 +80,9 @@ if __name__ == "__main__":
 
 
     ax1.set_title("Run time overhead", y=1.15, fontsize=18)
-    ax1.text(0.5, 25.5, '>350%')
-    ax1.text(2.6, 25.5, '>550%')
-    ax1.set_ylim(0, 25)
+    ax1.text(0.5, 30.5, '>350%')
+    ax1.text(2.6, 30.5, '>550%')
+    ax1.set_ylim(0, 30)
     rects = ax1.bar(x, lto_time, width, edgecolor=lto_edge_color, linewidth=1.5, color=lto_bar_color)
     ax1.bar(x + width, thinlto_time, width, edgecolor=thin_edge_color, linewidth=1.5, color=thin_bar_color)
 
@@ -119,4 +120,4 @@ if __name__ == "__main__":
     ax3.tick_params(axis='x', labelrotation=15)
     plt.setp(ax3.xaxis.get_majorticklabels(), rotation=25, ha='right', rotation_mode='anchor', fontsize=17)
 
-    plt.savefig("llvm.pdf")
+    plt.savefig("llvm.tocrop.pdf")

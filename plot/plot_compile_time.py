@@ -86,7 +86,7 @@ def main():
         multiplier += 1
 
     fontsize = 20
-    ax1.set_ylim(-0.5, 6)
+    ax1.set_ylim(-0.5, 5)
     ax1.set_ylabel('', fontsize=fontsize)
     ax1.set_xticks(x + width/2, improvement.index, fontsize=fontsize)
     ax1.tick_params(axis='x', labelrotation=20)
