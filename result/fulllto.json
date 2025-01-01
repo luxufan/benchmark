@@ -846,7 +846,7 @@
                 "test_memory": 1706384.0,
                 "test_time": 1099.34,
                 "compile_memory": 4276620,
-                "compile_time": 5852.14,
+                "compile_time": 5190.14,
                 "SLP.NumVectorInstructions": 1040,
                 "aa.NumMayAlias": 5170431,
                 "aa.NumMustAlias": 983373,

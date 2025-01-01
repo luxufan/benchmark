@@ -1000,7 +1000,7 @@
                 "test_memory": 1711476.0,
                 "test_time": 1083.06,
                 "compile_memory": 4283660,
-                "compile_time": 5928.26,
+                "compile_time": 5316.26,
                 "SLP.NumVectorInstructions": 13275,
                 "aa.NumMayAlias": 6943786,
                 "aa.NumMustAlias": 1148203,
