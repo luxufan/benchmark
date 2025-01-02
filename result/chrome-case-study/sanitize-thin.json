@@ -11,9 +11,9 @@
             "elapsed": 0.0,
             "metrics": {
                 "size": 1910072704,
-                "test_memory": 323204.0,
-                "test_throughput": 409176.985,
-                "test_time": 3164.482,
+                "test_memory": 322148.8,
+                "test_throughput": 404455.051,
+                "test_time": 3181.524,
                 "compile_memory": 24002448,
                 "compile_time": 190097.94,
                 "SLP.NumVectorInstructions": 136067,
