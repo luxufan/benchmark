@@ -21,7 +21,7 @@ THIN_LDFLAGS='-O2 -flto=thin -fuse-ld=lld -save-stats=obj -Wl,--lto-whole-progra
 LTO_OPT_FLAGS='-O2 -flto -fwhole-program-vtables -fvisibility=hidden'
 LTO_OPT_LDFLAGS='-O2 -flto -fuse-ld=lld -save-stats=obj -Wl,--lto-whole-program-visibility'
 LTO_FLAGS='-O2 -flto -fwhole-program-vtables -fvisibility=hidden -Wl,--plugin-opt=-enable-dyncastopt=false'
-LTO_LDFLAGS='-O2 -flto -fuse-ld=lld -save-stats=obj -Wl,--lto-whole-program-visibility -Wl,--plugin-opt=-enable-dyncastopt=false'
+LTO_LDFLAGS="$LTO_OPT_LDFLAGS -Wl,--plugin-opt=-enable-dyncastopt=false"
 export PATH="${HOME}/benchmark/test-suites/chromium/depot_tools:$PATH"
 
 if [ $# -eq 0 ]
@@ -358,7 +358,7 @@ function build_llvm {
 	mkdir $PWDDIR/out/llvm/temp
 	cd $_
 	local flags="$cflags $ldflags"
-	cmake $PWDDIR/test-suites/llvm-project/llvm -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=$LLVM_CASE_STUDY_CLANGXX -DCMAKE_C_COMPILER=$LLVM_CASE_STUDY_CLANG -G Ninja -DLLVM_ENABLE_RTTI=ON -DLLVM_TARGETS_TO_BUILD=X86 -DCMAKE_CXX_FLAGS="$flags" -DCMAKE_C_FLAGS="$flags"
+	cmake $PWDDIR/test-suites/llvm-project/llvm -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=$CLANGXX -DCMAKE_C_COMPILER=$CLANG -G Ninja -DLLVM_ENABLE_RTTI=ON -DLLVM_TARGETS_TO_BUILD=X86 -DCMAKE_CXX_FLAGS="$flags" -DCMAKE_C_FLAGS="$flags"
 	/usr/bin/time -v ninja opt 2> time.log
 	cp $PWDDIR/out/llvm/temp/bin/opt $PWDDIR/out/llvm/$1
 	cp $PWDDIR/out/llvm/temp/bin/NewPMDriver.cpp.stats $PWDDIR/out/llvm/$1/opt.stats
@@ -454,7 +454,7 @@ function test_chrome {
 	local total_time=0
 	local total_memory=0
 	local total_throughput=0
-	for i in {0..0}
+	for i in {0..4}
 	do
 		/usr/bin/time -v xvfb-run -s "-screen 0 1024x768x24" $PWDDIR/test-suites/chromium/chromium/src/tools/perf/run_benchmark blink_perf.css --browser=exact --browser-executable=$PWDDIR/test-suites/chromium/chromium/src/out/$1/chrome --extra-browser-args="--no-sandbox --disable-dev-shm-usage --disable-gpu" --results-label="$1" --output-format=json-test-results 2> test.log
 		$PWDDIR/chrome_run_time.py $PWDDIR/test-suites/chromium/chromium/src/tools/perf/test-results.json > result.txt
@@ -466,9 +466,9 @@ function test_chrome {
 		total_memory=$(echo "$total_memory + $test_memory" | bc)
 	done
 	
-	local avg_time=$(printf %.3f $(echo "$total_time / 1" | bc -l))
-	local avg_throughput=$(printf %.3f $(echo "$total_throughput / 1" | bc -l))
-	local avg_mem=$(printf %.3f $(echo "$total_memory / 1" | bc -l))
+	local avg_time=$(printf %.3f $(echo "$total_time / 5" | bc -l))
+	local avg_throughput=$(printf %.3f $(echo "$total_throughput / 5" | bc -l))
+	local avg_mem=$(printf %.3f $(echo "$total_memory / 5" | bc -l))
 
 	insert_test_time "$avg_time" $PWDDIR/out/chromium/$1/chrome.stats
 	insert_test_throughput "$avg_throughput" $PWDDIR/out/chromium/$1/chrome.stats
@@ -538,7 +538,7 @@ do
 		for version in "${version_to_build[@]}"
 		do 
 			echo "Building povray $version"
-			build_povray $version 2&>1 > /dev/null
+			build_povray $version
 			retcode=$(echo $?)
 			if [ "$retcode" != 0 ] ; then
 				echo "Failed!"
@@ -578,7 +578,7 @@ do
 		for version in "${version_to_build[@]}"
 		do
 			echo "Building blender $version"
-			build_blender $version 2&>1 > /dev/null
+			build_blender $version
 			retcode=$(echo $?)
 			if [ "$retcode" != 0 ] ; then
 				echo "Failed!"
@@ -588,17 +588,24 @@ do
 		for version in "${version_to_build[@]}"
 		do
 			echo "Building spec2006 $version"
-			build_spec $version 2&>1 > /dev/null
+			build_spec $version
 			retcode=$(echo $?)
 			if [ "$retcode" != 0 ] ; then
 				echo "Failed!"
 			fi
 		done;;
 		llvm)
+		cd $PWDDIR/test-suites/llvm-project
+		git checkout llvm-case-study-diff
+		cd $PWDDIR/toolchain/llvm-project
+		git checkout llvm-case-study-opt-with-rtti-clean
+		cd build-release
+		ninja clang lld
+		cd $PWDDIR
 		for version in "${version_to_build[@]}"
 		do 
 			echo "Building llvm $version"
-			build_llvm $version 2&>1 > /dev/null
+			build_llvm $version "-Wl,-plugin-opt=-enable-dyncastopt=true"
 			retcode=$(echo $?)
 			if [ "$retcode" != 0 ] ; then
 				echo "Failed!"
@@ -618,7 +625,7 @@ do
 		for version in "${version_to_build[@]}"
 		do
 			echo "Building chrome $version"
-			#build_chrome $version $version args.gn 2&>1 > /dev/null
+			build_chrome $version $version args.gn
 			retcode=$(echo $?)
 			if [ "$retcode" != 0 ] ; then
 				echo "Failed!"
@@ -676,89 +683,104 @@ done
 
 function chrome_case_study_move_stats {
 	./statscombiner.py $PWDDIR/out/chromium/$1/chrome.stats
-	mv result.json $PWDDIR/result/chrome_case_study/$1.json
+	mv result.json $PWDDIR/result/chrome-case-study/$1.json
 }
 
 function llvm_move_stats {
 	./statscombiner.py $PWDDIR/out/llvm/$1/opt.stats
-	mv result.json $PWDDIR/result/llvm_case_study/$1.json
+	mv result.json $PWDDIR/result/llvm-case-study/$1.json
 }
 
 if [ "$chrome_case_study" = true ] ; then
-	build_chrome origin-thin origin-thin args.gn
-	build_chrome origin-lto origin-lto args.gn
-	build_chrome sanitize-thin sanitize-thin args-sanitize.gn
-	build_chrome sanitize-lto sanitize-lto args-sanitize.gn
-	test_chrome sanitize-thin
-	test_chrome origin-thin
-	test_chrome sanitize-lto
-	test_chrome origin-lto
+#	cd $PWDDIR/toolchain/llvm-project
+#	git checkout dyncastopt-nortticlean
+#	cd build-release
+#	ninja clang lld
+#
+#	build_chrome thinlto-case thinlto args.gn
+#	build_chrome thinlto-dyncastopt-case thinlto-dyncastopt args.gn
+#	build_chrome fulllto-case fulllto args.gn
+#	build_chrome fulllto-dyncastopt-case fulllto-dyncastopt args.gn
+#	build_chrome origin-thin origin-thin args.gn
+#	build_chrome origin-lto origin-lto args.gn
+#	build_chrome sanitize-thin sanitize-thin args-sanitize.gn
+#	build_chrome sanitize-lto sanitize-lto args-sanitize.gn
+#	test_chrome sanitize-thin
+#	test_chrome origin-thin
+#	test_chrome sanitize-lto
+#	test_chrome origin-lto
+#	test_chrome thinlto-case
+#	test_chrome thinlto-dyncastopt-case
+#	test_chrome fulllto-case
+#	test_chrome fulllto-dyncastopt-case
 
-	mkdir $PWDDIR/result/chrome_case_study
+	cd $PWDDIR
+	mkdir $PWDDIR/result/chrome-case-study
 	chrome_case_study_move_stats sanitize-thin
 	chrome_case_study_move_stats origin-thin
 	chrome_case_study_move_stats sanitize-lto
 	chrome_case_study_move_stats origin-lto
-	chrome_case_study_move_stats thinlto
-	chrome_case_study_move_stats thinlto-dyncastopt
-	chrome_case_study_move_stats fulllto
-	chrome_case_study_move_stats fulllto-dyncastopt
+	chrome_case_study_move_stats thinlto-case
+	chrome_case_study_move_stats thinlto-dyncastopt-case
+	chrome_case_study_move_stats fulllto-case
+	chrome_case_study_move_stats fulllto-dyncastopt-case
 fi
 
 if [ "$llvm_case_study" = true ] ; then
 	cd $PWDDIR/toolchain/llvm-project
-	git checkout dyncastopt
+	git checkout dyncastopt-nortticlean
 	cd build-release
 	ninja clang lld
-
-	cd $PWDDIR/test-suites/llvm-project
-	git checkout poly
-	build_llvm poly-thinlto
-	build_llvm poly-fulllto
-
-	cd $PWDDIR/test-suites/llvm-project
-	git checkout origin
-	build_llvm origin-thinlto
-	build_llvm origin-fulllto
-
-	cd $PWDDIR/test-suites/llvm-project
-	git checkout virtual
-	build_llvm virtual-thinlto
-	build_llvm virtual-thinlto-dyncastopt
-	build_llvm virtual-fulllto
-	build_llvm virtual-fulllto-dyncastopt
-
-	cd $PWDDIR/test-suites/llvm-project
-	git checkout llvm-case-study-diff
-	cd -
-	cd $PWDDIR/toolchain/llvm
-	git checkout llvm-case-study-opt
-	cd build-release
-	ninja clang lld
-	build_llvm thinlto-dyncastopt
-	build_llvm fulllto-dyncastopt
-
-	cd $PWDDIR/toolchain/llvm
-	git checkout llvm-case-study-no-opt
-	cd build-release
-	ninja clang lld
-	build_llvm thinlto "-Wl,--plugin-opt=-enable-dyncastopt=true"
-	build_llvm fulllto "-Wl,--plugin-opt=-enable-dyncastopt=true"
-
-	test_llvm thinlto
-	test_llvm thinlto-dyncastopt
-	test_llvm fulllto
-	test_llvm fulllto-dyncastopt
+#
+#	cd $PWDDIR/test-suites/llvm-project
+#	git checkout poly
+#	build_llvm poly-thinlto
+#	build_llvm poly-fulllto
+#
+#	cd $PWDDIR/test-suites/llvm-project
+#	git checkout origin
+#	build_llvm origin-thinlto
+#	build_llvm origin-fulllto
+#
+#	cd $PWDDIR/test-suites/llvm-project
+#	git checkout virtual
+#	build_llvm virtual-thinlto
+#	build_llvm virtual-thinlto-dyncastopt
+#	build_llvm virtual-fulllto
+#	build_llvm virtual-fulllto-dyncastopt
+#
+#	cd $PWDDIR/test-suites/llvm-project
+#	git checkout llvm-case-study-diff
+#	cd -
+#	cd $PWDDIR/toolchain/llvm-project
+#	git checkout llvm-case-study-opt
+#	cd build-release
+#	ninja clang lld
+#	build_llvm thinlto-dyncastopt
+#	build_llvm fulllto-dyncastopt
+#
+#	cd $PWDDIR/toolchain/llvm-project
+#	git checkout llvm-case-study-no-opt
+#	cd build-release
+#	ninja clang lld
+#	build_llvm thinlto "-Wl,--plugin-opt=-enable-dyncastopt=true"
+#	build_llvm fulllto "-Wl,--plugin-opt=-enable-dyncastopt=true"
+#
+#	test_llvm thinlto
+#	test_llvm thinlto-dyncastopt
+#	test_llvm fulllto
+#	test_llvm fulllto-dyncastopt
 	test_llvm virtual-thinlto
-	test_llvm virtual-thinlto-dyncastopt
+#	test_llvm virtual-thinlto-dyncastopt
 	test_llvm virtual-fulllto
-	test_llvm virtual-fulllto-dyncastopt
-	test_llvm poly-thinlto
-	test_llvm poly-fulllto
-	test_llvm origin-thinlto
-	test_llvm origin-fulllto
+#	test_llvm virtual-fulllto-dyncastopt
+#	test_llvm poly-thinlto
+#	test_llvm poly-fulllto
+#	test_llvm origin-thinlto
+#	test_llvm origin-fulllto
 
-	mkdir $PWDDIR/result/llvm_case_study
+#	mkdir $PWDDIR/result/llvm-case-study
+	cd $PWDDIR
 	llvm_move_stats thinlto
 	llvm_move_stats thinlto-dyncastopt
 	llvm_move_stats fulllto

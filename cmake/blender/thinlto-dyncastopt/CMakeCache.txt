@@ -156,7 +156,7 @@ CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS:FILEPATH=/home/tester/benchmark/toolchain/llv
 CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/usr/bin/llvm-ranlib-18
 
 //Flags used by the CXX compiler during all build types.
-CMAKE_CXX_FLAGS:STRING=-fvisibility=hidden -flto=thin -fuse-ld=lld -Wl,--lto-whole-program-visibility -Wl,--undefined-version -save-stats=obj -Wl,--plugin-opt=-enable-dyncastopt=true -fsplit-lto-unit
+CMAKE_CXX_FLAGS:STRING=-fvisibility=hidden -flto=thin -fuse-ld=lld -Wl,--lto-whole-program-visibility -Wl,--undefined-version -save-stats=obj -fno-split-lto-unit
 
 //Flags used by the CXX compiler during DEBUG builds.
 CMAKE_CXX_FLAGS_DEBUG:STRING=-g
@@ -182,7 +182,7 @@ CMAKE_C_COMPILER_CLANG_SCAN_DEPS:FILEPATH=/home/tester/benchmark/toolchain/llvm-
 CMAKE_C_COMPILER_RANLIB:FILEPATH=/usr/bin/llvm-ranlib-18
 
 //Flags used by the C compiler during all build types.
-CMAKE_C_FLAGS:STRING=-flto=thin -fuse-ld=lld -Wl,--lto-whole-program-visibility -Wl,--undefined-version -save-stats=obj -fvisibility=hidden -Wl,--plugin-opt=-enable-dyncastopt=true -fsplit-lto-unit
+CMAKE_C_FLAGS:STRING=-flto=thin -fuse-ld=lld -Wl,--lto-whole-program-visibility -Wl,--undefined-version -save-stats=obj -fvisibility=hidden -fno-split-lto-unit
 
 //Flags used by the C compiler during DEBUG builds.
 CMAKE_C_FLAGS_DEBUG:STRING=-g
