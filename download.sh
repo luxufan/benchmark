@@ -5,6 +5,7 @@ set -e  # Exit immediately if a command fails
 # Define repositories and their specific commit hashes
 declare -A repos=(
     ["z3"]="https://github.com/Z3Prover/z3.git d7931b93425e5db3dbd0366f1dbdb843313f3fb4"
+    ["solidity"]="https://github.com/ethereum/solidity.git 90c0fbb2eaafae95fae7785e4de5dfb43d5ddce3"
 )
 
 # Define repositories that require extra setup commands
