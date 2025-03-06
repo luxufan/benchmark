@@ -548,7 +548,7 @@ do
 		for version in "${version_to_build[@]}"
 		do
 			echo "Building solidity $version"
-			build_solidity $version 2&>1 > /dev/null
+			build_solidity $version
 			retcode=$(echo $?)
 			if [ "$retcode" != 0 ] ; then
 				echo "Failed!"
@@ -558,7 +558,7 @@ do
 		for version in "${version_to_build[@]}"
 		do
 			echo "Building z3 $version"
-			build_z3 $version 2&>1 > /dev/null
+			build_z3 $version
 			retcode=$(echo $?)
 			if [ "$retcode" != 0 ] ; then
 				echo "Failed!"
@@ -568,7 +568,7 @@ do
 		for version in "${version_to_build[@]}"
 		do
 			echo "Building envoy $version"
-			build_envoy $version 2&>1 > /dev/null
+			build_envoy $version
 			retcode=$(echo $?)
 			if [ "$retcode" != 0 ] ; then
 				echo "Failed!"
