@@ -1,33 +1,51 @@
-BASEDIR=$(dirname $0)
-mkdir $BASEDIR/test-suites
-mkdir $BASEDIR/toolchain
+#!/bin/bash
 
-# Download llvm project
-git clone git@github.com:luxufan/llvm.git $BASEDIR/toolchain/llvm-project
+set -e  # Exit immediately if a command fails
 
-# Download chromium
-git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git $BASEDIR/test-suites/chromium/depot_tools
+# Define repositories and their specific commit hashes
+declare -A repos=(
+    ["z3"]="https://github.com/Z3Prover/z3.git d7931b93425e5db3dbd0366f1dbdb843313f3fb4"
+)
 
-export PATH="$(realpath "$BASEDIR/test-suites/chromium/depot_tools"):$PATH"
+# Define repositories that require extra setup commands
+declare -A extra_commands=(
+#    ["repo2"]="make setup"
+#    ["repo3"]="./configure && make"
+)
 
-mkdir $BASEDIR/test-suites/v8
-cd $BASEDIR/test-suites/v8
-fetch v8
+# Set base directory for cloning repositories
+base_dir=$HOME/benchmark/test-suites
+mkdir -p "$base_dir"
 
-#mkdir $BASEDIR/test-suites/chromium
-#cd $BASEDIR/test-suites/chromium
-#mkdir chromium && cd chromium
-#fetch --nohooks chromium
-##
-## Download envoy
-#git clone -b release/v1.31 git@github.com:envoyproxy/envoy.git $BASEDIR/test-suites/envoy
-#git clone git@github.com:luxufan/envoy-perf.git $BASEDIR/test-suites/envoy-perf
-#
-## Download blender
-##
-#git clone -b blender-v4.2-release git@github.com:blender/blender.git $BASEDIR/test-suites/blender
-#test-suites/blender/build_files/build_environment/install_linux_packages.py
-##
-## Download llvm-test-suite
-#
-#git clone git@github.com:llvm/llvm-test-suite.git $BASEDIR/test-suites/llvm-test-suite
+for repo_name in "${!repos[@]}"; do
+    repo_info=(${repos[$repo_name]})
+    repo_url=${repo_info[0]}
+    commit_hash=${repo_info[1]}
+    
+    repo_dir="$base_dir/$repo_name"
+    
+    if [ ! -d "$repo_dir" ]; then
+        echo "Cloning $repo_name..."
+        git clone "$repo_url" "$repo_dir"
+    else
+        echo "$repo_name already exists. Skipping clone..."
+    fi
+
+    cd "$repo_dir"
+
+    echo "Checking out commit $commit_hash..."
+    git fetch origin
+    git checkout "$commit_hash"
+
+    # Run extra setup commands if needed
+    if [[ -n "${extra_commands[$repo_name]}" ]]; then
+        echo "Running extra setup for $repo_name..."
+        eval "${extra_commands[$repo_name]}"
+    fi
+
+    echo "$repo_name is ready at commit $commit_hash."
+    cd "$base_dir"
+done
+
+echo "All repositories have been checked out successfully!"
+
