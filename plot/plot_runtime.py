@@ -50,6 +50,9 @@ def main():
 
     improvement.iloc[3] = -improvement.iloc[3]
 
+    improvement.drop('Chromium', inplace=True)
+    improvement.drop('LLVM', inplace=True)
+
     if config.verbose:
         print(improvement)
 
@@ -57,57 +60,36 @@ def main():
     multiplier = 0
     plt.rcParams.update({'font.size': 14})
 
-    fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(12, 6), height_ratios=[1, 3])
-    fig.subplots_adjust(hspace=0.10)
-    fig.subplots_adjust(bottom=0.15)
+    fig, ax2 = plt.subplots(1, 1, figsize=(9, 5))
 
-    ax1.spines['top'].set_visible(False)
-    ax1.spines['right'].set_visible(False)
     ax2.spines['top'].set_visible(False)
     ax2.spines['right'].set_visible(False)
-
-    ax1.spines['bottom'].set_visible(False)
-    ax2.spines['top'].set_visible(False)
-    ax1.xaxis.tick_bottom()
-    ax1.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False)
-    ax1.tick_params(labeltop=False)
-    #ax2.xaxis.tick_bottom()
+    fig.subplots_adjust(hspace=0.08, bottom=0.2)
 
     colors = {'LTO': 'xkcd:azure', 'ThinLTO': 'darksalmon'}
     edgecolors = {'LTO': 'black', 'ThinLTO': 'black'}
     x = np.arange(len(improvement.index))
     for col in improvement.columns:
         offset = width * multiplier
-        rects = ax1.bar(x + offset, improvement[col], width, clip_on=False, color=colors[col], label=col, edgecolor='black', linewidth=1, align='edge')
         ax2.bar(x + offset, improvement[col], width, label=col, color=colors[col], edgecolor='black', linewidth=1, align='edge')
         multiplier += 1
 
     fontsize = 20
-    ax1.set_ylim(60, 90)
-    ax2.set_ylim(-1, 20)
+    ax2.set_ylim(-1, 6)
     ax2.set_ylabel('', labelpad=10, fontsize=fontsize, y=0.7)
     ax2.set_xticks(x + width, improvement.index, fontsize=fontsize)
-    ax1.set_title('Run-time Performance', fontsize=fontsize)
+    ax2.set_title('Run-time Performance', fontsize=fontsize)
 
     # set y labels
     vals = ax2.get_yticks()
     ax2.set_yticklabels(['{0}%'.format(round(x)) for x in vals], fontsize=18)
-    vals = ax1.get_yticks()
-    ax1.set_yticklabels(['{0}%'.format(round(x)) for x in vals], fontsize=18)
 
     ax2.tick_params(axis='x', labelrotation=18)
 
-    ax1.legend(loc="upper right", ncols=2, fontsize=17)
     d = .5
-    leg = plt.legend()
+    leg = plt.legend(loc='upper left')
     kwargs = dict(marker=[(-1, -d), (1, d)], markersize=18.5,
               linestyle="none", color='k', mec='k', mew=2, clip_on=False)
-    ax1.plot([0, 0.468], [0, 0], transform=ax1.transAxes, **kwargs)
-    ax1.plot([0, 0.44], [0, 0], transform=ax1.transAxes, **kwargs)
-    ax2.plot([0], [1], transform=ax2.transAxes, **kwargs)
-    ax2.plot([0.468], [1], transform=ax2.transAxes, **kwargs)
-    ax2.plot([0.44], [1], transform=ax2.transAxes, **kwargs)
-    ax2.get_legend().remove()
     plt.show()
     plt.savefig("runtime.tocrop.pdf")
 
