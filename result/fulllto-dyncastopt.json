@@ -1001,7 +1001,7 @@
                 "dyncastopt.NumMoreThanThreeCandidates": 26,
                 "dyncastopt.NumNullPtr": 4,
                 "dyncastopt.NumOptDynCast": 13934,
-                "dyncastopt.NumRangeCheck": 806,
+                "dyncastopt.NumRangeCheck": 1742,
                 "dyncastopt.NumSpeculatableAddress": 12192,
                 "dyncastopt.NumThreeCandidates": 889,
                 "dyncastopt.NumTwoCandidates": 639,

@@ -158,7 +158,7 @@ if __name__ == "__main__":
     fontsize = 17
     x = np.arange(3)
 
-    thin_bar_color = "tab:orange"
+    thin_bar_color = "darksalmon"
     thin_edge_color = 'black'
     lto_bar_color = 'xkcd:azure'
     lto_edge_color = 'black'
