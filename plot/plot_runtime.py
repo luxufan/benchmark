@@ -19,8 +19,8 @@ def main():
                         help="Base fulllto file")
     parser.add_argument("compare_full",
                         help="Compare fulllto file")
-    rename_map = {'blender': 'Blender', 'chrome': 'Chromium', 'povray': 'POV-Ray', 'solc':'Solidity', 'envoy-static':'Envoy', 'opt':'LLVM', '471.omnetpp':'OMNeT++', '447.dealII':'deal.II', 'd8':'V8', 'z3':'Z3'}
-    rows = ['Blender', 'Chromium', 'deal.II', 'Envoy', 'LLVM', 'OMNeT++', 'POV-Ray', 'Solidity', 'V8', 'Z3']
+    rename_map = {'blender': 'Blender', 'chrome': 'Chromium', 'povray': 'POV-Ray', 'solc':'Solidity', 'envoy-static':'Envoy', 'opt':'LLVM', '471.omnetpp':'OMNeT++', '447.dealII':'deal.II', 'd8':'V8-M', 'z3':'Z3'}
+    rows = ['Blender', 'Chromium', 'deal.II', 'Envoy', 'LLVM', 'OMNeT++', 'POV-Ray', 'Solidity', 'V8-M', 'Z3']
     config = parser.parse_args()
     base_thin_data = read(config.base_thin)
     base_thin_data.rename(index=rename_map, inplace=True)

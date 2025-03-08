@@ -22,8 +22,8 @@ def main():
     candidates = stats[col_names]
     nan_index = np.isnan(candidates)
     candidates[nan_index] = 0
-    rename_map = {'blender': 'Blender', 'chrome': 'Chromium', 'povray': 'POV-Ray', 'solc':'Solidity', 'envoy-static':'Envoy', 'opt':'LLVM', '471.omnetpp':'OMNeT++', '447.dealII':'deal.II', 'd8':'V8', 'z3':'Z3'}
-    rows = ['Blender', 'Chromium', 'deal.II', 'Envoy', 'LLVM', 'OMNeT++', 'POV-Ray', 'Solidity', 'V8', 'Z3']
+    rename_map = {'blender': 'Blender', 'chrome': 'Chromium-M', 'povray': 'POV-Ray', 'solc':'Solidity', 'envoy-static':'Envoy', 'opt':'LLVM-M', '471.omnetpp':'OMNeT++', '447.dealII':'deal.II', 'd8':'V8-M', 'z3':'Z3'}
+    rows = ['Blender', 'Chromium-M', 'deal.II', 'Envoy', 'LLVM-M', 'OMNeT++', 'POV-Ray', 'Solidity', 'V8-M', 'Z3']
     candidates.rename(index=rename_map, inplace=True)
     candidates = candidates.reindex(rows)
     num_dyncasts = stats["dyncastopt.NumDynCast"]
@@ -97,8 +97,8 @@ def main():
           axes_list[i].set_title(testsuite, x=0.32, y=1.0, pad=-20, fontsize=16)
         elif testsuite == 'OMNeT++':
           axes_list[i].set_title(testsuite, x=0.6, y=1.0, pad=-20, fontsize=16)
-        elif testsuite == 'Chromium':
-          axes_list[i].set_title(testsuite, x=0.6, y=1.0, pad=-20, fontsize=16)
+        elif testsuite == 'Chromium-M':
+          axes_list[i].set_title(testsuite, x=0.61, y=1.0, pad=-20, fontsize=16)
         elif testsuite == 'deal.II':
           axes_list[i].set_title(testsuite, x=0.6, y=1.0, pad=-20, fontsize=16)
         else:
@@ -106,7 +106,7 @@ def main():
         axes_list[i].tick_params(axis='x', which='major', pad=3)
 
     plt.show()
-    plt.savefig("profile.pdf")
+    plt.savefig("profile.tocrop.pdf")
 
 if __name__ == "__main__":
     main()

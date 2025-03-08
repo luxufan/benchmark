@@ -20,8 +20,8 @@ def main():
     parser.add_argument("compare_full",
                         help="Compare fulllto file")
 
-    rename_map = {'blender': 'Blender', 'chrome': 'Chromium', 'povray': 'POV-Ray', 'solc':'Solidity', 'envoy-static':'Envoy', 'opt':'LLVM', '471.omnetpp':'OMNeT++', '447.dealII':'deal.II', 'd8':'V8', 'z3':'Z3'}
-    rows = ['Blender', 'Chromium', 'deal.II', 'Envoy', 'LLVM', 'OMNeT++', 'POV-Ray', 'Solidity', 'V8', 'Z3']
+    rename_map = {'blender': 'Blender', 'chrome': 'Chromium', 'povray': 'POV-Ray', 'solc':'Solidity', 'envoy-static':'Envoy', 'opt':'LLVM', '471.omnetpp':'OMNeT++', '447.dealII':'deal.II', 'd8':'V8-M', 'z3':'Z3'}
+    rows = ['Blender', 'Chromium', 'deal.II', 'Envoy', 'LLVM', 'OMNeT++', 'POV-Ray', 'Solidity', 'V8-M', 'Z3']
     config = parser.parse_args()
     base_thin_data = read(config.base_thin)
     base_thin_data.rename(index=rename_map, inplace=True)
@@ -54,13 +54,15 @@ def main():
     improvement.insert(0, "LTO", full_improvement)
     improvement.insert(1, "ThinLTO", thin_improvement, allow_duplicates=True)
     improvement = improvement.round(2)
+    improvement.drop('Chromium', inplace=True)
+    improvement.drop('LLVM', inplace=True)
 
     colors = {'LTO': 'xkcd:azure', 'ThinLTO': 'darksalmon'}
     edgecolors = {'LTO': 'darkblue', 'ThinLTO': 'black'}
     width = 0.3
     multiplier = 0
     plt.rcParams.update({'font.size': 18})
-    fig, ax1 = plt.subplots(figsize=(13, 6.7))
+    fig, ax1 = plt.subplots(figsize=(9, 5))
     fig.subplots_adjust(hspace=0.08, bottom=0.2)
 
     for spine in ax1.spines.values():
@@ -85,7 +87,7 @@ def main():
         multiplier += 1
 
     fontsize = 20
-    ax1.set_ylim(-1, 5)
+    ax1.set_ylim(-1, 4)
     ax1.set_ylabel('', fontsize=fontsize)
     ax1.set_xticks(x + width/2, improvement.index, fontsize=fontsize)
     ax1.tick_params(axis='x', labelrotation=20)
