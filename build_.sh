@@ -210,7 +210,7 @@ function test_z3 {
 ###--------------------------Envoy-----------------------###
 function build_envoy {
 	export PATH="$PWDDIR/toolchain/llvm-project/build-release/bin:$PATH"
-	export PATH="~/bazel-bin:$PATH"
+	export PATH="~/bin:$PATH"
 	local envoy_cflags=$(get_cflags $1)
 	local envoy_ldflags=$(get_ldflags $1)
 	local cflags="--copt=-Wno-error=thread-safety-reference-return --copt=-Wno-error=unused-command-line-argument --copt=-fuse-ld=lld"
@@ -731,48 +731,48 @@ if [ "$llvm_case_study" = true ] ; then
 	git checkout dyncastopt-nortticlean
 	cd build-release
 	ninja clang lld
-#
-#	cd $PWDDIR/test-suites/llvm-project
-#	git checkout poly
-#	build_llvm poly-thinlto
-#	build_llvm poly-fulllto
-#
-#	cd $PWDDIR/test-suites/llvm-project
-#	git checkout origin
-#	build_llvm origin-thinlto
-#	build_llvm origin-fulllto
-#
-#	cd $PWDDIR/test-suites/llvm-project
-#	git checkout virtual
-#	build_llvm virtual-thinlto
-#	build_llvm virtual-thinlto-dyncastopt
-#	build_llvm virtual-fulllto
-#	build_llvm virtual-fulllto-dyncastopt
-#
-#	cd $PWDDIR/test-suites/llvm-project
-#	git checkout llvm-case-study-diff
-#	cd -
-#	cd $PWDDIR/toolchain/llvm-project
-#	git checkout llvm-case-study-opt
-#	cd build-release
-#	ninja clang lld
-#	build_llvm thinlto-dyncastopt
-#	build_llvm fulllto-dyncastopt
-#
-#	cd $PWDDIR/toolchain/llvm-project
-#	git checkout llvm-case-study-no-opt
-#	cd build-release
-#	ninja clang lld
-#	build_llvm thinlto "-Wl,--plugin-opt=-enable-dyncastopt=true"
-#	build_llvm fulllto "-Wl,--plugin-opt=-enable-dyncastopt=true"
+
+	cd $PWDDIR/test-suites/llvm-project
+	git checkout remotes/origin/poly
+	build_llvm poly-thinlto
+	build_llvm poly-fulllto
+
+	cd $PWDDIR/test-suites/llvm-project
+	git checkout remotes/origin/origin
+	build_llvm origin-thinlto
+	build_llvm origin-fulllto
+
+	cd $PWDDIR/test-suites/llvm-project
+	git checkout virtual
+	build_llvm virtual-thinlto
+	build_llvm virtual-thinlto-dyncastopt
+	build_llvm virtual-fulllto
+	build_llvm virtual-fulllto-dyncastopt
+
+	cd $PWDDIR/test-suites/llvm-project
+	git checkout remotes/origin/llvm-case-study-diff
+	cd -
+	cd $PWDDIR/toolchain/llvm-project
+	git checkout remotes/origin/llvm-case-study-opt
+	cd build-release
+	ninja clang lld
+	build_llvm thinlto-dyncastopt
+	build_llvm fulllto-dyncastopt
+
+	cd $PWDDIR/toolchain/llvm-project
+	git checkout remotes/origin/llvm-case-study-no-opt
+	cd build-release
+	ninja clang lld
+	build_llvm thinlto "-Wl,--plugin-opt=-enable-dyncastopt=true"
+	build_llvm fulllto "-Wl,--plugin-opt=-enable-dyncastopt=true"
 #
 #	test_llvm thinlto
 #	test_llvm thinlto-dyncastopt
 #	test_llvm fulllto
 #	test_llvm fulllto-dyncastopt
-	test_llvm virtual-thinlto
+#	test_llvm virtual-thinlto
 #	test_llvm virtual-thinlto-dyncastopt
-	test_llvm virtual-fulllto
+#	test_llvm virtual-fulllto
 #	test_llvm virtual-fulllto-dyncastopt
 #	test_llvm poly-thinlto
 #	test_llvm poly-fulllto
