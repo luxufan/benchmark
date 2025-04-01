@@ -765,21 +765,21 @@ if [ "$llvm_case_study" = true ] ; then
 	ninja clang lld
 	build_llvm thinlto "-Wl,--plugin-opt=-enable-dyncastopt=true"
 	build_llvm fulllto "-Wl,--plugin-opt=-enable-dyncastopt=true"
-#
-#	test_llvm thinlto
-#	test_llvm thinlto-dyncastopt
-#	test_llvm fulllto
-#	test_llvm fulllto-dyncastopt
-#	test_llvm virtual-thinlto
-#	test_llvm virtual-thinlto-dyncastopt
-#	test_llvm virtual-fulllto
-#	test_llvm virtual-fulllto-dyncastopt
-#	test_llvm poly-thinlto
-#	test_llvm poly-fulllto
-#	test_llvm origin-thinlto
-#	test_llvm origin-fulllto
 
-#	mkdir $PWDDIR/result/llvm-case-study
+	test_llvm thinlto
+	test_llvm thinlto-dyncastopt
+	test_llvm fulllto
+	test_llvm fulllto-dyncastopt
+	test_llvm virtual-thinlto
+	test_llvm virtual-thinlto-dyncastopt
+	test_llvm virtual-fulllto
+	test_llvm virtual-fulllto-dyncastopt
+	test_llvm poly-thinlto
+	test_llvm poly-fulllto
+	test_llvm origin-thinlto
+	test_llvm origin-fulllto
+
+	mkdir $PWDDIR/result/llvm-case-study
 	cd $PWDDIR
 	llvm_move_stats thinlto
 	llvm_move_stats thinlto-dyncastopt
