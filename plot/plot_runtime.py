@@ -52,6 +52,9 @@ def main():
 
     improvement.drop('Chromium', inplace=True)
     improvement.drop('LLVM', inplace=True)
+    improvement.drop('V8-M', inplace=True)
+    lto_sum = improvement["LTO"].sum()
+    print(lto_sum / 7)
 
     if config.verbose:
         print(improvement)

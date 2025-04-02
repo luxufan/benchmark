@@ -110,7 +110,7 @@ def main():
     edge_color = 'darkblue'
 
     plt.rcParams.update({'font.size': 22})
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(24, 5))
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 5))
     fig.subplots_adjust(wspace=0.11, hspace=0.1, bottom=0.25)
 
     # Plot with dyncastopt
@@ -197,7 +197,7 @@ def main():
     width = 0.4
     multiplier = 0
     plt.rcParams.update({'font.size': 22})
-    fig, ax = plt.subplots(figsize=(12, 5))
+    fig, ax = plt.subplots(figsize=(9, 5))
     fig.subplots_adjust(bottom=0.25)
 
     x = np.arange(len(improvement.index))

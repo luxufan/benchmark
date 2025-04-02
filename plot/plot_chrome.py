@@ -215,7 +215,7 @@ if __name__ == "__main__":
     ax3.tick_params(axis='x', labelrotation=20)
     plt.setp(ax3.xaxis.get_majorticklabels(), rotation=15, ha='right', rotation_mode='anchor', fontsize=17)
 
-    ax4.set_title('Memory usage')
+    ax4.set_title('Peak Memory')
     #ax3.set_ylim(1750, 1900)
     ax4.bar(x, lto_memory_tests, width, edgecolor=lto_edge_color, linewidth=1, color=lto_bar_color)
     ax4.bar(x + width, memory_tests, width, edgecolor=thin_edge_color, linewidth=1, color=thin_bar_color)

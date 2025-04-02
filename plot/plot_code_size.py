@@ -56,6 +56,10 @@ def main():
 
     improvement.drop('Chromium', inplace=True)
     improvement.drop('LLVM', inplace=True)
+    improvement.drop('V8-M', inplace=True)
+
+    lto_sum = improvement['LTO'].sum()
+    print(lto_sum / 7)
     if config.verbose:
         print(improvement)
 
@@ -73,7 +77,7 @@ def main():
 
     ax1.spines['top'].set_visible(False)
     ax1.spines['right'].set_visible(False)
-    ax1.set_title("Code Size")
+    ax1.set_title("Binary Size")
     x = np.arange(len(improvement.index))
     kwargs = dict(linewidth=1.8, edgecolor='black', visible=True)
     for col in improvement.columns:
