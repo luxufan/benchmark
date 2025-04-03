@@ -4,6 +4,7 @@ cd $BASEDIR
 
 PWDDIR=$(pwd)
 
+#$PWDDIR/build-llvm.py --source-dir $PWDDIR/toolchain/llvm-project/llvm --build-dir $PWDDIR/toolchain/llvm-project/build-release --build-type Release --enable-stats --enable-runtimes "compiler-rt;libcxx;libcxxabi" --targets "X86"
 export PATH="$PATH:/home/tester/.foundry/bin"
 
 CLANG=$PWDDIR/toolchain/llvm-project/build-release/bin/clang
@@ -373,7 +374,7 @@ function test_llvm {
 	local total_memory=0
 	for i in {0..0}
 	do
-		/usr/bin/time -v $PWDDIR/out/llvm/$1/opt -O2 $PWDDIR/data/z3.bc 2> test.log
+		/usr/bin/time -v $PWDDIR/out/llvm/$1/opt -O2 $PWDDIR/test-data/z3.bc 2> test.log
 		local test_time=$(grep -E "User time .*" test.log | awk '{print $4}')
 	  	local memory=$(grep "Maximum resident set" test.log | awk '{print $6}')
 		total_time=$(echo "$total_time + $test_time" | bc)
@@ -687,7 +688,7 @@ function chrome_case_study_move_stats {
 }
 
 function llvm_move_stats {
-	./statscombiner.py $PWDDIR/out/llvm/$1/opt.stats
+	$PWDDIR/statscombiner.py $PWDDIR/out/llvm/$1/opt.stats
 	mv result.json $PWDDIR/result/llvm-case-study/$1.json
 }
 
@@ -728,7 +729,7 @@ fi
 
 if [ "$llvm_case_study" = true ] ; then
 	cd $PWDDIR/toolchain/llvm-project
-	git checkout dyncastopt-nortticlean
+	git checkout rtti-delete
 	cd build-release
 	ninja clang lld
 
@@ -743,7 +744,7 @@ if [ "$llvm_case_study" = true ] ; then
 	build_llvm origin-fulllto
 
 	cd $PWDDIR/test-suites/llvm-project
-	git checkout virtual
+	git checkout remotes/origin/llvm-case-study-virtual
 	build_llvm virtual-thinlto
 	build_llvm virtual-thinlto-dyncastopt
 	build_llvm virtual-fulllto
@@ -763,6 +764,8 @@ if [ "$llvm_case_study" = true ] ; then
 	git checkout remotes/origin/llvm-case-study-no-opt
 	cd build-release
 	ninja clang lld
+        cd $PWDDIR/test-suites/llvm-project
+        git checkout remotes/origin/llvm-case-study-diff-no-opt
 	build_llvm thinlto "-Wl,--plugin-opt=-enable-dyncastopt=true"
 	build_llvm fulllto "-Wl,--plugin-opt=-enable-dyncastopt=true"
 
@@ -779,8 +782,8 @@ if [ "$llvm_case_study" = true ] ; then
 	test_llvm origin-thinlto
 	test_llvm origin-fulllto
 
-	mkdir $PWDDIR/result/llvm-case-study
-	cd $PWDDIR
+        mkdir $PWDDIR/result/llvm-case-study
+        cd $PWDDIR
 	llvm_move_stats thinlto
 	llvm_move_stats thinlto-dyncastopt
 	llvm_move_stats fulllto
@@ -789,7 +792,7 @@ if [ "$llvm_case_study" = true ] ; then
 	llvm_move_stats virtual-thinlto-dyncastopt
 	llvm_move_stats virtual-fulllto
 	llvm_move_stats virtual-fulllto-dyncastopt
-	llvm_move_stats poly-thinlto
+        llvm_move_stats poly-thinlto
 	llvm_move_stats poly-fulllto
 	llvm_move_stats origin-thinlto
 	llvm_move_stats origin-fulllto
