@@ -20,6 +20,10 @@ def main():
     parser.add_argument("compare_full",
                         help="Compare fulllto file")
 
+    # Use a TrueType font (e.g., DejaVu Sans)
+    plt.rcParams['pdf.fonttype'] = 42  # Output TrueType fonts (not Type 3)
+    plt.rcParams['ps.fonttype'] = 42   # Same for PS backend
+
     rename_map = {'blender': 'Blender', 'chrome': 'Chromium', 'povray': 'POV-Ray', 'solc':'Solidity', 'envoy-static':'Envoy', 'opt':'LLVM', '471.omnetpp':'OMNeT++', '447.dealII':'deal.II', 'd8':'V8-M', 'z3':'Z3'}
     rows = ['Blender', 'Chromium', 'deal.II', 'Envoy', 'LLVM', 'OMNeT++', 'POV-Ray', 'Solidity', 'V8-M', 'Z3']
     config = parser.parse_args()

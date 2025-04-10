@@ -8,6 +8,9 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as tck
 
 def main():
+    # Use a TrueType font (e.g., DejaVu Sans)
+    plt.rcParams['pdf.fonttype'] = 42  # Output TrueType fonts (not Type 3)
+    plt.rcParams['ps.fonttype'] = 42   # Same for PS backend
     parser = argparse.ArgumentParser(prog="plot_addresspoints_candidates.py")
     parser.add_argument("file", help="statistics file")
     config = parser.parse_args()

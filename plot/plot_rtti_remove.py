@@ -38,6 +38,9 @@ def get_labels(bytes, kb, isfirst):
     return label
 
 def main():
+    # Use a TrueType font (e.g., DejaVu Sans)
+    plt.rcParams['pdf.fonttype'] = 42  # Output TrueType fonts (not Type 3)
+    plt.rcParams['ps.fonttype'] = 42   # Same for PS backend
     parser = argparse.ArgumentParser(prog="plot_runtime_performance.py")
     parser.add_argument("base_thin",
                         help="Base thinlto file")

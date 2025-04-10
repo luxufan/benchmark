@@ -44,6 +44,9 @@ if __name__ == "__main__":
     parser.add_argument("diff_fulllto_dyncastopt",
                         help="Base thinlto file")
     args = parser.parse_args()
+    # Use a TrueType font (e.g., DejaVu Sans)
+    plt.rcParams['pdf.fonttype'] = 42  # Output TrueType fonts (not Type 3)
+    plt.rcParams['ps.fonttype'] = 42   # Same for PS backend
 
     thinlto_time = [gettime(i) for i in [args.poly_thinlto, args.virtual_thinlto, args.virtual_thinlto_dyncastopt, args.diff_thinlto, args.diff_thinlto_dyncastopt]]
     thinlto_time = [(i - gettime(args.origin_thinlto)) / gettime(args.origin_thinlto) * 100 for i in thinlto_time]

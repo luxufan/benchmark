@@ -55,6 +55,9 @@ if __name__ == "__main__":
     parser.add_argument("sanitize_full",
                         help="Compare fulllto file")
     args = parser.parse_args()
+    # Use a TrueType font (e.g., DejaVu Sans)
+    plt.rcParams['pdf.fonttype'] = 42  # Output TrueType fonts (not Type 3)
+    plt.rcParams['ps.fonttype'] = 42   # Same for PS backend
 
     print(args.thinlto)
     thinlto = json.load(open(args.thinlto))
